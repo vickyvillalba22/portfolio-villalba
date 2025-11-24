@@ -1,0 +1,89 @@
+[
+  {
+    "id": "2025-my-journey",
+    "year": 2025,
+    "title": "My Journey – App Web",
+    "type": "Programación",
+    "tags": ["Vue", "Front-end", "SPA"],
+    "description": "Aplicación web desarrollada en Vue para gestionar el progreso personal en distintas áreas.",
+    "image": "/public/imgs/def project.jpg",
+    "gallery": [
+      "/images/myjourney-1.jpg",
+      "/images/myjourney-2.jpg"
+    ],
+    "link": "https://...",
+    "tools": ["Vue 3", "JavaScript", "CSS", "Vite"],
+    "featured": true
+  },
+  {
+    "id": "2024-ux-totem",
+    "year": 2024,
+    "title": "Tótem Digital para Universidad",
+    "type": "UX/UI",
+    "tags": ["Prototipo", "Investigación", "Interacción"],
+    "description": "Proyecto UX para diseñar un tótem interactivo que mejore la experiencia de los estudiantes en el campus.",
+    "image": "/public/imgs/def project.jpg",
+    "gallery": ["/images/totem-1.jpg"],
+    "link": "https://...",
+    "tools": ["Figma", "UX Research", "UI Design"],
+    "featured": false
+  },
+  {
+    "id": "2024-swim-app",
+    "year": 2024,
+    "title": "App para Nadadores",
+    "type": "Programación / UI",
+    "tags": ["Mobile UI", "Deportes", "Diseño"],
+    "description": "Diseño y prototipo de una aplicación móvil para asistencia en entrenamientos de natación.",
+    "image": "/public/imgs/def project.jpg",
+    "gallery": ["/images/swimapp-1.jpg"],
+    "link": "https://...",
+    "tools": ["Figma", "UX/UI", "Prototipado"],
+    "featured": false
+  },
+  {
+    "id": "2024-mapping-final",
+    "year": 2024,
+    "title": "Proyecto de Mapping – Instalación",
+    "type": "Mapping",
+    "tags": ["Eventos", "Instalación", "Visuales"],
+    "description": "Proyecto de mapping para evento académico, integrando animaciones, proyección y montaje.",
+    "image": "/public/imgs/def project.jpg",
+    "gallery": [
+      "/images/mapping-1.jpg",
+      "/images/mapping-2.jpg"
+    ],
+    "link": "https://...",
+    "tools": ["After Effects", "Resolume", "3D Basics"],
+    "featured": false
+  },
+  {
+    "id": "2023-3d-objects",
+    "year": 2023,
+    "title": "Objetos 3D – Modelado y Render",
+    "type": "3D",
+    "tags": ["Modelado", "Render", "Texturas"],
+    "description": "Modelado y renderizado de objetos 3D como parte de la cursada de herramientas digitales.",
+    "image": "/public/imgs/def project.jpg",
+    "gallery": [
+      "/images/3dobject-1.jpg",
+      "/images/3dobject-2.jpg"
+    ],
+    "link": "https://...",
+    "tools": ["Blender", "Maya", "Substance Painter"],
+    "featured": false
+  },
+  {
+    "id": "2023-branding-event",
+    "year": 2023,
+    "title": "Branding para Evento",
+    "type": "Diseño",
+    "tags": ["Identidad", "Gráfica", "Branding"],
+    "description": "Creación de identidad visual para un evento académico, incluyendo logo, gráfica y piezas digitales.",
+    "image": "/public/imgs/def project.jpg",
+    "gallery": ["/images/branding-1.jpg"],
+    "link": "https://...",
+    "tools": ["Illustrator", "Photoshop"],
+    "featured": false
+  }
+]
