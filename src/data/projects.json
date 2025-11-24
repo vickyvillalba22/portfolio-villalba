@@ -1,89 +1,497 @@
 [
   {
-    "id": "2025-my-journey",
+    "id": 1,
+    "titulo": "Puerto Madero Photoshoot",
+    "categoria": "Photography",
+    "descripcionCorta": "Urban photography session in Puerto Madero.",
+    "descripcionLarga": "A visual production project focused on capturing urban atmosphere, architecture, and natural light in Puerto Madero. The session explores composition, contrast, and storytelling through photography.",
+    "herramientas": ["Canon DSLR", "Lightroom"],
+    "linkPrincipal": "",
+    "linkSecundario": "",
+    "year": 2023,
+    "materia": "Visual Production",
+    "imagen": "/public/imgs/def project.jpg",
+    "mostrar": true
+  },
+
+  {
+    "id": 2,
+    "titulo": "EcoMarket – E-commerce UX/UI",
+    "categoria": "UX/UI",
+    "descripcionCorta": "Eco-friendly e-commerce interface design.",
+    "descripcionLarga": "A complete UX/UI design for EcoMarket, an online store specialized in selling ecological products. The project includes user research, wireframes, UI kit, and a full responsive prototype.",
+    "herramientas": ["Figma"],
+    "linkPrincipal": "",
+    "linkSecundario": "",
+    "year": 2023,
+    "materia": null,
+    "imagen": "/public/imgs/def project.jpg",
+    "mostrar": true
+  },
+
+  {
+    "id": 3,
+    "titulo": "Grido App Redesign – Kids Version",
+    "categoria": "UX/UI",
+    "descripcionCorta": "Child-oriented redesign of the Grido app.",
+    "descripcionLarga": "A redesign of the Grido ice cream application focused on children, featuring playful visuals, an adapted information architecture, accessibility adjustments, and interactive components.",
+    "herramientas": ["Figma"],
+    "linkPrincipal": "",
+    "linkSecundario": "",
+    "year": 2023,
+    "materia": null,
+    "imagen": "/public/imgs/def project.jpg",
+    "mostrar": true
+  },
+
+  {
+    "id": 4,
+    "titulo": "Krusty Krab Burgers Website",
+    "categoria": "UX/UI",
+    "descripcionCorta": "A fictional restaurant website for Krusty Krab.",
+    "descripcionLarga": "A UX/UI project for a fictional hamburger restaurant inspired by SpongeBob. The design includes a full layout system, color palette, custom illustrations, and responsive flows.",
+    "herramientas": ["Figma", "Illustrator"],
+    "linkPrincipal": "",
+    "linkSecundario": "",
     "year": 2025,
-    "title": "My Journey – App Web",
-    "type": "Programación",
-    "tags": ["Vue", "Front-end", "SPA"],
-    "description": "Aplicación web desarrollada en Vue para gestionar el progreso personal en distintas áreas.",
-    "image": "/public/imgs/def project.jpg",
-    "gallery": [
-      "/images/myjourney-1.jpg",
-      "/images/myjourney-2.jpg"
-    ],
-    "link": "https://...",
-    "tools": ["Vue 3", "JavaScript", "CSS", "Vite"],
-    "featured": true
+    "materia": "UX/UI Design",
+    "imagen": "/public/imgs/def project.jpg",
+    "mostrar": true
   },
+
   {
-    "id": "2024-ux-totem",
+    "id": 5,
+    "titulo": "Student Notes App",
+    "categoria": "UX/UI",
+    "descripcionCorta": "A productivity app for university students.",
+    "descripcionLarga": "A mobile-first UX/UI design for an application that helps students organize courses, tasks, notes, and deadlines. The prototype includes dark/light mode and custom iconography.",
+    "herramientas": ["Figma"],
+    "linkPrincipal": "",
+    "linkSecundario": "",
+    "year": 2025,
+    "materia": "UX/UI Design",
+    "imagen": "/public/imgs/def project.jpg",
+    "mostrar": true
+  },
+
+  {
+    "id": 6,
+    "titulo": "Digital Totem UX Research",
+    "categoria": "UX/UI",
+    "descripcionCorta": "User research for a university information totem.",
+    "descripcionLarga": "A complete UX research project including benchmarking, surveys, interviews, usability analysis, and low/high-fidelity prototypes for a digital totem intended for campus use.",
+    "herramientas": ["Figma", "Miro"],
+    "linkPrincipal": "",
+    "linkSecundario": "",
+    "year": 2025,
+    "materia": "UX Research",
+    "imagen": "/public/imgs/def project.jpg",
+    "mostrar": true
+  },
+
+  {
+    "id": 7,
+    "titulo": "Nadar – Swimming App",
+    "categoria": "UX/UI",
+    "descripcionCorta": "Training assistant app for swimmers.",
+    "descripcionLarga": "A design project for a mobile application that allows swimmers to track workouts, goals, distances, and performance. Includes a structured design system and interactive prototype.",
+    "herramientas": ["Figma"],
+    "linkPrincipal": "",
+    "linkSecundario": "",
+    "year": 2025,
+    "materia": null,
+    "imagen": "/public/imgs/def project.jpg",
+    "mostrar": true
+  },
+
+  {
+    "id": 8,
+    "titulo": "Aladdin Short Animation",
+    "categoria": "2D Animation",
+    "descripcionCorta": "A short 2D animation inspired by Aladdin.",
+    "descripcionLarga": "Frame-by-frame 2D animation recreating scenes inspired by Disney's Aladdin. Focus on timing, exaggeration, and character motion.",
+    "herramientas": ["After Effects", "Illustrator"],
+    "linkPrincipal": "",
+    "linkSecundario": "",
     "year": 2024,
-    "title": "Tótem Digital para Universidad",
-    "type": "UX/UI",
-    "tags": ["Prototipo", "Investigación", "Interacción"],
-    "description": "Proyecto UX para diseñar un tótem interactivo que mejore la experiencia de los estudiantes en el campus.",
-    "image": "/public/imgs/def project.jpg",
-    "gallery": ["/images/totem-1.jpg"],
-    "link": "https://...",
-    "tools": ["Figma", "UX Research", "UI Design"],
-    "featured": false
+    "materia": "2D Animation",
+    "imagen": "/public/imgs/def project.jpg",
+    "mostrar": true
   },
+
   {
-    "id": "2024-swim-app",
+    "id": 9,
+    "titulo": "Typographic Animation",
+    "categoria": "2D Animation",
+    "descripcionCorta": "Motion typography exploration.",
+    "descripcionLarga": "A motion graphics exercise focused on kinetic typography, rhythm, pacing, and harmony between text and sound.",
+    "herramientas": ["After Effects"],
+    "linkPrincipal": "",
+    "linkSecundario": "",
     "year": 2024,
-    "title": "App para Nadadores",
-    "type": "Programación / UI",
-    "tags": ["Mobile UI", "Deportes", "Diseño"],
-    "description": "Diseño y prototipo de una aplicación móvil para asistencia en entrenamientos de natación.",
-    "image": "/public/imgs/def project.jpg",
-    "gallery": ["/images/swimapp-1.jpg"],
-    "link": "https://...",
-    "tools": ["Figma", "UX/UI", "Prototipado"],
-    "featured": false
+    "materia": "2D Animation",
+    "imagen": "/public/imgs/def project.jpg",
+    "mostrar": true
   },
+
   {
-    "id": "2024-mapping-final",
+    "id": 10,
+    "titulo": "Eye Animation Study",
+    "categoria": "2D Animation",
+    "descripcionCorta": "Detailed eye movement animation study.",
+    "descripcionLarga": "A short study focused on animating organic movement, blinking cycles, and smooth interpolation.",
+    "herramientas": ["After Effects"],
+    "linkPrincipal": "",
+    "linkSecundario": "",
     "year": 2024,
-    "title": "Proyecto de Mapping – Instalación",
-    "type": "Mapping",
-    "tags": ["Eventos", "Instalación", "Visuales"],
-    "description": "Proyecto de mapping para evento académico, integrando animaciones, proyección y montaje.",
-    "image": "/public/imgs/def project.jpg",
-    "gallery": [
-      "/images/mapping-1.jpg",
-      "/images/mapping-2.jpg"
-    ],
-    "link": "https://...",
-    "tools": ["After Effects", "Resolume", "3D Basics"],
-    "featured": false
+    "materia": "2D Animation",
+    "imagen": "/public/imgs/def project.jpg",
+    "mostrar": true
   },
+
   {
-    "id": "2023-3d-objects",
-    "year": 2023,
-    "title": "Objetos 3D – Modelado y Render",
-    "type": "3D",
-    "tags": ["Modelado", "Render", "Texturas"],
-    "description": "Modelado y renderizado de objetos 3D como parte de la cursada de herramientas digitales.",
-    "image": "/public/imgs/def project.jpg",
-    "gallery": [
-      "/images/3dobject-1.jpg",
-      "/images/3dobject-2.jpg"
-    ],
-    "link": "https://...",
-    "tools": ["Blender", "Maya", "Substance Painter"],
-    "featured": false
+    "id": 11,
+    "titulo": "Rappi Commercial",
+    "categoria": "Audiovisual",
+    "descripcionCorta": "Short advertising spot for Rappi.",
+    "descripcionLarga": "A commercial created for Techniques of Audiovisual Production. Includes scriptwriting, filming, acting direction, editing, and color correction.",
+    "herramientas": ["Premiere", "After Effects"],
+    "linkPrincipal": "",
+    "linkSecundario": "",
+    "year": 2024,
+    "materia": "Audiovisual Techniques",
+    "imagen": "/public/imgs/def project.jpg",
+    "mostrar": true
   },
+
   {
-    "id": "2023-branding-event",
-    "year": 2023,
-    "title": "Branding para Evento",
-    "type": "Diseño",
-    "tags": ["Identidad", "Gráfica", "Branding"],
-    "description": "Creación de identidad visual para un evento académico, incluyendo logo, gráfica y piezas digitales.",
-    "image": "/public/imgs/def project.jpg",
-    "gallery": ["/images/branding-1.jpg"],
-    "link": "https://...",
-    "tools": ["Illustrator", "Photoshop"],
-    "featured": false
+    "id": 12,
+    "titulo": "Music Video Final",
+    "categoria": "Audiovisual",
+    "descripcionCorta": "A full music video production.",
+    "descripcionLarga": "Group final project involving conceptualization, filming, directing, editing, color grading, and narrative construction.",
+    "herramientas": ["Premiere", "DaVinci Resolve"],
+    "linkPrincipal": "",
+    "linkSecundario": "",
+    "year": 2024,
+    "materia": "Audiovisual Techniques",
+    "imagen": "/public/imgs/def project.jpg",
+    "mostrar": true
+  },
+
+  {
+    "id": 13,
+    "titulo": "Mapping Projection",
+    "categoria": "Audiovisual",
+    "descripcionCorta": "Projection mapping for a university event.",
+    "descripcionLarga": "A complete audiovisual projection mapping developed for a faculty event. Includes 3D planning, light analysis, and synchronized animation.",
+    "herramientas": ["After Effects", "Resolume"],
+    "linkPrincipal": "",
+    "linkSecundario": "",
+    "year": 2025,
+    "materia": "Audiovisual Techniques",
+    "imagen": "/public/imgs/def project.jpg",
+    "mostrar": true
+  },
+
+  {
+    "id": 14,
+    "titulo": "Design Fundamentals Final",
+    "categoria": "Graphic Design",
+    "descripcionCorta": "Graphic design final exploring composition.",
+    "descripcionLarga": "A final project analyzing visual composition, contrast, negative space, and geometric balance through print-based layouts.",
+    "herramientas": ["Illustrator"],
+    "linkPrincipal": "",
+    "linkSecundario": "",
+    "year": 2024,
+    "materia": "Graphic Design",
+    "imagen": "/public/imgs/def project.jpg",
+    "mostrar": true
+  },
+
+  {
+    "id": 15,
+    "titulo": "Typographic Composition",
+    "categoria": "Graphic Design",
+    "descripcionCorta": "Typography-based graphic composition.",
+    "descripcionLarga": "A typographic visual exploration experimenting with hierarchy, shapes, grids, and expressive letter arrangement.",
+    "herramientas": ["Illustrator"],
+    "linkPrincipal": "",
+    "linkSecundario": "",
+    "year": 2024,
+    "materia": "Graphic Design",
+    "imagen": "/public/imgs/def project.jpg",
+    "mostrar": true
+  },
+
+  {
+    "id": 16,
+    "titulo": "Vintage Nintendo Ad",
+    "categoria": "Graphic Design",
+    "descripcionCorta": "Vintage-style advertising for Nintendo.",
+    "descripcionLarga": "A print ad recreated with a retro art direction, using typographic era references, color research, and layout reconstruction.",
+    "herramientas": ["Photoshop"],
+    "linkPrincipal": "",
+    "linkSecundario": "",
+    "year": 2024,
+    "materia": "Graphic Design",
+    "imagen": "/public/imgs/def project.jpg",
+    "mostrar": true
+  },
+
+  {
+    "id": 17,
+    "titulo": "Graphic Design Practical 1",
+    "categoria": "Graphic Design",
+    "descripcionCorta": "Exercise exploring color and layout.",
+    "descripcionLarga": "A practical assignment experimenting with color theory, visual rhythm, and modular composition.",
+    "herramientas": ["Illustrator"],
+    "linkPrincipal": "",
+    "linkSecundario": "",
+    "year": 2025,
+    "materia": "Basic Graphic Design",
+    "imagen": "/public/imgs/def project.jpg",
+    "mostrar": true
+  },
+
+  {
+    "id": 18,
+    "titulo": "Graphic Design Practical 2",
+    "categoria": "Graphic Design",
+    "descripcionCorta": "Second practice exploring contrast and form.",
+    "descripcionLarga": "An academic project centered on contrasts, textures, and visual hierarchy, forming part of the subject’s TP set.",
+    "herramientas": ["Illustrator"],
+    "linkPrincipal": "",
+    "linkSecundario": "",
+    "year": 2025,
+    "materia": "Basic Graphic Design",
+    "imagen": "/public/imgs/def project.jpg",
+    "mostrar": true
+  },
+
+  {
+    "id": 19,
+    "titulo": "Ana Sibilia Visual Identity",
+    "categoria": "Graphic Design",
+    "descripcionCorta": "Brand identity for architect Ana Sibilia.",
+    "descripcionLarga": "A professional branding project: logo design, color palette, typography system, and social media templates for architect Ana Sibilia.",
+    "herramientas": ["Illustrator", "Photoshop"],
+    "linkPrincipal": "",
+    "linkSecundario": "",
+    "year": 2025,
+    "materia": null,
+    "imagen": "/public/imgs/def project.jpg",
+    "mostrar": true
+  },
+
+  {
+    "id": 20,
+    "titulo": "Félix Pequer Social Media Design",
+    "categoria": "Graphic Design",
+    "descripcionCorta": "Social media graphics for a dentist.",
+    "descripcionLarga": "Graphic design work for odontologist Félix Pequer, including banners, instagram posts, typography and color direction.",
+    "herramientas": ["Illustrator", "Photoshop"],
+    "linkPrincipal": "",
+    "linkSecundario": "",
+    "year": 2025,
+    "materia": null,
+    "imagen": "/public/imgs/def project.jpg",
+    "mostrar": true
+  },
+
+  {
+    "id": 21,
+    "titulo": "Inés – Nutritionist Branding",
+    "categoria": "Graphic Design",
+    "descripcionCorta": "Branding for a nutrition professional.",
+    "descripcionLarga": "Complete identity system including logo variations, color palette, social media materials, and graphic direction for a nutrition consultant.",
+    "herramientas": ["Illustrator"],
+    "linkPrincipal": "",
+    "linkSecundario": "",
+    "year": 2025,
+    "materia": null,
+    "imagen": "/public/imgs/def project.jpg",
+    "mostrar": true
+  },
+
+  {
+    "id": 22,
+    "titulo": "Lavandas del Monte – Branding",
+    "categoria": "Graphic Design",
+    "descripcionCorta": "Visual identity for a catering brand.",
+    "descripcionLarga": "Professional identity manual for a catering entrepreneurship, including print materials, digital branding, and logo construction.",
+    "herramientas": ["Illustrator", "Photoshop"],
+    "linkPrincipal": "",
+    "linkSecundario": "",
+    "year": 2025,
+    "materia": null,
+    "imagen": "/public/imgs/def project.jpg",
+    "mostrar": true
+  },
+
+  {
+    "id": 23,
+    "titulo": "LifeMed Veterinary Branding",
+    "categoria": "Graphic Design",
+    "descripcionCorta": "Identity and social media for a vet clinic.",
+    "descripcionLarga": "Logo design, color system, icons, and social media visual strategy for LifeMed Veterinary.",
+    "herramientas": ["Illustrator", "Photoshop"],
+    "linkPrincipal": "",
+    "linkSecundario": "",
+    "year": 2025,
+    "materia": null,
+    "imagen": "/public/imgs/def project.jpg",
+    "mostrar": true
+  },
+
+  {
+    "id": 24,
+    "titulo": "HTML/CSS Website",
+    "categoria": "Development",
+    "descripcionCorta": "Static website built with HTML and CSS.",
+    "descripcionLarga": "A responsive website built fully with HTML and CSS based on a predefined design. Focused on layout building, flexbox/grid, and component organization.",
+    "herramientas": ["HTML", "CSS"],
+    "linkPrincipal": "",
+    "linkSecundario": "",
+    "year": 2024,
+    "materia": "Web Programming",
+    "imagen": "/public/imgs/def project.jpg",
+    "mostrar": true
+  },
+
+  {
+    "id": 25,
+    "titulo": "Marvel API Integration",
+    "categoria": "Development",
+    "descripcionCorta": "Interactive project using the Marvel API.",
+    "descripcionLarga": "A JavaScript web application using the Marvel REST API to retrieve characters, comics, and data dynamically.",
+    "herramientas": ["JavaScript", "REST API"],
+    "linkPrincipal": "",
+    "linkSecundario": "",
+    "year": 2025,
+    "materia": "Web Programming",
+    "imagen": "/public/imgs/def project.jpg",
+    "mostrar": true
+  },
+
+  {
+    "id": 26,
+    "titulo": "Solar System – WAAPI",
+    "categoria": "Development",
+    "descripcionCorta": "Solar system animation using Web Animations API.",
+    "descripcionLarga": "A dynamic 2D representation of a solar system using JavaScript and the Web Animations API to animate orbits, rotations, and transitions.",
+    "herramientas": ["JavaScript", "WAAPI"],
+    "linkPrincipal": "",
+    "linkSecundario": "",
+    "year": 2025,
+    "materia": "Web Programming",
+    "imagen": "/public/imgs/def project.jpg",
+    "mostrar": true
+  },
+
+  {
+    "id": 27,
+    "titulo": "Weekly Menu Builder",
+    "categoria": "Development",
+    "descripcionCorta": "Vue app to create weekly meal plans.",
+    "descripcionLarga": "A Vue.js application that allows users to organize meals for the week, including component architecture, reactive state, and dynamic rendering.",
+    "herramientas": ["Vue", "JavaScript"],
+    "linkPrincipal": "",
+    "linkSecundario": "",
+    "year": 2025,
+    "materia": "Web Programming",
+    "imagen": "/public/imgs/def project.jpg",
+    "mostrar": true
+  },
+
+  {
+    "id": 28,
+    "titulo": "Travel Itinerary Tracker",
+    "categoria": "Development",
+    "descripcionCorta": "Vue app for organizing travel routes.",
+    "descripcionLarga": "A Vue.js application for storing and organizing travel itineraries, including form handling, routing, and views.",
+    "herramientas": ["Vue", "JavaScript"],
+    "linkPrincipal": "",
+    "linkSecundario": "",
+    "year": 2025,
+    "materia": "Web Programming",
+    "imagen": "/public/imgs/def project.jpg",
+    "mostrar": true
+  },
+
+  {
+    "id": 29,
+    "titulo": "Event Reservation OOP Project",
+    "categoria": "Development",
+    "descripcionCorta": "Object-oriented event reservation system.",
+    "descripcionLarga": "Academic project applying OOP principles to create an event reservation system: classes, inheritance, encapsulation, and dynamic filtering.",
+    "herramientas": ["JavaScript", "OOP"],
+    "linkPrincipal": "",
+    "linkSecundario": "",
+    "year": 2025,
+    "materia": "Object-Oriented Programming",
+    "imagen": "/public/imgs/def project.jpg",
+    "mostrar": true
+  },
+
+  {
+    "id": 30,
+    "titulo": "Pato Reikler Website – High Script",
+    "categoria": "Development",
+    "descripcionCorta": "Portfolio site coded with High Script.",
+    "descripcionLarga": "A full website coded using High Script for multimedia artist Pato Reikler, including animations, custom components, and interactive gallery.",
+    "herramientas": ["High Script"],
+    "linkPrincipal": "",
+    "linkSecundario": "",
+    "year": 2025,
+    "materia": null,
+    "imagen": "/public/imgs/def project.jpg",
+    "mostrar": true
+  },
+
+  {
+    "id": 31,
+    "titulo": "Time Bomb Mini-Game",
+    "categoria": "Game Design",
+    "descripcionCorta": "JS mini-game featuring a timed challenge.",
+    "descripcionLarga": "A simple but dynamic game coded in JavaScript, where the player must disable a virtual time bomb before the countdown reaches zero.",
+    "herramientas": ["JavaScript"],
+    "linkPrincipal": "",
+    "linkSecundario": "",
+    "year": 2024,
+    "materia": "Game Design",
+    "imagen": "/public/imgs/def project.jpg",
+    "mostrar": true
+  },
+
+  {
+    "id": 32,
+    "titulo": "Crime Card Game",
+    "categoria": "Game Design",
+    "descripcionCorta": "Physical card game based on solving crimes.",
+    "descripcionLarga": "A tabletop card game designed around deduction, clues, and strategic storytelling. Includes card layout, rule system, and printed prototype.",
+    "herramientas": ["Illustrator", "Print Design"],
+    "linkPrincipal": "",
+    "linkSecundario": "",
+    "year": 2025,
+    "materia": "Game Design",
+    "imagen": "/public/imgs/def project.jpg",
+    "mostrar": true
+  },
+
+  {
+    "id": 33,
+    "titulo": "Isometric Shark Barista Room",
+    "categoria": "3D Design",
+    "descripcionCorta": "3D isometric room featuring a shark barista.",
+    "descripcionLarga": "A stylized 3D interior design created in isometric perspective. The scene features a shark character working as a barista, with props, lighting, and texturing.",
+    "herramientas": ["Maya", "Blender"],
+    "linkPrincipal": "",
+    "linkSecundario": "",
+    "year": 2025,
+    "materia": "3D Design",
+    "imagen": "/public/imgs/def project.jpg",
+    "mostrar": true
   }
 ]
+

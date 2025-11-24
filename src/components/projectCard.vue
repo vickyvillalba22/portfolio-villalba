@@ -20,8 +20,8 @@ const project = computed(() => {
 
 <template>
   <article class="card font-modo-oscuro">
-    <img :src="project.image" :alt="project.title" />
-    <h2>{{ project.title }}</h2>
+    <img :src="project.imagen" :alt="project.title" />
+    <h2>{{ project.titulo }}</h2>
   </article>
 </template>
 

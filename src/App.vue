@@ -36,12 +36,16 @@ h1,h2,h3,h4,p,button,span,input,a{
 
 
 body{
-  background-image: url('/public/imgs/background 1.jpg');
+  /*background-image: url('/public/imgs/background 1.jpg');
   background-size: cover;
   background-repeat: no-repeat;
-  background-position: center;
+  background-position: center;*/
 
-  height: 100vh;
+  background: linear-gradient(to bottom, #000000 0%, #3a0066 50%, #8a2be2 100%);
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+
+  min-height: 100vh;
   width: 100vw;
 
   display: flex;

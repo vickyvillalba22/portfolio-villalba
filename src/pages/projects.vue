@@ -29,7 +29,7 @@ const projects = inject('projects')
 
 #projects{
 
-    height: 90vh;
+    min-height: 90vh;
     width: 90vw;
 
     display: flex;
@@ -39,7 +39,7 @@ const projects = inject('projects')
 .contProjects{
 
     height: 60vh;
-    width: 60%;
+    width: 90%;
 
     display: flex;
     align-items: center;
