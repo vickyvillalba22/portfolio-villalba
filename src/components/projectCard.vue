@@ -3,7 +3,7 @@ import { inject, computed } from "vue";
 
 const props = defineProps({
   projectId: {
-    type: String,
+    type: Number,
     required: true
   }
 });
