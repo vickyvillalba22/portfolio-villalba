@@ -10,25 +10,26 @@ const selectedYears = ref(new Set())
 const selectedCategories = ref(new Set())
 
 // arrays para renderizar filtros
-const years = ['2023', '2024', '2025']
+const years = [2023, 2024, 2025]
 const categories = ['Photography', 'UX/UI', '2D Animation', 'Audiovisuals', 'Graphic Design', 'Development', 'Game Design', '3D Design']
 
 // funcion para alternar cada categoria
 function toggle (setRef, value){
-    
-    const currentSet = setRef.value
 
-    console.log(setRef.value);
+    //console.log(setRef);
 
-    if(currentSet.has(value)) currentSet.delete(value);
-    else currentSet.add(value)
+    if(setRef.has(value)) setRef.delete(value);
+    else setRef.add(value)
 
-    //setRef.value = new Set(currentSet);
+    setRef.value = new Set(setRef);
+
+    console.log(setRef);
 }
 
 // mostrar todos
 function clearFilter(setRef){
     setRef.value = new Set()
+    //console.log(setRef);
 }
 
 // aplicar filtros combinados con computed
@@ -37,7 +38,11 @@ const filteredProjects = computed (()=>{
     return projects.value.filter(project =>{
 
         const passYear = selectedYears.value.size === 0 || selectedYears.value.has(project.year)
+        //console.log(selectedYears);
+        
         const passCategory = selectedCategories.value.size === 0 || selectedCategories.value.has(project.categoria)
+
+        //console.log(passCategory);
 
         return passYear && passCategory;
 
@@ -55,26 +60,28 @@ const filteredProjects = computed (()=>{
 
             <!--AÑOS-->
             <!--mostrar todos los años-->
-            <button @click="clearFilter(selectedYears)" :class="{ active: selectedYears.size === 0 }">Todas</button>
+            <button @click="clearFilter(selectedYears)" :class="{ active: selectedYears.size === 0 }" class="pill">Todas</button>
             <!-- Pastillas dinámicas -->
             <button
             v-for="year in years"
             :key="year"
             @click="toggle(selectedYears, year)" 
             :class="{ active: selectedYears.has(year) }"
+            class="pill"
             >
             {{ year }}
             </button>
 
             <!--CATEGORÍAS-->
             <!--mostrar todos las categorias-->
-            <button @click="clearFilter(selectedCategories)" :class="{ active: selectedCategories.size === 0 }">Todas</button>
-            <!-- Pastillas dinámicas -->
+            <button @click="clearFilter(selectedCategories)" :class="{ active: selectedCategories.size === 0 }" class="pill">Todas</button>
+            <!--Pastillas dinámicas-->
             <button
             v-for="category in categories"
             :key="category"
             @click="toggle(selectedCategories, category)"
             :class="{ active: selectedCategories.has(category) }"
+            class="pill"
             >
             {{ category }}
             </button>
@@ -120,6 +127,20 @@ const filteredProjects = computed (()=>{
 
     margin-top: 5vh;
 
+}
+
+.pill {
+  padding: .35rem .8rem;
+  border-radius: 999px;
+  border: 1px solid rgba(255,255,255,.12);
+  background-color: rgba(240, 248, 255, 0.408);
+  cursor: pointer;
+  margin: .25rem;
+}
+.pill.active {
+  background: linear-gradient(90deg, #8a2be2, #3a0066);
+  color: white;
+  box-shadow: 0 6px 18px rgba(0,0,0,.25);
 }
 
 </style>
