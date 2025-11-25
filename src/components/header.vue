@@ -2,9 +2,9 @@
   <header class="header">
     <nav class="nav">
       <router-link to="/" class="item">Home</router-link>
-      <router-link to="/about" class="item">Sobre mí</router-link>
-      <router-link to="/projects" class="item">Proyectos</router-link>
-      <router-link to="/contact" class="item">Contacto</router-link>
+      <router-link to="/about" class="item">About me</router-link>
+      <router-link to="/projects" class="item">Projects</router-link>
+      <router-link to="/contact" class="item">Contact</router-link>
     </nav>
   </header>
 </template>

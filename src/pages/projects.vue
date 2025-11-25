@@ -60,31 +60,37 @@ const filteredProjects = computed (()=>{
 
             <!--AÑOS-->
             <!--mostrar todos los años-->
-            <button @click="clearFilter(selectedYears)" :class="{ active: selectedYears.size === 0 }" class="pill">Todas</button>
-            <!-- Pastillas dinámicas -->
-            <button
-            v-for="year in years"
-            :key="year"
-            @click="toggle(selectedYears, year)" 
-            :class="{ active: selectedYears.has(year) }"
-            class="pill"
-            >
-            {{ year }}
-            </button>
+            <div class="contPills">
+                <p>Year:</p>
+                <button @click="clearFilter(selectedYears)" :class="{ active: selectedYears.size === 0 }" class="pill">Todas</button>
+                <!-- Pastillas dinámicas -->
+                <button
+                v-for="year in years"
+                :key="year"
+                @click="toggle(selectedYears, year)" 
+                :class="{ active: selectedYears.has(year) }"
+                class="pill"
+                >
+                {{ year }}
+                </button>
+            </div>
 
             <!--CATEGORÍAS-->
             <!--mostrar todos las categorias-->
-            <button @click="clearFilter(selectedCategories)" :class="{ active: selectedCategories.size === 0 }" class="pill">Todas</button>
-            <!--Pastillas dinámicas-->
-            <button
-            v-for="category in categories"
-            :key="category"
-            @click="toggle(selectedCategories, category)"
-            :class="{ active: selectedCategories.has(category) }"
-            class="pill"
-            >
-            {{ category }}
-            </button>
+            <div class="contPills">
+                <p>Area:</p>
+                <button @click="clearFilter(selectedCategories)" :class="{ active: selectedCategories.size === 0 }" class="pill">Todas</button>
+                <!--Pastillas dinámicas-->
+                <button
+                v-for="category in categories"
+                :key="category"
+                @click="toggle(selectedCategories, category)"
+                :class="{ active: selectedCategories.has(category) }"
+                class="pill"
+                >
+                {{ category }}
+                </button>
+            </div>
 
         </div>
 
@@ -112,6 +118,7 @@ const filteredProjects = computed (()=>{
     display: flex;
     justify-content: center;
     flex-direction: column;
+    align-items: center;
 }
 
 .contProjects{
@@ -141,6 +148,26 @@ const filteredProjects = computed (()=>{
   background: linear-gradient(90deg, #8a2be2, #3a0066);
   color: white;
   box-shadow: 0 6px 18px rgba(0,0,0,.25);
+}
+
+section div p{
+    color: white;
+}
+
+#filters{
+    width: 90%;
+    display: flex;
+    flex-direction: column;
+}
+
+.contPills{
+    display: flex;
+    align-items: center;
+    width: 100%;
+}
+
+.contPills p{
+    margin-right: 10px;
 }
 
 </style>
