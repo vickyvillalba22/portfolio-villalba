@@ -126,10 +126,8 @@ const filteredProjects = computed (()=>{
     height: 60vh;
     width: 90%;
 
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    flex-wrap: wrap;
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
     gap: 20px;
 
     margin-top: 5vh;

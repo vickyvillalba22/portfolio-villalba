@@ -25,6 +25,10 @@ import Header from './components/header.vue';
     font-family: sans-serif;
 }
 
+.bordeRojo{
+  border: 1px solid red;
+}
+
 /*texto*/
 @font-face {
   font-family: 'creatoDisplay'; /* Nombre que le darás a la fuente */
@@ -46,7 +50,6 @@ body{
   background-attachment: fixed;
 
   min-height: 100vh;
-  width: 100vw;
 
   display: flex;
   align-items: center;
