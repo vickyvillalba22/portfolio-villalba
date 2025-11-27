@@ -92,7 +92,7 @@ function toggleCard (){
 .card-simple {
 
   height: 50vh;
-  width: 15vw;
+  width: 15%;
   display: flex;
   flex-direction: column;
   gap: 1rem;
@@ -110,7 +110,7 @@ function toggleCard (){
 }
 
 .card-simple.expanded{
-  width: 30vw;
+  width: 40%;
   flex-direction: row;
 }
 
@@ -175,6 +175,7 @@ function toggleCard (){
 .tools{
   display: flex;
   list-style: none;
+  gap: 5px;
 }
 
 .goto-link {
@@ -209,6 +210,63 @@ button {
 i{
   display: flex;
   font-size: 1.4em;
+}
+
+@media (max-width: 600px){
+  .card-simple{
+    width: 90%;
+    height: 18vh;
+    display: flex;
+    flex-direction: row;
+    position: relative;
+  }
+  .card-info h2{
+    font-size: 1em;
+    width: 50%;
+    position: absolute;
+  }
+  button{
+    font-size: 0.7em;
+  }
+  .label-simple{
+    font-size: 0.5em;
+  }
+  .extra-content p{
+    font-size: 0.8em;
+  }
+  .contBoton{
+    align-items: end;
+  }
+  .contBoton button{
+    height: fit-content;
+    display: flex;
+    align-items: center;
+  }
+  /*expanded*/
+  .card-simple.expanded{
+    width: 90%;
+    height: 50vh;
+    flex-direction: column;
+  }
+  .botonSimple{
+    position: absolute;
+    left: 9%;
+    top: 8%;
+  }
+  .card-simple.expanded h2{
+    width: 90%;
+    font-size: 1.1em;
+  }
+  .card-simple.expanded p{
+    margin-top: 10px;
+  }
+  .card-simple.expanded .card-img-container{
+    flex: 0.5;
+  }
+  .card-simple.expanded .label-simple, .year{
+    right: 5%;
+  }
+
 }
 
 </style>

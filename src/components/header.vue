@@ -127,6 +127,9 @@ nav{
   .header-home {
     width: 100%; 
   }
+  .header-default{
+    margin-top: 30px;
+  }
 }
 
 </style>

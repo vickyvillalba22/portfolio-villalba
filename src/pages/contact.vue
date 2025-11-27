@@ -70,11 +70,14 @@ i{
 }
 
 @media (max-width: 600px){
+  .message{
+    height: 60vh;
+  }
   #contact img{
-    width: 20%;
+    width: 30%;
   }
   .contIcons{
-    width: 50%;
+    width: 60%;
   }
 }
 
