@@ -111,9 +111,8 @@ const filteredProjects = computed (()=>{
 <style scoped>
 
 #projects{
-
     min-height: 90vh;
-    width: 90vw;
+    width: 100%;
 
     display: flex;
     justify-content: center;
@@ -125,13 +124,11 @@ const filteredProjects = computed (()=>{
 
     height: 60vh;
     width: 90%;
-
-    display: grid;
-    grid-template-columns: repeat(4, 1fr);
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
     gap: 20px;
-
     margin-top: 5vh;
-
 }
 
 .pill {
@@ -153,7 +150,7 @@ section div p{
 }
 
 #filters{
-    width: 90%;
+    width: 80%;
     display: flex;
     flex-direction: column;
 }
@@ -166,6 +163,16 @@ section div p{
 
 .contPills p{
     margin-right: 10px;
+}
+
+@media (max-width: 600px){
+    #projects{
+        margin-top: 30px;
+    }
+    .contPills{
+        flex-wrap: wrap;
+    }
+
 }
 
 </style>

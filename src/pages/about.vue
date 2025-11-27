@@ -31,8 +31,7 @@
 <style scoped>
 
 #about{
-
-    width: 90vw;
+    width: 90%;
     height: 90vh;
 
     display: flex;
@@ -77,14 +76,21 @@
   object-position: top;
 }
 
-/*.fondoNaranja{
-  background-color: rgb(255, 187, 62);
+@media (max-width: 600px) {
+  #about{
+    gap: 30px;
+    margin-top: 30px;
+  }
+  .contCards{
+    flex-direction: column;
+    gap: 20px;
+  }
+  .cardAbout{
+    width: 90%;
+  }
+  .cardAbout img{
+    height: 50%;
+  }
 }
-.fondoVerde{
-  background-color: rgb(133, 222, 0);
-}
-.fondoCeleste{
-  background-color: rgb(66, 208, 255);
-}*/
 
 </style>

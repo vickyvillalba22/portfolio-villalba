@@ -5,11 +5,27 @@ import Projects from "../pages/projects.vue";
 import Contact from "../pages/contact.vue";
 
 const routes = [
-  { path: "/", component: Home },
-  { path: "/about", component: About },
-  { path: "/projects", component: Projects },
-  { path: "/contact", component: Contact }
-];
+  {
+    path: '/',
+    name: 'home',
+    component: Home
+  },
+  {
+    path: '/about',
+    name: 'about',
+    component: About
+  },
+  {
+    path: '/projects',
+    name: 'projects',
+    component: Projects
+  },
+  {
+    path: '/contact',
+    name: 'contact',
+    component: Contact
+  }
+]
 
 export default createRouter({
   history: createWebHistory(),

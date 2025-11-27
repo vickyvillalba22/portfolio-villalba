@@ -33,8 +33,8 @@ function toggleCard (){
     <!-- Imagen y etiquetas -->
     <div class="card-img-container">
       <img :src="project.imagen" :alt="project.title" />
-      <h4 class="label-simple">{{ project.categoria }}</h4>
-      <span class="year">{{ project.year }}</span>
+      <h4 class="label-simple posAb">{{ project.categoria }}</h4>
+      <span class="year posAb">{{ project.year }}</span>
     </div>
 
     <!--contenido general-->
@@ -43,8 +43,8 @@ function toggleCard (){
 
       <!-- Botón cerrar (solo cuando está expandida) -->
       <div class="contBoton">
-        <button v-if="isExpanded" @click="toggleCard" class="btn-close">
-          Cerrar
+        <button v-if="isExpanded" @click="toggleCard" class="botonSimple">
+          <i class="fi fi-tr-angle-left"></i>
         </button>
       </div>
 
@@ -52,20 +52,25 @@ function toggleCard (){
 
       <!-- Contenido extra SOLO al expandirse -->
       <div v-if="isExpanded" class="extra-content">
+
         <p class="description">
           {{ project.descripcionLarga }}
         </p>
 
         <ul class="tools">
-          <li v-for="herr in project.herramientas" :key="herr">
+          <li v-for="herr in project.herramientas" :key="herr" class="label-simple">
             {{ herr }}
           </li>
         </ul>
 
-        <a class="goto-link" href="project.linkPrincipal" target="_blank">
-          Go to project
-          <i class="fi fi-tr-arrow-small-right"></i>
-        </a>
+        <div class="contBoton">
+          <a class="goto-link" href="project.linkPrincipal" target="_blank">
+            Go to project
+            <i class="fi fi-tr-arrow-small-right"></i>
+          </a>
+        </div>
+
+
       </div>
 
     </div>
@@ -87,6 +92,7 @@ function toggleCard (){
 .card-simple {
 
   height: 50vh;
+  width: 15vw;
   display: flex;
   flex-direction: column;
   gap: 1rem;
@@ -99,11 +105,12 @@ function toggleCard (){
   box-shadow: 0 4px 20px rgba(0,0,0,0.15);
   position: relative;
   transition: all .35s ease;
+
+  transition: width 0.5s ease, height 0.5s ease, flex-direction 0.3s ease;
 }
 
-/* EXPANDIDA → ocupa 2 columnas y se hace horizontal */
-.card-simple.expanded {
-  grid-column: span 2;
+.card-simple.expanded{
+  width: 30vw;
   flex-direction: row;
 }
 
@@ -121,10 +128,13 @@ function toggleCard (){
   filter: brightness(0.7);
 }
 
+.posAb{
+  position: absolute;
+}
+
 /* Tag + año */
 .label-simple,
 .year {
-  position: absolute;
   right: 8%;
   font-size: .8em;
 }
@@ -157,13 +167,14 @@ function toggleCard (){
 .extra-content {
   display: flex;
   flex-direction: column;
+  justify-content: space-evenly;
+  height: 100%;
   gap: .6rem;
 }
 
-.tools {
-  padding-left: 18px;
-  font-size: .9em;
-  opacity: .8;
+.tools{
+  display: flex;
+  list-style: none;
 }
 
 .goto-link {
@@ -189,13 +200,15 @@ button {
   border-radius: 16px;
   cursor: pointer;
 }
+.botonSimple{
+  background-color: #ffffff00;
+  color: #ffffff;
+  padding: 0;
+}
 
 i{
   display: flex;
   font-size: 1.4em;
 }
-
-
-
 
 </style>

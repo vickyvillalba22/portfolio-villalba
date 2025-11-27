@@ -30,7 +30,6 @@
 <style scoped>
 
 #contact{
-    width: 90vw;
     height: 90vh;
 
     display: flex;
@@ -68,6 +67,15 @@ p{
 i{
   font-size: 1.8em;
   color: white;
+}
+
+@media (max-width: 600px){
+  #contact img{
+    width: 20%;
+  }
+  .contIcons{
+    width: 50%;
+  }
 }
 
 </style>
