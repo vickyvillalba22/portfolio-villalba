@@ -11,7 +11,7 @@ const selectedCategories = ref(new Set())
 
 // arrays para renderizar filtros
 const years = [2023, 2024, 2025]
-const categories = ['Photography', 'UX/UI', '2D Animation', 'Audiovisuals', 'Graphic Design', 'Development', 'Game Design', '3D Design']
+const categories = ['Photography', 'UX/UI', '2D Animation', 'Audiovisual', 'Graphic Design', 'Development', 'Game Design', '3D Design']
 
 // funcion para alternar cada categoria
 function toggle (setRef, value){
@@ -140,8 +140,11 @@ const filteredProjects = computed (()=>{
   margin: .25rem;
 }
 .pill.active {
-  background: linear-gradient(90deg, #8a2be2, #3a0066);
+  /*background: linear-gradient(90deg, #8a2be2, #3a0066);
   color: white;
+  */
+  background-color: white;
+  color: black;
   box-shadow: 0 6px 18px rgba(0,0,0,.25);
 }
 

@@ -32,7 +32,7 @@ function toggleCard (){
 
     <!-- Imagen y etiquetas -->
     <div class="card-img-container">
-      <img :src="project.imagen" :alt="project.title" />
+      <img :src="`/imgs-projects/${project.id}.png`" :alt="project.title" />
       <h4 class="label-simple posAb">{{ project.categoria }}</h4>
       <span class="year posAb">{{ project.year }}</span>
     </div>
@@ -113,10 +113,14 @@ function toggleCard (){
   width: 40%;
   flex-direction: row;
 }
+.card-simple.expanded .card-img-container {
+  max-height: 50vh;
+}
 
 /* Imagen */
 .card-img-container {
   flex: 1;
+  max-height: 25vh;
   position: relative;
 }
 
@@ -226,7 +230,8 @@ i{
     position: absolute;
   }
   .card-img-container{
-    flex: 1.5;
+    flex: 1;
+    max-height: 15vh;
   }
   button{
     font-size: 0.7em;
@@ -265,6 +270,7 @@ i{
   }
   .card-simple.expanded .card-img-container{
     flex: 0.5;
+    max-height: 20vh;
   }
   .card-simple.expanded .label-simple, .year{
     right: 5%;
