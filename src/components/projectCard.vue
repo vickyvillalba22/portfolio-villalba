@@ -230,7 +230,7 @@ i{
     position: absolute;
   }
   .card-img-container{
-    flex: 1;
+    flex: 1.7;
     max-height: 15vh;
   }
   button{
