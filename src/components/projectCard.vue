@@ -64,7 +64,7 @@ function toggleCard (){
         </ul>
 
         <div class="contBoton">
-          <a class="goto-link" href="project.linkPrincipal" target="_blank">
+          <a class="goto-link" :href="project.linkPrincipal" target="_blank">
             Go to project
             <i class="fi fi-tr-arrow-small-right"></i>
           </a>
@@ -224,6 +224,9 @@ i{
     font-size: 1em;
     width: 50%;
     position: absolute;
+  }
+  .card-img-container{
+    flex: 1.5;
   }
   button{
     font-size: 0.7em;

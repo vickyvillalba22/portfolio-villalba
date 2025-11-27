@@ -37,14 +37,14 @@ const filteredProjects = computed (()=>{
 
     return projects.value.filter(project =>{
 
+        // 1) Pre-filtro obligatorio
+        const passMostrar = project.mostrar === true
+
         const passYear = selectedYears.value.size === 0 || selectedYears.value.has(project.year)
-        //console.log(selectedYears);
         
         const passCategory = selectedCategories.value.size === 0 || selectedCategories.value.has(project.categoria)
 
-        //console.log(passCategory);
-
-        return passYear && passCategory;
+        return passMostrar && passYear && passCategory;
 
     })
 })
