@@ -20,18 +20,27 @@
 
 .chip-row {
   display: flex;
-  flex-wrap: wrap;
-  gap: 8px;
   align-items: center;
   justify-content: center;
+  gap: 5px;
   margin-bottom: 40px;
+  width: 90vw;
 }
 
 .chip {
-  width: 100px;
+  width: 15%;
   height: 30px;
   border-radius: 20px;
   background-color: rgba(240, 248, 255, 0);
+}
+
+@media (max-width: 600px){
+  .chip {
+    width: 50%;
+    height: 30px;
+    border-radius: 20px;
+    background-color: rgba(240, 248, 255, 0);
+  }
 }
 
 

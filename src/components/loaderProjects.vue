@@ -16,8 +16,8 @@
 <style scoped>
 .skeleton-projects {
     display: flex;
-    width: 55%;
     flex-wrap: wrap;
+    width: 100%;
     gap: 40px;
 }
 
@@ -26,6 +26,17 @@
     height: 40vh;
     border-radius: 16px;
     background-color: rgba(0, 0, 255, 0);
+}
+
+@media (max-width: 600px){
+  .skeleton-projects {
+    width: 90%;
+    gap: 70px;
+  }
+  .proj-skeleton {
+    width: 90%;
+    height: 30vh;
+  }
 }
 
 </style>
