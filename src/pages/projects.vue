@@ -1,16 +1,21 @@
 <script setup lang="ts">
 
 import ProjectCard from '../components/projectCard.vue';
+import LoaderFilters from '@/components/loaderFilters.vue';
+import LoaderProjects from '@/components/loaderProjects.vue';
+
 import { inject, ref, computed, type Ref } from 'vue';
 import type { Project } from '../types/project';
 
-//inject de proyectos
+// inject de proyectos
 const projects = inject<Ref<Project[]>>('projects');
 if (!projects) {
   throw new Error("Projects provider not found");
 }
+// inject de estado de carga
+const isLoading = inject<Ref<boolean>>("isLoading");
 
-//sets reactivos para las categorías seleccionadas
+// sets reactivos para las categorías seleccionadas
 const selectedYears = ref<Set<number>>(new Set());
 const selectedCategories = ref<Set<string>>(new Set());
 
@@ -69,7 +74,10 @@ const filteredProjects = computed<Project[]>(() => {
 
     <section id="projects">
 
-        <div id="filters">
+        <!--loader-->
+        <LoaderFilters v-if="isLoading" />
+
+        <div v-else id="filters">
 
             <!--AÑOS-->
             <!--mostrar todos los años-->
@@ -107,7 +115,10 @@ const filteredProjects = computed<Project[]>(() => {
 
         </div>
 
-        <div class="contProjects">
+        <!--loader-->
+        <LoaderProjects v-if="isLoading" />
+
+        <div v-else class="contProjects">
 
             <ProjectCard
                 v-for="proj in filteredProjects"
@@ -145,20 +156,24 @@ const filteredProjects = computed<Project[]>(() => {
 }
 
 .pill {
-  padding: .35rem .8rem;
-  border-radius: 999px;
-  border: 1px solid rgba(255,255,255,.12);
-  background-color: rgba(240, 248, 255, 0.408);
-  cursor: pointer;
-  margin: .25rem;
+
+    width: fit-content;
+    padding: 5px 10px;
+    border-radius: 30px;
+
+    border: 1px solid rgba(255,255,255,.12);
+    background-color: rgba(240, 248, 255, 0.411);
+    cursor: pointer;
+
+    font-family: "creatoDisplay", 'openSans';
+    font-size: 15px;
+    color: white;
+
 }
 .pill.active {
-  /*background: linear-gradient(90deg, #8a2be2, #3a0066);
-  color: white;
-  */
-  background-color: white;
-  color: black;
-  box-shadow: 0 6px 18px rgba(0,0,0,.25);
+    background-color: white;
+    color: black;
+    box-shadow: 0 6px 18px rgba(0,0,0,.25);
 }
 
 section div p{
@@ -169,12 +184,15 @@ section div p{
     width: 80%;
     display: flex;
     flex-direction: column;
+    gap: 20px;
 }
 
 .contPills{
     display: flex;
     align-items: center;
+    flex-wrap: wrap;
     width: 100%;
+    gap: 10px;
 }
 
 .contPills p{
