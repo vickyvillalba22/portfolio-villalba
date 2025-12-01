@@ -1,8 +1,9 @@
-<script setup>
- import { defineProps } from 'vue'
-  defineProps({
-    isHome: Boolean
-  })
+<script setup lang="ts">
+
+const props = defineProps<{
+  isHome: boolean;
+}>();
+
 </script>
 
 <template>

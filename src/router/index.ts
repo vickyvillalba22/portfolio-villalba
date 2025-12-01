@@ -1,10 +1,11 @@
-import { createRouter, createWebHistory } from "vue-router";
+import { createRouter, createWebHistory, type RouteRecordRaw } from "vue-router";
 import Home from "../pages/home.vue";
 import About from "../pages/about.vue";
 import Projects from "../pages/projects.vue";
 import Contact from "../pages/contact.vue";
 
-const routes = [
+// Tipado fuerte de las rutas
+const routes: RouteRecordRaw[] = [
   {
     path: '/',
     name: 'home',
@@ -25,9 +26,12 @@ const routes = [
     name: 'contact',
     component: Contact
   }
-]
+];
 
-export default createRouter({
+const router = createRouter({
   history: createWebHistory(),
   routes
 });
+
+export default router;
+

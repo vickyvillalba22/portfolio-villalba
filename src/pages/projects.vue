@@ -1,53 +1,66 @@
-<script setup>
+<script setup lang="ts">
 
 import ProjectCard from '../components/projectCard.vue';
-import { inject, ref, computed } from 'vue';
+import { inject, ref, computed, type Ref } from 'vue';
+import type { Project } from '../types/project';
 
-const projects = inject('projects')
-
-// sets reactivos para las categorías seleccionadas
-const selectedYears = ref(new Set())
-const selectedCategories = ref(new Set())
-
-// arrays para renderizar filtros
-const years = [2023, 2024, 2025]
-const categories = ['Photography', 'UX/UI', '2D Animation', 'Audiovisual', 'Graphic Design', 'Development', 'Game Design', '3D Design']
-
-// funcion para alternar cada categoria
-function toggle (setRef, value){
-
-    //console.log(setRef);
-
-    if(setRef.has(value)) setRef.delete(value);
-    else setRef.add(value)
-
-    setRef.value = new Set(setRef);
-
-    console.log(setRef);
+//inject de proyectos
+const projects = inject<Ref<Project[]>>('projects');
+if (!projects) {
+  throw new Error("Projects provider not found");
 }
 
+//sets reactivos para las categorías seleccionadas
+const selectedYears = ref<Set<number>>(new Set());
+const selectedCategories = ref<Set<string>>(new Set());
+
+// arrays para renderizar filtros
+const years: number[] = [2023, 2024, 2025];
+const categories: string[] = [
+  'Photography', 
+  'UX/UI', 
+  '2D Animation', 
+  'Audiovisual', 
+  'Graphic Design', 
+  'Development',
+  'Game Design',
+  '3D Design'
+];
+
+// funcion para alternar cada categoria
+function toggle<T>(setRef: Ref<Set<T>>, value: T): void {
+  const newSet = new Set(setRef.value);
+  if (newSet.has(value)) newSet.delete(value);
+  else newSet.add(value);
+  setRef.value = newSet;
+}
+
+const toggleYear = (value: number) => toggle(selectedYears, value);
+const toggleCategory = (value: string) => toggle(selectedCategories, value);
+
+const clearYears = () => clearFilter(selectedYears);
+const clearCategories = () => clearFilter(selectedCategories);
+
+
 // mostrar todos
-function clearFilter(setRef){
-    setRef.value = new Set()
-    //console.log(setRef);
+function clearFilter<T>(setRef: Ref<Set<T>>): void {
+  setRef.value = new Set();
 }
 
 // aplicar filtros combinados con computed
-const filteredProjects = computed (()=>{
+const filteredProjects = computed<Project[]>(() => {
+    
+    return projects.value.filter((project) => {
+    const passMostrar = project.mostrar === true;
 
-    return projects.value.filter(project =>{
+    const passYear = selectedYears.value.size === 0 || selectedYears.value.has(project.year);
 
-        // 1) Pre-filtro obligatorio
-        const passMostrar = project.mostrar === true
+    const passCategory = selectedCategories.value.size === 0 || selectedCategories.value.has(project.categoria);
 
-        const passYear = selectedYears.value.size === 0 || selectedYears.value.has(project.year)
-        
-        const passCategory = selectedCategories.value.size === 0 || selectedCategories.value.has(project.categoria)
+    return passMostrar && passYear && passCategory;
 
-        return passMostrar && passYear && passCategory;
-
-    })
-})
+  });
+});
 
 
 </script>
@@ -62,12 +75,12 @@ const filteredProjects = computed (()=>{
             <!--mostrar todos los años-->
             <div class="contPills">
                 <p>Year:</p>
-                <button @click="clearFilter(selectedYears)" :class="{ active: selectedYears.size === 0 }" class="pill">Todas</button>
+                <button @click="clearYears()" :class="{ active: selectedYears.size === 0 }" class="pill">Todas</button>
                 <!-- Pastillas dinámicas -->
                 <button
                 v-for="year in years"
                 :key="year"
-                @click="toggle(selectedYears, year)" 
+                @click="toggleYear(year)" 
                 :class="{ active: selectedYears.has(year) }"
                 class="pill"
                 >
@@ -79,12 +92,12 @@ const filteredProjects = computed (()=>{
             <!--mostrar todos las categorias-->
             <div class="contPills">
                 <p>Area:</p>
-                <button @click="clearFilter(selectedCategories)" :class="{ active: selectedCategories.size === 0 }" class="pill">Todas</button>
+                <button @click="clearCategories()" :class="{ active: selectedCategories.size === 0 }" class="pill">Todas</button>
                 <!--Pastillas dinámicas-->
                 <button
                 v-for="category in categories"
                 :key="category"
-                @click="toggle(selectedCategories, category)"
+                @click="toggleCategory(category)"
                 :class="{ active: selectedCategories.has(category) }"
                 class="pill"
                 >

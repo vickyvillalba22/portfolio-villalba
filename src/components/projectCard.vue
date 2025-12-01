@@ -1,6 +1,9 @@
-<script setup>
-import { inject, computed, ref } from "vue";
+<script setup lang="ts">
 
+import { inject, computed, ref, type Ref } from "vue";
+import type { Project } from '../types/project'
+
+// props tipadas
 const props = defineProps({
   projectId: {
     type: Number,
@@ -8,17 +11,19 @@ const props = defineProps({
   }
 });
 
-// Recibimos la lista de proyectos desde App.vue
-const projects = inject("projects");
+// inject tipado
+const projects = inject<Ref<Project[]>>("projects");
+if (!projects) {
+  throw new Error("Projects provider not found");
+}
 
 // Obtenemos el proyecto correspondiente
-const project = computed(() => {
+const project = computed<Project | undefined>(() => {
   return projects.value.find((p) => p.id === props.projectId);
 });
 
 //estado card
 const isExpanded = ref(false)
-
 function toggleCard (){
   isExpanded.value = !isExpanded.value
 }
@@ -28,11 +33,11 @@ function toggleCard (){
 <template>
 
   <!--card 1-->
-  <article class="card-simple font-modo-oscuro" :class="{ expanded: isExpanded }">
+  <article v-if="project" class="card-simple font-modo-oscuro" :class="{ expanded: isExpanded }">
 
     <!-- Imagen y etiquetas -->
     <div class="card-img-container">
-      <img :src="`/imgs-projects/${project.id}.png`" :alt="project.title" />
+      <img :src="`/imgs-projects/${project.id}.png`" :alt="project.titulo" />
       <h4 class="label-simple posAb">{{ project.categoria }}</h4>
       <span class="year posAb">{{ project.year }}</span>
     </div>

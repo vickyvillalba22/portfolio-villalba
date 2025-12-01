@@ -1,0 +1,30 @@
+{
+  "files": [],
+  "references": [
+    { "path": "./tsconfig.node.json" }
+  ],
+  "compilerOptions": {
+    "target": "ES2020",
+    "module": "ESNext",
+    "moduleResolution": "node",
+    "lib": ["ES2020", "DOM"],
+    "jsx": "preserve",
+    "sourceMap": true,
+    "noImplicitAny": false,
+    "skipLibCheck": true,
+    "resolveJsonModule": true, //Esto permite que TS entienda el JSON como Project[]
+    "esModuleInterop": true,
+    "allowJs": true,
+    "strict": true,
+    "checkJs": false,
+    "noEmit": true,
+    "baseUrl": ".",
+    "paths": {
+      "@/*": ["src/*"]
+    },
+    "types": ["vite/client", "node"]
+  },
+  "include": ["src/**/*", "env.d.ts"],
+  "exclude": ["node_modules", "dist"]
+}
+

@@ -1,12 +1,18 @@
-<script setup>
+<script setup lang="ts">
 
 import { useProjectsProvider } from './utils/projectsProvider'
 useProjectsProvider()
 
 import Header from './components/header.vue';
-import { useRoute } from 'vue-router'
-import {  computed } from 'vue'
-const route = useRoute()
+
+import { useRoute } from 'vue-router';
+import { computed } from 'vue';
+
+const route = useRoute();
+
+//tipado de las rutas
+type RouteNames = 'home' | 'about' | 'projects' | 'contact';
+
 const isHome = computed(() => route.name === 'home')
 
 </script>
