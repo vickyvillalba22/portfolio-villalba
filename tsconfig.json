@@ -14,7 +14,7 @@
     "skipLibCheck": true,
     "resolveJsonModule": true, //Esto permite que TS entienda el JSON como Project[]
     "esModuleInterop": true,
-    "allowJs": true,
+    "allowJs": false,
     "strict": true,
     "checkJs": false,
     "noEmit": true,
