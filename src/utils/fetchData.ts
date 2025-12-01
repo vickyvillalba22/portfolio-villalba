@@ -9,7 +9,7 @@ export async function cargarProyectos(): Promise<Project[]> {
         //con delay
         const [response] = await Promise.all([
             fetch('/data/projects.json'),
-            new Promise(resolve => setTimeout(resolve, 30000)) // 1.5 segundos mínimo
+            new Promise(resolve => setTimeout(resolve, 2000))
         ]);
         const data: Project[] = await response.json();
         console.log(data);
