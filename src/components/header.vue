@@ -36,6 +36,7 @@ const props = defineProps<{
 <style scoped>
 
 header{
+    height: 10vh;
     width: 90%;
     display: flex;
     align-items: center;
