@@ -93,15 +93,15 @@
     "id": 7,
     "titulo": "Nadar – Swimming App",
     "categoria": "UX/UI",
-    "descripcionCorta": "Training assistant app for swimmers.",
+    "descripcionCorta": "Mobile app for swimmers.",
     "descripcionLarga": "A design project for a mobile application that allows swimmers to track workouts, goals, distances, and performance. Includes a structured design system and interactive prototype.",
-    "herramientas": ["Figma"],
-    "linkPrincipal": "",
+    "herramientas": ["Figma", "Illustrator"],
+    "linkPrincipal": "https://drive.google.com/file/d/1tC0BMFkqhFLRLTI9wBAIjkHP7fYOjps5/view?usp=sharing",
     "linkSecundario": "",
     "year": 2025,
     "materia": null,
     "imagen": "/public/imgs/def project.jpg",
-    "mostrar": false
+    "mostrar": true
   },
 
   {
