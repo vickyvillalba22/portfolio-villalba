@@ -183,6 +183,7 @@ function toggleCard (){
 
 .tools{
   display: flex;
+  align-items: center;
   list-style: none;
   gap: 5px;
 }
