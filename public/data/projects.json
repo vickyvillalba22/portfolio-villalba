@@ -499,7 +499,7 @@
     "descripcionCorta": "Interactive virtual exhibition based on an artistic manifesto focused on logic, coherence, and symbolism in art.",
     "descripcionLarga": "Project developed as the final assignment for the course History and Appreciation of Art. The digital experience allows users to navigate the space, interact with the artworks, and access curatorial information through hotspots and modals.",
     "herramientas": ["Maya", "HTML", "CSS", "JavaScript", "model-viewer"],
-    "linkPrincipal": "https://portfolio-villalba.vercel.app/",
+    "linkPrincipal": "https://galeria-web-villalba.vercel.app/",
     "linkSecundario": "",
     "year": 2025,
     "materia": "History and Appreciation of Art",
