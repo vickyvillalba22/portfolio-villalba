@@ -3,8 +3,10 @@ import Home from "../pages/home.vue";
 import About from "../pages/about.vue";
 import Projects from "../pages/projects.vue";
 import Contact from "../pages/contact.vue";
+import Research from "@/pages/research.vue";
+import Login from "@/pages/login.vue";
 
-// Tipado fuerte de las rutas
+//tipado de las rutas
 const routes: RouteRecordRaw[] = [
   {
     path: '/',
@@ -22,9 +24,19 @@ const routes: RouteRecordRaw[] = [
     component: Projects
   },
   {
+    path: '/research',
+    name: 'research',
+    component: Research
+  },
+  {
     path: '/contact',
     name: 'contact',
     component: Contact
+  },
+  {
+    path: '/login',
+    name: 'login',
+    component: Login
   }
 ];
 

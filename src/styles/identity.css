@@ -27,6 +27,9 @@ h1,h2,h3,h4,p,button,span,input,a,li{
 .mayus{
   text-transform: uppercase;
 }
+.blanco{
+  color: #E8E8E8;
+}
 
 /*icons*/
 .i-mob{

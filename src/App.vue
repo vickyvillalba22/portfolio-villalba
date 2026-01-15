@@ -53,8 +53,4 @@ body{
   justify-content: center;
 }
 
-.font-modo-oscuro{
-  color: rgb(248, 248, 248);
-}
-
 </style>

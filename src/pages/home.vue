@@ -6,11 +6,11 @@ import Header from '../components/header.vue'
 
 <template>
 
-<section id="heroSection" class="font-modo-oscuro">
+<section id="heroSection" class="blanco">
 
     <div>
-        <h1 class="mayus thin">Hola! Soy Victoria Villalba</h1>
-        <h2 class="bold">Bienvenido a mi portfolio!</h2>
+        <h1 class="mayus thin">Hi! I'm Victoria Villalba</h1>
+        <h2 class="bold">Welcome to my portfolio!</h2>
     </div>
 
     <Header :isHome="true" class="home-header-inline" />
@@ -27,29 +27,16 @@ h1{
 
 h2{
     font-size: 2em;
-    font-weight: 200;
 }
 
 #heroSection{
     width: 90%;
-    height: 90vh;
+    height: 70vh;
 
     display: flex;
     align-items: center;
-    justify-content: center;
+    flex-direction: column;
     justify-content: space-evenly;
-}
-
-@media (max-width: 600px){
-    #heroSection{
-        height: 50vh;
-        flex-direction: column;
-        justify-content: space-around;
-        transform: translateY(-20%);
-    }
-    h1{
-        font-size: 2.5em;
-    }
 }
 
 
