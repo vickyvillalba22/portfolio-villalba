@@ -11,6 +11,7 @@ export async function cargarProyectos(): Promise<Project[]> {
             fetch('/data/projects.json'),
             new Promise(resolve => setTimeout(resolve, 2000))
         ]);
+
         const data: Project[] = await response.json();
         console.log(data);
         return data

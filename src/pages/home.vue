@@ -9,8 +9,8 @@ import Header from '../components/header.vue'
 <section id="heroSection" class="font-modo-oscuro">
 
     <div>
-        <h1>Hi! I'm Victoria Villalba</h1>
-        <h2>Welcome to my portfolio!</h2>
+        <h1 class="mayus thin">Hola! Soy Victoria Villalba</h1>
+        <h2 class="bold">Bienvenido a mi portfolio!</h2>
     </div>
 
     <Header :isHome="true" class="home-header-inline" />
@@ -22,11 +22,11 @@ import Header from '../components/header.vue'
 <style scoped>
 
 h1{
-    font-weight: 600;
     font-size: 3em;
 }
 
 h2{
+    font-size: 2em;
     font-weight: 200;
 }
 

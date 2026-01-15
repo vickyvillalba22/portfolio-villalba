@@ -13,6 +13,11 @@ const vuetify = createVuetify({
   directives,
 })
 
+import { addCollection } from '@iconify/vue'
+import hugeIcons from '@iconify-json/hugeicons/icons.json'
+
+addCollection(hugeIcons)
+
 const app = createApp(App)
 
 app.use(router)

@@ -1,5 +1,7 @@
 <script setup lang="ts">
 
+import { Icon } from '@iconify/vue'
+
 const props = defineProps<{
   isHome: boolean;
 }>();
@@ -11,22 +13,21 @@ const props = defineProps<{
     <nav class="nav">
 
       <router-link v-if="!isHome" to="/" class="item">
-        <i class="fi fi-tr-arrow-small-right arrow" v-if="isHome"></i>
         <span>Home</span>
       </router-link>
 
       <router-link to="/about" class="item">
-        <i class="fi fi-tr-arrow-small-right arrow" v-if="isHome"></i>
+        <Icon icon="hugeicons:arrow-right-02" class="i-mob" />
         <span>About Me</span>
       </router-link>
 
       <router-link to="/projects" class="item">
-        <i class="fi fi-tr-arrow-small-right arrow" v-if="isHome"></i>
+        <Icon icon="hugeicons:arrow-right-02" class="i-mob" />
         <span>Projects</span>
       </router-link>
 
       <router-link to="/contact" class="item">
-        <i class="fi fi-tr-arrow-small-right arrow" v-if="isHome"></i>
+        <Icon icon="hugeicons:arrow-right-02" class="i-mob" />
         <span>Contact</span>
       </router-link>
     </nav>

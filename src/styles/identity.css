@@ -1,0 +1,35 @@
+.bordeRojo{
+  border: 1px solid red;
+}
+
+/*texto*/
+@font-face {
+  font-family: 'creatoDisplay'; 
+  src: url('/src/assets/font/creato_display/CreatoDisplay-Regular.otf'); 
+}
+@font-face {
+  font-family: 'creatoThin';
+  src: url('/src/assets/font/creato_display/CreatoDisplay-Thin.otf'); 
+}
+@font-face {
+  font-family: 'creatoBold';
+  src: url('/src/assets/font/creato_display/CreatoDisplay-Bold.otf'); 
+}
+h1,h2,h3,h4,p,button,span,input,a,li{
+  font-family: "creatoDisplay", 'openSans';
+}
+.thin{
+  font-family: "creatoThin", 'openSans';
+}
+.bold{
+  font-family: "creatoBold", 'openSans';
+}
+.mayus{
+  text-transform: uppercase;
+}
+
+/*icons*/
+.i-mob{
+  width: 32px;
+  height: 32px;
+}
