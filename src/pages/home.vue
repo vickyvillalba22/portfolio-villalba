@@ -13,7 +13,7 @@ import Header from '../components/header.vue'
         <h2 class="bold">Welcome to my portfolio!</h2>
     </div>
 
-    <Header :isHome="true" class="home-header-inline" />
+    <Header :isHome="true" class="home-header" />
 
 </section>
 
@@ -30,13 +30,19 @@ h2{
 }
 
 #heroSection{
+
     width: 90%;
     height: 70vh;
 
     display: flex;
     align-items: center;
     flex-direction: column;
-    justify-content: space-evenly;
+    justify-content: space-around;
+
+}
+
+.home-header{
+    height: 40vh;
 }
 
 

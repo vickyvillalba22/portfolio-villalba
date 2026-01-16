@@ -1,100 +1,75 @@
 <script setup lang="ts">
 
+import { ref, computed } from 'vue';
 import { Icon } from '@iconify/vue'
+import { navItems } from '@/utils/navItems'
 
 const props = defineProps<{
   isHome: boolean;
 }>();
 
+const visibleItems = computed(() =>
+  navItems.filter(item =>
+    (props.isHome && item.showOnHome) ||
+    (!props.isHome && item.showOnDefault)
+  )
+)
+
+const isMobileMenuOpen = ref(false)
+
 </script>
 
 <template>
-  <header class="header" :class="[{ 'header-home': isHome, 'header-default': !isHome }]">
 
-    <nav class="nav">
+  <header class="header" :class="[{ 'header-home': isHome, 'header-mobile': !isHome }]">
 
-      <router-link v-if="!isHome" to="/" class="item blanco">
-        <span>Home</span>
-      </router-link>
+    <!--boton hamburguesa-->
+    <div class="contI" v-if="!isHome">
+      <Icon icon="hugeicons:menu-11" class="i-mob blanco" @click="isMobileMenuOpen = !isMobileMenuOpen" />
+    </div>
 
-      <router-link to="/about" class="item blanco">
-        <Icon icon="hugeicons:arrow-right-02" class="i-mob" />
-        <span>About Me</span>
-      </router-link>
+    <!--nav-->
+    <nav class="nav fondoNegro close" :class="[{ open: isMobileMenuOpen || isHome, 'nav-mobile': isMobileMenuOpen }]">
 
-      <router-link to="/projects" class="item blanco">
-        <Icon icon="hugeicons:arrow-right-02" class="i-mob" />
-        <span>Projects</span>
-      </router-link>
+      <div class="contI" v-if="!isHome">
+        <Icon icon="hugeicons:cancel-01" class="i-mob blanco" @click="isMobileMenuOpen = !isMobileMenuOpen" />
+      </div>
+      
+        <router-link 
+          v-for="item in visibleItems"
+          :key="item.path" 
+          :to="item.path"
+          class="item escondido"
+          @click="isMobileMenuOpen = false"> 
 
-      <router-link to="/research" class="item blanco">
-        <Icon icon="hugeicons:arrow-right-02" class="i-mob" />
-        <span>Research</span>
-      </router-link>
+          <Icon v-if="isHome" icon="hugeicons:arrow-right-02" class="i-mob" />
 
-      <router-link to="/contact" class="item blanco">
-        <Icon icon="hugeicons:arrow-right-02" class="i-mob" />
-        <span>Contact</span>
-      </router-link>
+          <p>{{ item.label }}</p>
 
-      <router-link to="/login" class="item blanco">
-        <Icon icon="hugeicons:arrow-right-02" class="i-mob" />
-        <span>Log in</span>
-      </router-link>
-
+        </router-link>
 
     </nav>
+
   </header>
+
 </template>
 
 <style scoped>
 
-header{
-    height: 10vh;
-    width: 90%;
-    display: flex;
-    align-items: center;
-    justify-content: center;
+.header-home{
+  width: 100%;
 }
 
-nav{
-    width: 30%;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    justify-content: space-between;
+.header-home .nav{
+  width: 100%;
 }
 
 .item{
-    font-weight: 300;
-    font-size: 0.9em;
-    padding: 5px 15px;
-    border-radius: 8px;
-}
-.router-link-active {
-    background: #eaeaea;
-    color: black;
-}
-
-/*HEADER HOME*/
-.header-home {
-  width: 100%; 
-  height: fit-content;
-}
-
-.header-home nav {
-  flex-direction: column;
-  width: 100%;
-  gap: 20px;
-}
-
-.header-home .item {
-  width: 100%;
   display: flex;
   align-items: center;
-  gap: 10px;
-  font-size: 1.2em;
-  font-weight: 400;
+  gap: 15px;
+  font-size: 20px;
+  color: #E8E8E8;
 }
 
 /* línea horizontal debajo de cada item */
@@ -108,9 +83,60 @@ nav{
   position: absolute;
   bottom: 0;
   left: 0;
-  width: 100%;
+  width: 90%;
   height: 0.5px;
   background-color: rgb(255, 255, 255);
 }
+
+/*menu hamburguesa*/
+.close{
+  display: none;
+}
+.open{
+  display: block;
+  position: fixed;
+}
+
+.header-mobile{
+  display: flex;
+  width: 100%;
+  justify-content: end;
+  align-items: center;
+  margin-top: 20px;
+}
+
+.contI{
+  width: 100%;
+  display: flex;
+  justify-content: end;
+  padding-right: 5%;
+}
+
+.nav-mobile{
+  height: 100vh;
+  width: 40%;
+  top: 0;
+  z-index: 1;
+  margin-top: 20px;
+}
+
+.nav-mobile .contI{
+  margin-bottom: 10px;
+}
+
+.nav-mobile .item{
+  padding-right: 10%;
+}
+
+.nav-mobile p{
+  text-align: right;
+  color: #e8e8e869;
+  width: 100%;
+}
+
+.header-mobile .router-link-active p{
+  color: #E8E8E8;
+}
+
 
 </style>
