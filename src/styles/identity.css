@@ -2,6 +2,12 @@
   border: 1px solid red;
 }
 
+:root{
+  --color-texto-principal: #E8E8E8; /*blanco*/
+  --color-texto-secundario: #e8e8e869; /*blanco con menos opacidad*/
+  --celeste: #1ABCFE;
+}
+
 /*texto*/
 @font-face {
   font-family: 'creatoDisplay'; 
@@ -35,6 +41,9 @@ h1,h2,h3,h4,p,button,span,input,a,li{
 }
 .escondido{
   color: #e8e8e869;
+}
+.celeste{
+  color: #1ABCFE;
 }
 
 /*icons*/

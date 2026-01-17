@@ -1,30 +1,129 @@
-<script setup>
+<script setup lang="ts">
+
+import { Icon } from '@iconify/vue';
+import { provide } from 'vue'
+import IconCarousel from '@/components/iconCarousel.vue'
+
+// items de focus on
+const focusItems = [
+  {
+    id: 0,
+    title: 'Development',
+    icon: 'hugeicons:source-code'
+  },
+  {
+    id: 1,
+    title: 'Interaction',
+    icon: 'hugeicons:tap-01',
+  },
+  {
+    id: 2,
+    title: 'User Experience',
+    icon: 'hugeicons:ai-user'
+  }
+]
+
+// Carousel de herramientas
+
+interface CarouselItem {
+  id: number
+  icon: string
+  alt: string
+}
+
+const toolsItems: CarouselItem[] = [
+  {
+    id: 1,
+    icon: 'devicon:illustrator',
+    alt: 'Adobe Illustrator',
+  },
+  {
+    id: 2,
+    icon: 'devicon:figma',
+    alt: 'Figma',
+  },
+  {
+    id: 3,
+    icon: 'devicon:javascript',
+    alt: 'JavaScript',
+  },
+]
+
+provide('carousel-items', toolsItems)
+
+
 </script>
 
 <template>
 
-  <section id="about" class="font-modo-oscuro">
+  <main id="about">
 
-    <h1>About Me</h1>
+    <h2 class="mayus thin">About Me</h2>
 
-    <div class="contCards">
-      <div class="cardAbout fondoNaranja">
-        <p>Hi! I'm a front-end developer and multimedia design student passionate about creating original, efficient, and user-centered digital experiences</p>
-        <img src="/public/imgs/foto Victoria Villalba.png" alt="">
+    <!--INTRO-->
+    <section class="intro">
+      <img src="/public/imgs/foto Victoria Villalba.png" alt="">
+      <p class="blanco">I am a Multimedia Technology student focused on front-end web development and UX/UI design. I am interested in creating clear, functional, and user-centered digital experiences.</p>
+    </section>
+
+    <!--SKILLS-->
+    <section class="skills">
+
+      <h4>Skills</h4>
+
+      <div class="wrapSkills">
+
+        <div>
+          <Icon icon="hugeicons:pen-tool-02" class="i-mob" />
+          <ul>
+            <li>Responsive Design</li>
+            <li>JavaScript (ES6+)</li>
+            <li>TypeScript</li>
+            <li>Front-End Development</li>
+            <li>UI/UX Design</li>
+          </ul>
+        </div>
+
+        <div>
+          <Icon icon="hugeicons:user-group-02" class="i-mob" />
+          <ul>
+            <li>Problem-Solving</li>
+            <li>Attention to Detail</li>
+            <li>Time Management</li>
+            <li>Team Collaboration</li>
+            <li>Continuous Learning</li>
+          </ul>
+        </div>
+
       </div>
+      
+    </section>
 
-      <div class="cardAbout fondoVerde">
-        <p>This portfolio showcases my journey, the projects I've built, and the skills I'm developing as I continue learning modern technologies.</p>
-        <img src="/public/imgs/def project.jpg" alt="">
+    <!--FOCUS ON-->
+    <section class="focuson">
+      <h4>Focus on...</h4>
+      <div class="focuses">
+        <div v-for="foc in focusItems" :key="foc.id">
+          <Icon :icon="foc.icon" class="foc-icon" />
+          <p class="skill-title">{{ foc.title }}</p>
+        </div>
       </div>
+    </section>
 
-      <div class="cardAbout fondoCeleste">
-        <p>I love building intuitive interfaces, experimenting with animations,and designing products that feel simple, modern, and meaningful.</p>
-        <img src="/public/imgs/def project.jpg" alt="">
-      </div>
-    </div>
+    <!--TOOLS-->
+    <section class="tools">
+      <h4>Tools</h4>
+      <IconCarousel />
+    </section>
 
-  </section>
+    <!--CIERRE-->
+    <section class="cierre">
+      <p class="thin">I’m looking to continue developing my skills through real-world projects that combine front-end development, UX/UI design, and meaningful user experiences.</p>
+      <img src="/public/imgs/def project.jpg" alt="">
+    </section>
+
+
+  </main>
 
 </template>
 
@@ -32,65 +131,112 @@
 
 #about{
     width: 90%;
-    height: 90vh;
+    min-height: 90vh;
 
     display: flex;
     align-items: center;
-    justify-content: center;
     flex-direction: column;
-    justify-content: space-evenly;
+    gap: 40px;
 
+    color: var(--color-texto-principal);
 }
 
-.contCards{
-    display: flex;
-    align-items: center;
-    justify-content: space-evenly;
+h2{
+  font-size: 40px;
+  width: 100%;
+}
+h4{
+  font-size: 24px;
 }
 
-.cardAbout{
+section{
+  width: 100%;
+  display: flex;
+}
 
+/*INTRO*/
+.intro{
+  gap: 20px;
+  height: 18vh;
+}
+.intro img{
+  width: 35%;
+  object-fit: cover;
+}
+.intro p{
+  font-size: 1em;
+}
+
+/*SKILLS*/
+.skills{
+  flex-direction: column;
+  gap: 15px;
+}
+.skills .i-mob{
+  width: 45px;
+  height: 45px;
+  color: var(--celeste);
+}
+.wrapSkills{
+  display: flex;
+  width: 90%;
+  justify-content: space-between;
+}
+:deep(.i-mob g),
+:deep(.i-mob path) {
+  stroke-width: 0.5;
+}
+ul{
+  list-style: none;
   display: flex;
   flex-direction: column;
-  justify-content: space-around;
+  gap: 10px;
+  margin-top: 15px;
+}
+li{
+  font-family: "creatoThin", 'openSans';
+}
 
-  padding: 20px;
+/*FOCUS*/
+.focuson{
+  flex-direction: column;
+  gap: 15px;
+}
+.focuses{
+  display: flex;
+  justify-content: space-between;
+}
+.focuses div{
   width: 30%;
-  height: 50vh;
-  border-radius: 20px;
-
-  backdrop-filter: blur(12px);
-  -webkit-backdrop-filter: blur(12px);
-
-  background: rgba(255, 255, 255, 0.1);
-  border: 1px solid rgba(255, 255, 255, 0.2);
-
-  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.15);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 10px;
+}
+.focuses p{
+  font-size: 1em;
+  text-align: center;
+}
+.foc-icon{
+  color: var(--celeste);
+  width: 40px;
+  height: 40px;
 }
 
-.cardAbout img{
-  height: 70%;
-  width: 100%;
+/*TOOLS */
+.tools{
+  flex-direction: column;
+}
+
+/*CIERRE*/
+.cierre p{
+  font-size: 20px;
+}
+.cierre img{
+  width: 40%;
   object-fit: cover;
-  border-radius: 10px;
-  object-position: top;
 }
 
-@media (max-width: 600px) {
-  #about{
-    gap: 30px;
-    margin-top: 30px;
-  }
-  .contCards{
-    flex-direction: column;
-    gap: 20px;
-  }
-  .cardAbout{
-    width: 90%;
-  }
-  .cardAbout img{
-    height: 50%;
-  }
-}
+
 
 </style>
