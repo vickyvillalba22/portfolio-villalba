@@ -2,6 +2,7 @@
 
 import { inject, computed, ref, type Ref } from "vue";
 import type { Project } from '../types/project'
+import { Icon } from "@iconify/vue";
 
 // props tipadas
 const props = defineProps({
@@ -49,13 +50,13 @@ function toggleCard (){
       <!-- Botón cerrar (solo cuando está expandida) -->
       <div class="contBoton">
         <button v-if="isExpanded" @click="toggleCard" class="botonSimple">
-          <i class="fi fi-tr-angle-left"></i>
+          <Icon icon="hugeicons:cancel-01" class="i-mob blanco" />
         </button>
       </div>
 
       <h2>{{ project.titulo }}</h2>
 
-      <!-- Contenido extra SOLO al expandirse -->
+      <!-- Contenido extra solo al expandirse -->
       <div v-if="isExpanded" class="extra-content">
 
         <p class="description">
@@ -104,10 +105,8 @@ function toggleCard (){
 
   padding: 16px;
   border-radius: 10px;
-  backdrop-filter: blur(12px);
   background: rgba(255,255,255,0.1);
   border: 1px solid rgba(255,255,255,0.2);
-  box-shadow: 0 4px 20px rgba(0,0,0,0.15);
   position: relative;
   transition: all .35s ease;
 
@@ -120,6 +119,11 @@ function toggleCard (){
 }
 .card-simple.expanded .card-img-container {
   max-height: 50vh;
+}
+
+.i-mob{
+  width: 20px;
+  height: 24px;
 }
 
 /* Imagen */
@@ -164,7 +168,7 @@ function toggleCard (){
   flex: 1;
   display: flex;
   flex-direction: column;
-  gap: .8rem;
+  gap: 20px;
 }
 
 .card-info h2 {
@@ -178,7 +182,7 @@ function toggleCard (){
   flex-direction: column;
   justify-content: space-evenly;
   height: 100%;
-  gap: .6rem;
+  gap: 10px;
 }
 
 .tools{
@@ -224,7 +228,7 @@ i{
 
 @media (max-width: 600px){
   .card-simple{
-    width: 90%;
+    width: 100%;
     height: 18vh;
     display: flex;
     flex-direction: row;
@@ -258,7 +262,7 @@ i{
   }
   /*expanded*/
   .card-simple.expanded{
-    width: 90%;
+    width: 100%;
     height: 50vh;
     flex-direction: column;
   }

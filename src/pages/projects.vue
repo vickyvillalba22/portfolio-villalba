@@ -3,6 +3,7 @@
 import ProjectCard from '../components/projectCard.vue';
 import LoaderFilters from '@/components/loaderFilters.vue';
 import LoaderProjects from '@/components/loaderProjects.vue';
+import { Icon } from '@iconify/vue';
 
 import { inject, ref, computed, type Ref } from 'vue';
 import type { Project } from '../types/project';
@@ -74,10 +75,14 @@ const filteredProjects = computed<Project[]>(() => {
 
     <section id="projects">
 
+        <h2 class="mayus thin">Projects</h2>
+
         <!--loader-->
         <LoaderFilters v-if="isLoading" />
 
         <div v-else id="filters">
+
+            <Icon icon="hugeicons:filter" class="i-mob" />
 
             <!--AÑOS-->
             <!--mostrar todos los años-->
@@ -136,18 +141,23 @@ const filteredProjects = computed<Project[]>(() => {
 
 #projects{
     min-height: 90vh;
-    width: 100%;
+    width: 90%;
 
     display: flex;
-    justify-content: center;
     flex-direction: column;
     align-items: center;
+    gap: 20px;
+
+    color: var(--color-texto-principal);
+}
+
+h2{
+    font-size: 40px;
+    width: 100%;
 }
 
 .contProjects{
-
     height: 60vh;
-    width: 90%;
     display: flex;
     flex-wrap: wrap;
     justify-content: center;
@@ -176,15 +186,14 @@ const filteredProjects = computed<Project[]>(() => {
     box-shadow: 0 6px 18px rgba(0,0,0,.25);
 }
 
-section div p{
-    color: white;
-}
-
 #filters{
-    width: 80%;
     display: flex;
     flex-direction: column;
     gap: 20px;
+}
+.i-mob{
+    color: var(--violeta);
+    width: 24px;
 }
 
 .contPills{
@@ -197,17 +206,6 @@ section div p{
 
 .contPills p{
     margin-right: 10px;
-}
-
-@media (max-width: 600px){
-    #projects{
-        margin-top: 30px;
-    }
-    .contPills{
-        flex-wrap: wrap;
-    }
-
-
 }
 
 </style>
