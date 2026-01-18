@@ -24,7 +24,6 @@ const focusItems = [
 ]
 
 // Carousel de herramientas
-
 interface CarouselItem {
   id: number
   icon: string
@@ -33,24 +32,58 @@ interface CarouselItem {
 
 const toolsItems: CarouselItem[] = [
   {
-    id: 1,
+    id: 0,
     icon: 'devicon:illustrator',
-    alt: 'Adobe Illustrator',
+    alt: 'Adobe Illustrator'
+  },
+  {
+    id: 1,
+    icon: 'devicon:figma',
+    alt: 'Figma'
   },
   {
     id: 2,
-    icon: 'devicon:figma',
-    alt: 'Figma',
+    icon: 'devicon:javascript',
+    alt: 'JavaScript'
   },
   {
     id: 3,
-    icon: 'devicon:javascript',
-    alt: 'JavaScript',
+    icon: 'devicon:typescript',
+    alt: 'TypeScript'
   },
+  {
+    id: 4,
+    icon: 'devicon:vuejs',
+    alt: 'Vue.js'
+  },
+  {
+    id: 5,
+    icon: 'devicon:html5',
+    alt: 'HTML5'
+  },
+  {
+    id: 6,
+    icon: 'devicon:css3',
+    alt: 'CSS3'
+  },
+  {
+    id: 7,
+    icon: 'devicon:git',
+    alt: 'Git'
+  },
+  {
+    id: 8,
+    icon: 'devicon:vitejs',
+    alt: 'Vite'
+  },
+  {
+    id: 9,
+    icon: 'devicon:photoshop',
+    alt: 'Adobe Photoshop'
+  }
 ]
 
 provide('carousel-items', toolsItems)
-
 
 </script>
 
@@ -118,7 +151,7 @@ provide('carousel-items', toolsItems)
 
     <!--CIERRE-->
     <section class="cierre">
-      <p class="thin">I’m looking to continue developing my skills through real-world projects that combine front-end development, UX/UI design, and meaningful user experiences.</p>
+      <p class="thin">I’m looking to continue developing my skills through <span class="thin">real-world projects</span> real-world projects that combine front-end development, UX/UI design, and meaningful user experiences.</p>
       <img src="/public/imgs/def project.jpg" alt="">
     </section>
 
@@ -137,6 +170,7 @@ provide('carousel-items', toolsItems)
     align-items: center;
     flex-direction: column;
     gap: 40px;
+    margin-bottom: 50px;
 
     color: var(--color-texto-principal);
 }
@@ -226,15 +260,22 @@ li{
 /*TOOLS */
 .tools{
   flex-direction: column;
+  gap: 30px;
 }
 
 /*CIERRE*/
+.cierre{
+  gap: 15px;
+}
 .cierre p{
   font-size: 20px;
 }
 .cierre img{
   width: 40%;
   object-fit: cover;
+}
+.cierre span{
+  color: var(--celeste)
 }
 
 
