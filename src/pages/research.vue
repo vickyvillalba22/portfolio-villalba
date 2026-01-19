@@ -1,6 +1,7 @@
 <script setup lang="ts">
 
 import { ref } from 'vue'
+import { Icon } from '@iconify/vue'
 import bIndexPpios from '@/components/small ui/b-index-ppios.vue'
 
 //PRINCIPIOS CLAVE
@@ -40,6 +41,51 @@ const vuePrinciples: VuePrinciple[] = [
 
 const activePrinciple = ref<VuePrinciple>(vuePrinciples[0])
 
+//ELECCION
+interface ReasonItem {
+  id: string
+  text: string
+  animation: {
+    type: 'fade' | 'slide' | 'scale'
+    delay?: number
+  }
+}
+
+const reasons: ReasonItem[] = [
+  {
+    id: 'learning-curve',
+    text: 'Curva de aprendizaje accesible',
+    animation: {
+      type: 'slide',
+      delay: 0,
+    },
+  },
+  {
+    id: 'architecture',
+    text: 'Arquitectura clara',
+    animation: {
+      type: 'slide',
+      delay: 100,
+    },
+  },
+  {
+    id: 'typescript',
+    text: 'Integración con TypeScript',
+    animation: {
+      type: 'slide',
+      delay: 200,
+    },
+  },
+  {
+    id: 'interactive-projects',
+    text: 'Ideal para proyectos interactivos',
+    animation: {
+      type: 'slide',
+      delay: 300,
+    },
+  },
+]
+
 </script>
 
 <template>
@@ -68,15 +114,45 @@ const activePrinciple = ref<VuePrinciple>(vuePrinciples[0])
 
             <h4>Principios clave</h4>
 
-            <bIndexPpios 
-                v-for="principle in vuePrinciples"
-                :key="principle.id" 
-                :principle="principle"
-                :is-active="activePrinciple.id === principle.id"
-                @select="activePrinciple = principle"
-            />
+            <div class="contPios">
+
+                <bIndexPpios 
+                    v-for="principle in vuePrinciples"
+                    :key="principle.id" 
+                    :principle="principle"
+                    :is-active="activePrinciple.id === principle.id"
+                    @select="activePrinciple = principle"
+                />
+
+            </div>
 
         </section>
+
+        <section class="comparacion">
+
+            <h4>Vue vs JS Vainilla</h4>
+            
+        </section>
+
+        <section class="eleccion">
+
+            <h4>¿Por qué elegí Vue.js?</h4>
+
+            <p>Elegí Vue.js como tema de investigación por su equilibrio entre simplicidad y potencia, y su adecuación para proyectos académicos y profesionales.</p>
+
+            <div class="contReasons">
+
+                <div class="reason" v-for="reason in reasons">
+                    <Icon icon="hugeicons:arrow-right-02" class="i-mob" />
+                    <p>{{ reason.text }}</p>
+                </div>
+
+            </div>
+
+
+        </section>
+
+        <p class="quote">Vue.js se posiciona como una herramienta moderna y eficiente para el desarrollo de <span>interfaces dinámicas</span>, alineada con las <span>buenas prácticas</span> actuales del desarrollo web.</p>
 
     </main>
     
@@ -91,16 +167,19 @@ const activePrinciple = ref<VuePrinciple>(vuePrinciples[0])
 
     width: 90%;
     min-height: 100vh;
-    gap: 30px;
+    gap: 50px;
 
     color: var(--color-texto-principal);
 }
 
-/* HERO SECTION */
-#heroR{
+section{
     width: 100%;
     display: flex;
     flex-direction: column;
+}
+
+/* HERO SECTION */
+#heroR{
     gap: 30px;
 }
 h2{
@@ -128,9 +207,36 @@ h4{
     color: var(--verde);
 }
 
-/* PRINCIPIOS CLAVE */
-.principios{
-    width: 100%;
+.eleccion{
+    gap: 20px;
 }
+
+/*ELECCION*/
+.contReasons{
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+.reason{
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+.i-mob{
+    width: 24px;
+    color: var(--verde);
+}
+
+/*CIERRE*/
+.quote{
+    font-size: 24px;
+    line-height: 35px;
+}
+.quote span{
+    color: var(--verde);
+}
+
+
+
 
 </style>

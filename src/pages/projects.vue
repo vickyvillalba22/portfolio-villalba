@@ -68,6 +68,9 @@ const filteredProjects = computed<Project[]>(() => {
   });
 });
 
+//mostrar grupos de filtros
+const activeYear = ref(false)
+const activeArea = ref(false)
 
 </script>
 
@@ -82,14 +85,20 @@ const filteredProjects = computed<Project[]>(() => {
 
         <div v-else id="filters">
 
-            <Icon icon="hugeicons:filter" class="i-mob" />
+            <div class="manageF">
+
+                <Icon icon="hugeicons:filter" class="i-mob" />
+                <p class="thin" @click="activeYear=!activeYear" :class="{'bold': activeYear}">Year</p>
+                <p class="thin" @click="activeArea=!activeArea" :class="{'bold': activeArea}">Area</p>
+
+            </div>
 
             <!--AÑOS-->
-            <!--mostrar todos los años-->
-            <div class="contPills">
-                <p>Year:</p>
+            <div class="contPills" v-if="activeYear">
+                
+                <!--all-->
                 <button @click="clearYears()" :class="{ active: selectedYears.size === 0 }" class="pill">Todas</button>
-                <!-- Pastillas dinámicas -->
+
                 <button
                 v-for="year in years"
                 :key="year"
@@ -99,14 +108,15 @@ const filteredProjects = computed<Project[]>(() => {
                 >
                 {{ year }}
                 </button>
+
             </div>
 
             <!--CATEGORÍAS-->
-            <!--mostrar todos las categorias-->
-            <div class="contPills">
-                <p>Area:</p>
+            <div class="contPills" v-if="activeArea">
+                
+                <!--all-->
                 <button @click="clearCategories()" :class="{ active: selectedCategories.size === 0 }" class="pill">Todas</button>
-                <!--Pastillas dinámicas-->
+                
                 <button
                 v-for="category in categories"
                 :key="category"
@@ -116,6 +126,7 @@ const filteredProjects = computed<Project[]>(() => {
                 >
                 {{ category }}
                 </button>
+
             </div>
 
         </div>
@@ -156,6 +167,14 @@ h2{
     width: 100%;
 }
 
+.manageF{
+    width: 100%;
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    cursor: pointer;
+}
+
 .contProjects{
     height: 60vh;
     display: flex;
@@ -166,30 +185,19 @@ h2{
 }
 
 .pill {
-
-    width: fit-content;
-    padding: 5px 10px;
-    border-radius: 30px;
-
-    border: 1px solid rgba(255,255,255,.12);
-    background-color: rgba(240, 248, 255, 0.411);
     cursor: pointer;
-
-    font-family: "creatoDisplay", 'openSans';
+    font-family: 'creatoDisplay';
     font-size: 15px;
-    color: white;
-
 }
 .pill.active {
-    background-color: white;
-    color: black;
-    box-shadow: 0 6px 18px rgba(0,0,0,.25);
+    color: var(--violeta);
 }
 
 #filters{
+    width: 100%;
     display: flex;
     flex-direction: column;
-    gap: 20px;
+    gap: 15px;
 }
 .i-mob{
     color: var(--violeta);
@@ -201,11 +209,7 @@ h2{
     align-items: center;
     flex-wrap: wrap;
     width: 100%;
-    gap: 10px;
-}
-
-.contPills p{
-    margin-right: 10px;
+    gap: 5px 15px;
 }
 
 </style>

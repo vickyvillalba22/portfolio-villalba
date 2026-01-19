@@ -54,3 +54,9 @@ h1,h2,h3,h4,p,button,span,input,a,li{
   width: 32px;
   height: 32px;
 }
+
+/*details*/
+body::selection {
+  background-color: #eff2f4; /* Azul */
+  color: #181818; /* Texto blanco */
+}

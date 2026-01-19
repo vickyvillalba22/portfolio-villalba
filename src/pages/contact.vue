@@ -1,9 +1,12 @@
 <script setup>
+
+import { Icon } from '@iconify/vue';
+
 </script>
 
 <template>
 
-  <section id="contact" class="font-modo-oscuro">
+  <section id="contact">
 
     <div class="message">
       <h1>Contact</h1>
@@ -36,6 +39,8 @@
     align-items: center;
     justify-content: center;
     flex-direction: column;
+
+    color: var(--color-texto-principal);
 }
 
 .message{
