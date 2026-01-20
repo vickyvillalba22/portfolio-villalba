@@ -35,6 +35,7 @@ button{
     border: 0.5px solid rgba(255, 255, 255, 0.358);
     border-radius: 8px;
     padding: 5px 15px;
+    background-color: var(--negro);
 }
 
 button.active{

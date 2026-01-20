@@ -1,8 +1,8 @@
 <script setup lang="ts">
 
 import ProjectCard from '../components/projectCard.vue';
-import LoaderFilters from '@/components/loaderFilters.vue';
-import LoaderProjects from '@/components/loaderProjects.vue';
+import LoaderFilters from '@/components/small ui/loaderFilters.vue';
+import LoaderProjects from '@/components/small ui/loaderProjects.vue';
 import { Icon } from '@iconify/vue';
 
 import { inject, ref, computed, type Ref } from 'vue';

@@ -3,6 +3,7 @@
 import { ref } from 'vue'
 import { Icon } from '@iconify/vue'
 import bIndexPpios from '@/components/small ui/b-index-ppios.vue'
+import Circle from '@/components/circle.vue'
 
 //PRINCIPIOS CLAVE
 interface VuePrinciple {
@@ -114,17 +115,9 @@ const reasons: ReasonItem[] = [
 
             <h4>Principios clave</h4>
 
-            <div class="contPios">
+            <Circle />
 
-                <bIndexPpios 
-                    v-for="principle in vuePrinciples"
-                    :key="principle.id" 
-                    :principle="principle"
-                    :is-active="activePrinciple.id === principle.id"
-                    @select="activePrinciple = principle"
-                />
-
-            </div>
+            <div class="contPio"></div>
 
         </section>
 

@@ -20,9 +20,11 @@ import { Icon } from '@iconify/vue';
       <img src="/public/imgs/my-notion-face-transparent.png" alt="">
 
       <div class="contIcons">
-        <a href="https://github.com/vickyvillalba22" target="_blank"><i class="fa-brands fa-github"></i></a>
-        <a href="https://www.linkedin.com/in/victoria-villalba-a05a66293/" target="_blank"><i class="fa-brands fa-linkedin"></i></a>
-        <a href="https://mail.google.com/mail/?view=cm&fs=1&to=villalbavictoria120@gmail.com" target="_blank"><i class="fa-solid fa-envelope"></i></a>
+        
+        <a href="https://github.com/vickyvillalba22" target="_blank"><Icon icon="hugeicons:github" class="i-mob"/></a>
+        <a href="https://www.linkedin.com/in/victoria-villalba-a05a66293/" target="_blank"><Icon icon="hugeicons:linkedin-01" class="i-mob"/></a>
+        <a href="https://mail.google.com/mail/?view=cm&fs=1&to=villalbavictoria120@gmail.com" target="_blank"><Icon icon="hugeicons:mail-at-sign-01" class="i-mob"/></a>
+
       </div>
     </div>
 
@@ -45,7 +47,7 @@ import { Icon } from '@iconify/vue';
 
 .message{
   width: 70%;
-  height: 40vh;
+  height: 60vh;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -54,7 +56,7 @@ import { Icon } from '@iconify/vue';
 }
 
 #contact img{
-  width: 10%;
+  width: 30%;
   object-fit: cover;
 }
 
@@ -63,27 +65,14 @@ p{
 }
 
 .contIcons{
-  width: 25%;
+  width: 50%;
   display: flex;
   align-items: center;
   justify-content: space-evenly;
 }
 
-i{
-  font-size: 1.8em;
-  color: white;
-}
-
-@media (max-width: 600px){
-  .message{
-    height: 60vh;
-  }
-  #contact img{
-    width: 30%;
-  }
-  .contIcons{
-    width: 60%;
-  }
+.i-mob{
+  color: var(--color-texto-principal);
 }
 
 </style>

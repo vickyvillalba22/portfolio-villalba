@@ -2,7 +2,7 @@
 
 import { Icon } from '@iconify/vue';
 import { provide } from 'vue'
-import IconCarousel from '@/components/iconCarousel.vue'
+import IconCarousel from '@/components/small ui/iconCarousel.vue'
 
 // items de focus on
 const focusItems = [
@@ -169,7 +169,7 @@ provide('carousel-items', toolsItems)
     display: flex;
     align-items: center;
     flex-direction: column;
-    gap: 40px;
+    gap: 60px;
     margin-bottom: 50px;
 
     color: var(--color-texto-principal);
@@ -194,8 +194,9 @@ section{
   height: 18vh;
 }
 .intro img{
-  width: 35%;
+  height: 20vh;
   object-fit: cover;
+  object-position: top;
 }
 .intro p{
   font-size: 1em;
