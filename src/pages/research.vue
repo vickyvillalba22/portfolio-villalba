@@ -4,6 +4,7 @@ import { ref } from 'vue'
 import { Icon } from '@iconify/vue'
 import bIndexPpios from '@/components/small ui/b-index-ppios.vue'
 import Circle from '@/components/circle.vue'
+import Components from '@/components/principios/components.vue'
 
 //PRINCIPIOS CLAVE
 interface VuePrinciple {
@@ -117,7 +118,7 @@ const reasons: ReasonItem[] = [
 
             <Circle />
 
-            <div class="contPio"></div>
+            <Components />
 
         </section>
 
@@ -202,6 +203,17 @@ h4{
 
 .eleccion{
     gap: 20px;
+}
+
+/*PRINCIPIOS*/
+.principios{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 40px;
+}
+.principios h4{
+  width: 100%;
 }
 
 /*ELECCION*/
