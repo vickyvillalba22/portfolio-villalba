@@ -9,6 +9,7 @@
   --violeta: #A259FF;
   --verde: #0ACF83;
   --negro: #262626;
+  --code-box: #212121;
 }
 
 /*texto*/
@@ -59,4 +60,19 @@ h1,h2,h3,h4,p,button,span,input,a,li{
 body::selection {
   background-color: #eff2f4; /* Azul */
   color: #181818; /* Texto blanco */
+}
+
+/*RESEARCH*/
+.principio{
+    width: 90%;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    padding: 30px;
+    border-radius: 15px;
+    box-shadow: 8px 8px 16px rgba(148, 147, 147, 0.35);
+}
+
+.principio .desc{
+    color: var(--color-texto-secundario);
 }

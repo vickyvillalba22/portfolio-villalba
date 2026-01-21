@@ -4,7 +4,7 @@ import { ref } from 'vue'
 import { Icon } from '@iconify/vue'
 import bIndexPpios from '@/components/small ui/b-index-ppios.vue'
 import Circle from '@/components/circle.vue'
-import Components from '@/components/principios/components.vue'
+import Directives from '@/components/principios/directives.vue'
 
 //PRINCIPIOS CLAVE
 interface VuePrinciple {
@@ -118,7 +118,7 @@ const reasons: ReasonItem[] = [
 
             <Circle />
 
-            <Components />
+            <Directives />
 
         </section>
 

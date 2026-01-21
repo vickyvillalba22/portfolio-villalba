@@ -2,7 +2,7 @@
 
 <template>
 
-    <article>
+    <article class="principio">
 
         <h3>Components</h3>
         <p class="desc">Components allow the interface to be divided into reusable and encapsulated pieces, facilitating maintenance and scalability.</p>
@@ -23,22 +23,8 @@
 
 <style scoped>
 
-article{
-    width: 90%;
-    display: flex;
-    flex-direction: column;
-    gap: 20px;
-    padding: 30px;
-    border-radius: 15px;
-    box-shadow: 8px 8px 16px rgba(148, 147, 147, 0.35);
-}
-
 h3{
     font-size: 24px;
-}
-
-.desc{
-    color: var(--color-texto-secundario);
 }
 
 .card{
