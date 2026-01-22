@@ -2,9 +2,8 @@
 
 import { ref } from 'vue'
 import { Icon } from '@iconify/vue'
-import bIndexPpios from '@/components/small ui/b-index-ppios.vue'
 import Circle from '@/components/circle.vue'
-
+import Comparison from '@/components/comparison.vue'
 
 //PRINCIPIOS CLAVE
 interface VuePrinciple {
@@ -120,11 +119,7 @@ const reasons: ReasonItem[] = [
 
         </section>
 
-        <section class="comparacion">
-
-            <h4>Vue vs JS Vainilla</h4>
-            
-        </section>
+        <Comparison />
 
         <section class="eleccion">
 
@@ -230,8 +225,6 @@ h4{
     border-radius: 16px;
     width: fit-content;
 }
-
-
 
 /*ELECCION*/
 .contReasons{
