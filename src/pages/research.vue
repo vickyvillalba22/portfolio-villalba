@@ -4,7 +4,7 @@ import { ref } from 'vue'
 import { Icon } from '@iconify/vue'
 import bIndexPpios from '@/components/small ui/b-index-ppios.vue'
 import Circle from '@/components/circle.vue'
-import Directives from '@/components/principios/directives.vue'
+
 
 //PRINCIPIOS CLAVE
 interface VuePrinciple {
@@ -118,8 +118,6 @@ const reasons: ReasonItem[] = [
 
             <Circle />
 
-            <Directives />
-
         </section>
 
         <section class="comparacion">
@@ -216,6 +214,25 @@ h4{
   width: 100%;
 }
 
+.principio{
+    width: 90%;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    padding: 30px;
+    border-radius: 15px;
+    box-shadow: 8px 8px 16px rgba(148, 147, 147, 0.35);
+}
+
+.principio button{
+    padding: 2px 18px;
+    border: 1px solid var(--verde);
+    border-radius: 16px;
+    width: fit-content;
+}
+
+
+
 /*ELECCION*/
 .contReasons{
     display: flex;
@@ -241,7 +258,31 @@ h4{
     color: var(--verde);
 }
 
+</style>
 
+<style>
 
+  .principio .desc{
+    color: var(--color-texto-secundario);
+  }
+
+  .principio input{
+    background-color: var(--color-texto-principal);
+    width: 100%;
+    height: 5vh;
+    border-radius: 16px;
+    padding-left: 16px;
+  }
+
+  .principio h4{
+    color: var(--verde);
+  }
+
+  .principio button{
+    padding: 2px 18px;
+    border: 1px solid var(--verde);
+    border-radius: 16px;
+    width: fit-content;
+  }
 
 </style>

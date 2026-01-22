@@ -1,4 +1,10 @@
-<script setup lang="ts"></script>
+<script setup lang="ts">
+
+defineProps<{
+    code:string
+}>()
+
+</script>
 
 <template>
 
@@ -6,7 +12,7 @@
     <pre class="codeBox">
      
         <!--Son entidades HTML: &lt; → < // &gt; → >, se muestra como texto visible, mostrar < > sin ejecutar-->
-        <code>&lt;p <span>v-if="mostrar"</span>&gt;Este párrafo se muestra o no.&lt;/p&gt;</code>
+        <code v-html="code"></code>
    
     </pre>
 
@@ -22,14 +28,17 @@
     padding: 15px;
     border-radius: 8px;
 }
-.codeBox span{
-    color: var(--verde);
-    font-family: monospace;
-}
 code{
     width: 100%;
     display: flex;
     flex-wrap: wrap;
 }
 
+</style>
+
+<style>
+.codeBox span{
+    color: var(--verde);
+    font-family: monospace; 
+}
 </style>

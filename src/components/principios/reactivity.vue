@@ -4,7 +4,7 @@
 
 <template>
 
-    <article>
+    <article class="principio">
 
         <h3>Reactivity</h3>
         <p class="desc">Vue's reactive system connects the application's state to the interface, automatically updating the view when data changes.</p>
