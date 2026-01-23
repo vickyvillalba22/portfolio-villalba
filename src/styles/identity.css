@@ -8,8 +8,14 @@
   --celeste: #1ABCFE;
   --violeta: #A259FF;
   --verde: #0ACF83;
+  --verde1: #41b883;
+  --verde2: #80CFAC;
+  --verde3: #DAFFEF;
   --negro: #262626;
+  --blanco: #E8E8E8;
   --code-box: #212121;
+  --font-princ: "creatoDisplay", 'openSans';
+  --font-bold: "creatoBold", 'openSans';
 }
 
 /*texto*/
@@ -30,9 +36,6 @@ h1,h2,h3,h4,p,button,span,input,a,li{
 }
 .thin{
   font-family: "creatoThin", 'openSans';
-}
-.bold{
-  font-family: "creatoBold", 'openSans';
 }
 .mayus{
   text-transform: uppercase;
