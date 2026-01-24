@@ -1,9 +1,10 @@
 <script setup lang="ts">
 
+import type { Component } from 'vue'
+
 interface VuePrinciple {
   id: string
   label: string
-  component: string
 }
 
 const props = defineProps<{

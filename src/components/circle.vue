@@ -2,21 +2,23 @@
 
 import bIndexPpios from './small ui/b-index-ppios.vue'
 import { ref, computed } from 'vue'
+import type { Component } from 'vue'
 
-//datos tipados
 interface VuePrinciple {
   id: string
   label: string
-  component: string
+  component: Component
   angle: number
 }
-const circularItems = ref<VuePrinciple[]>([
-  { id: 'components', label: 'Components', component: 'ComponentsPrinciple', angle: 0 },
-  { id: 'directives', label: 'Directives', component: 'DirectivesPrinciple', angle: 60 },
-  { id: 'lifecycle', label: 'Lifecycle Hooks', component: 'LifecyclePrinciple', angle: 150 },
-  { id: 'computed', label: 'Computed properties', component: 'ComputedPrinciple', angle: 210 },
-  { id: 'reactivity', label: 'Reactivity', component: 'ReactivityPrinciple', angle: 300 },
-])
+
+const props = defineProps<{
+  items: VuePrinciple[]
+  activeId: string
+}>()
+
+const emit = defineEmits<{
+  (e: 'select', principle: VuePrinciple): void
+}>()
 
 //manejo del radio responsive y proporcionado
 const circleSize = computed(() => {
@@ -36,13 +38,6 @@ const getItemStyle = (angle: number) => {
   }
 }
 
-//estado activo
-const activeId = ref<string>('components')
-const setActive = (item: VuePrinciple) => {
-  activeId.value = item.id
-}
-
-
 </script>
 
 <template>
@@ -53,13 +48,13 @@ const setActive = (item: VuePrinciple) => {
         :style="{ width: `${circleSize}px`, height: `${circleSize}px` }"
     >
         <bIndexPpios
-        v-for="item in circularItems"
-        :key="item.id"
-        class="circle-item"
-        :style="getItemStyle(item.angle)"
-        :principle="item"
-        :is-active="activeId === item.id"
-        @select="setActive(item)"
+          v-for="item in props.items"
+          :key="item.id"
+          class="circle-item"
+          :style="getItemStyle(item.angle)"
+          :principle="item"
+          :is-active="props.activeId === item.id"
+          @select="emit('select', item)"
         />
     </div>
     </div>

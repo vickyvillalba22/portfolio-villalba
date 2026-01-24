@@ -1,42 +1,56 @@
 <script setup lang="ts">
 
 import { ref } from 'vue'
+import type { Component } from 'vue'
 import { Icon } from '@iconify/vue'
 import Circle from '@/components/circle.vue'
 import Comparison from '@/components/comparison.vue'
+
+//importacion de componentes que serán dinamicos
+import Components from '@/components/principios/components.vue'
+import Reactivity from '@/components/principios/reactivity.vue'
+import Directives from '@/components/principios/directives.vue'
+import Computed from '@/components/principios/computed.vue'
+import Lifecycle from '@/components/principios/lifecycle.vue'
 
 //PRINCIPIOS CLAVE
 interface VuePrinciple {
   id: string
   label: string
-  component: string
+  component: Component,
+  angle: number
 }
 
 const vuePrinciples: VuePrinciple[] = [
   {
     id: 'components',
     label: 'Components',
-    component: 'ComponentsPrinciple',
+    component: Components,
+    angle: 0
   },
   {
     id: 'reactivity',
     label: 'Reactivity',
-    component: 'ReactivityPrinciple',
+    component: Reactivity,
+    angle: 60
   },
   {
     id: 'directives',
     label: 'Directives',
-    component: 'DirectivesPrinciple',
+    component: Directives,
+    angle: 150
   },
   {
     id: 'computed',
     label: 'Computed properties',
-    component: 'ComputedPrinciple',
+    component: Computed,
+    angle: 210
   },
   {
     id: 'lifecycle',
     label: 'Lifecycle Hooks',
-    component: 'LifecyclePrinciple',
+    component: Lifecycle,
+    angle: 300
   },
 ]
 
@@ -115,7 +129,15 @@ const reasons: ReasonItem[] = [
 
             <h4>Principios clave</h4>
 
-            <Circle />
+            <Circle
+              :items="vuePrinciples"
+              :active-id="activePrinciple.id"
+              @select="activePrinciple = $event"
+            />
+
+            <Transition name="fade-slide" mode="out-in">
+              <component :is="activePrinciple.component" />
+            </Transition>
 
         </section>
 
@@ -224,6 +246,22 @@ h4{
     border: 1px solid var(--verde);
     border-radius: 16px;
     width: fit-content;
+}
+
+/*ANIMACION PRINCIPIOS*/
+.fade-slide-enter-active,
+.fade-slide-leave-active {
+  transition: opacity 0.25s ease, transform 0.25s ease;
+}
+
+.fade-slide-enter-from {
+  opacity: 0;
+  transform: translateY(10px);
+}
+
+.fade-slide-leave-to {
+  opacity: 0;
+  transform: translateY(-10px);
 }
 
 /*ELECCION*/
