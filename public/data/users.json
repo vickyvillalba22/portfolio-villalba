@@ -1,0 +1,22 @@
+[
+  {
+    "id": 1,
+    "name": "Victoria Villalba",
+    "usuario": "vickyVillalba22",
+    "email": "admin@mail.com",
+    "password": "1234",
+    "role": "admin",
+    "isSubscribed": true,
+    "registerDate": "2025-01-01"
+  },
+  {
+    "id": 2,
+    "name": "Mateo De Elias",
+    "usuario": "mateodee",
+    "email": "mateo@mail.com",
+    "password": "1234",
+    "role": "user",
+    "isSubscribed": false,
+    "registerDate": "2025-01-10"
+  }
+]

@@ -1,9 +1,31 @@
 <script setup lang="ts">
+
 import { ref } from 'vue'
 import Input from '../components/small ui/log in/input.vue'
 
-const email = ref('')
+import { loginUser } from '@/utils/auth'
+
+const usuario = ref('')
 const password = ref('')
+const error = ref('')
+
+const handleLogin = async () => {
+
+    const user = await loginUser(usuario.value, password.value)
+
+    //MEJORAR ESPECIFICIDAD DE LA VALIDACION
+    if (!user) {
+        error.value = 'Usuario o contraseña incorrectos'
+        return
+    }
+
+    error.value = ''
+
+    //MEJORAR
+    localStorage.setItem('session', JSON.stringify(user))
+    console.log('Usuario logueado:', user)
+}
+
 </script>
 
 <template>
@@ -15,12 +37,12 @@ const password = ref('')
         <form action="">
 
         <Input
-            id="user"
+            id="usuario"
             label="User"
             type="text"
             placeholder="vickyVillalba22"
             icon="hugeicons:user"
-            v-model="email"
+            v-model="usuario"
         />
 
         <Input
@@ -33,10 +55,12 @@ const password = ref('')
             v-model="password"
         />
 
+        <p v-if="error" class="error">{{ error }}</p>
+
         </form>
 
         <div class="wrapper-button">
-            <button class="button1">Log in</button>
+            <button @click="handleLogin" class="button1">Log in</button>
         </div>
 
     </section>
