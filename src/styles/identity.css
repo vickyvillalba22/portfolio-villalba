@@ -6,16 +6,21 @@
   --color-texto-principal: #E8E8E8; /*blanco*/
   --color-texto-secundario: #e8e8e869; /*blanco con menos opacidad*/
   --celeste: #1ABCFE;
+  --azul: #3895FF;
   --violeta: #A259FF;
+  --rosa: #FF84D4;
   --verde: #0ACF83;
   --verde1: #41b883;
   --verde2: #80CFAC;
   --verde3: #DAFFEF;
-  --negro: #262626;
+  --negro: #181818;
   --blanco: #E8E8E8;
+  --blanco-suave: #d9d9d93a;
   --code-box: #212121;
   --font-princ: "creatoDisplay", 'openSans';
   --font-bold: "creatoBold", 'openSans';
+  --borde-rosa: 0.5px solid var(--rosa);
+  --borde-azul: 0.5px solid var(--azul);
 }
 
 /*texto*/
@@ -31,7 +36,7 @@
   font-family: 'creatoBold';
   src: url('/src/assets/font/creato_display/CreatoDisplay-Bold.otf'); 
 }
-h1,h2,h3,h4,p,button,span,input,a,li{
+h1,h2,h3,h4,p,button,span,input,label,a,li{
   font-family: "creatoDisplay", 'openSans';
 }
 .thin{
@@ -40,17 +45,9 @@ h1,h2,h3,h4,p,button,span,input,a,li{
 .mayus{
   text-transform: uppercase;
 }
-.blanco{
-  color: #E8E8E8;
-}
-.fondoNegro{
-  background-color: #181818;
-}
-.escondido{
-  color: #e8e8e869;
-}
-.celeste{
-  color: #1ABCFE;
+
+body{
+  color: var(--color-texto-principal);
 }
 
 /*icons*/

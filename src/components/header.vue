@@ -21,6 +21,8 @@ const isMobileMenuOpen = ref(false)
 
 <template>
 
+  <!--PONERLE POSITION FIXED-->
+
   <header class="header" :class="[{ 'header-home': isHome, 'header-mobile': !isHome }]">
 
     <!--boton hamburguesa-->
@@ -29,7 +31,7 @@ const isMobileMenuOpen = ref(false)
     </div>
 
     <!--nav-->
-    <nav class="nav fondoNegro close" :class="[{ open: isMobileMenuOpen || isHome, 'nav-mobile': isMobileMenuOpen }]">
+    <nav class="nav close" :class="[{ open: isMobileMenuOpen || isHome, 'nav-mobile': isMobileMenuOpen }]">
 
       <div class="contI" v-if="!isHome">
         <Icon icon="hugeicons:cancel-01" class="i-mob blanco" @click="isMobileMenuOpen = !isMobileMenuOpen" />
@@ -118,6 +120,7 @@ const isMobileMenuOpen = ref(false)
   top: 0;
   z-index: 1;
   margin-top: 20px;
+  background-color: var(--negro);
 }
 
 .nav-mobile .contI{
