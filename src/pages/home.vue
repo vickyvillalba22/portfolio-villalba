@@ -13,6 +13,7 @@ onMounted(() => {
   }
 })
 
+
 </script>
 
 <template>
@@ -20,10 +21,10 @@ onMounted(() => {
 <section id="heroSection" class="blanco">
 
     <!--AJUSTAR-->
-    <div>
+    <div class="welcome-user">
 
         <div v-if="user">
-            <p>{{ user.role }}</p>
+            <p class="mayus" :class="user.role === 'admin' ? 'adminColor' : 'userColor'">{{ user.role }}</p>
             <h1>Hi {{ user.name }}</h1>
         </div>
         
@@ -65,5 +66,20 @@ h2{
     height: 40vh;
 }
 
+.welcome-user{
+    width: 100%;
+}
+
+.welcome-user p{
+    font-size: 0.8em;
+    font-family: var(--font-bold);
+}
+
+.adminColor{
+    color: var(--rosa);
+}
+.userColor{
+    color: var(--azul);
+}
 
 </style>
