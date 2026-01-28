@@ -3,6 +3,7 @@ export interface User {
   name: string
   usuario: string
   role: 'admin' | 'user'
+  likedPosts: number[]
 }
 
 interface RawUser {
@@ -31,6 +32,7 @@ export async function loginUser(
     name: user.name,
     usuario: user.usuario,
     role: user.role as 'admin' | 'user',
+    likedPosts: []
   }
 }
 

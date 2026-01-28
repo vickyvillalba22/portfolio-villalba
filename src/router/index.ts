@@ -5,6 +5,7 @@ import Projects from "../pages/projects.vue";
 import Contact from "../pages/contact.vue";
 import Research from "@/pages/research.vue";
 import Login from "@/pages/login.vue";
+import Profile from "@/pages/profile.vue";
 
 //tipado de las rutas
 const routes: RouteRecordRaw[] = [
@@ -37,6 +38,11 @@ const routes: RouteRecordRaw[] = [
     path: '/login',
     name: 'login',
     component: Login
+  },
+  {
+    path: '/profile',
+    name: 'profile',
+    component: Profile
   }
 ];
 

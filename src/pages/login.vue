@@ -1,9 +1,12 @@
 <script setup lang="ts">
 
 import { ref } from 'vue'
+import { useRouter } from 'vue-router'
 import Input from '../components/small ui/log in/input.vue'
 
 import { loginUser } from '@/utils/auth'
+
+const router = useRouter()
 
 const usuario = ref('')
 const password = ref('')
@@ -22,8 +25,8 @@ const handleLogin = async () => {
     error.value = ''
 
     //MEJORAR
-    localStorage.setItem('session', JSON.stringify(user))
-    console.log('Usuario logueado:', user)
+    localStorage.setItem('session',JSON.stringify(user))
+    router.push('/')
 }
 
 </script>
@@ -34,7 +37,7 @@ const handleLogin = async () => {
 
       <h2 class="mayus thin">Log in</h2>
 
-        <form action="">
+        <form @submit.prevent="handleLogin">
 
         <Input
             id="usuario"
@@ -57,11 +60,11 @@ const handleLogin = async () => {
 
         <p v-if="error" class="error">{{ error }}</p>
 
-        </form>
-
         <div class="wrapper-button">
-            <button @click="handleLogin" class="button1">Log in</button>
+            <button type="submit" class="button1">Log in</button>
         </div>
+
+        </form>
 
     </section>
 

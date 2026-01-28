@@ -1,21 +1,43 @@
 <script setup lang="ts">
 
-import { ref, computed } from 'vue';
+import { ref, computed, onMounted } from 'vue';
 import { Icon } from '@iconify/vue'
 import { navItems } from '@/utils/navItems'
+import type { User } from '@/utils/auth'
 
 const props = defineProps<{
   isHome: boolean;
 }>();
 
 const visibleItems = computed(() =>
-  navItems.filter(item =>
-    (props.isHome && item.showOnHome) ||
-    (!props.isHome && item.showOnDefault)
-  )
+
+  navItems.filter(item => {
+
+    // ocultar login si hay sesión
+    if (item.path === '/login' && user.value) return false
+
+    // ocultar perfil si NO hay sesión
+    if (item.path === '/profile' && !user.value) return false
+
+    return (
+      (props.isHome && item.showOnHome) ||
+      (!props.isHome && item.showOnDefault)
+    )
+  })
+  
 )
 
 const isMobileMenuOpen = ref(false)
+
+//log in
+const user = ref<User | null>(null)
+
+onMounted(() => {
+  const session = localStorage.getItem('session')
+  if (session) {
+    user.value = JSON.parse(session) as User
+  }
+})
 
 </script>
 

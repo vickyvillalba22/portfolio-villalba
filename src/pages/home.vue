@@ -1,6 +1,17 @@
 <script setup lang="ts">
 
+import { ref, onMounted } from 'vue'
+import type { User } from '@/utils/auth'
 import Header from '../components/header.vue'
+
+const user = ref<User | null>(null)
+
+onMounted(() => {
+  const session = localStorage.getItem('session')
+  if (session) {
+    user.value = JSON.parse(session) as User
+  }
+})
 
 </script>
 
@@ -8,9 +19,18 @@ import Header from '../components/header.vue'
 
 <section id="heroSection" class="blanco">
 
+    <!--AJUSTAR-->
     <div>
-        <h1 class="mayus thin">Hi! I'm Victoria Villalba</h1>
+
+        <div v-if="user">
+            <p>{{ user.role }}</p>
+            <h1>Hi {{ user.name }}</h1>
+        </div>
+        
+        
+        <h1 v-else class="mayus thin">Hi! I'm Victoria Villalba</h1>
         <h2 class="bold">Welcome to my portfolio!</h2>
+
     </div>
 
     <Header :isHome="true" class="home-header" />
