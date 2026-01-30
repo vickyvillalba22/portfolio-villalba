@@ -1,0 +1,110 @@
+<script setup lang="ts">
+
+import { computed } from 'vue';
+import type { User } from '@/types/user'
+import { Icon } from '@iconify/vue';
+
+defineProps<{
+  user: User
+}>()
+
+const emit = defineEmits<{
+  (e: 'edit', user: User): void
+  (e: 'delete', id: number): void
+}>()
+
+</script>
+
+<template>
+
+  <article class="user-card">
+
+    <!--HACER LA IMAGEN DINÁMICA-->
+    <img src="/public/imgs/foto Victoria Villalba.png" alt="avatar" class="avatar" />
+
+    <h3>{{ user.name }}</h3>
+    <p class="username">@{{ user.usuario }}</p>
+
+    <span :class="['role', user.role]">
+      {{ user.role === 'admin' ? 'Admin' : 'User' }}
+    </span>
+
+    <div class="actions">
+
+      <button @click="emit('edit', user)" class="edit">
+        <Icon icon="hugeicons:edit-02" class="i-mob edit" />
+      </button>
+      <button @click="emit('delete', user.id)" class="delete">
+        <Icon icon="hugeicons:delete-02" class="i-mob delete" />
+      </button>
+
+    </div>
+
+  </article>
+
+</template>
+
+<style scoped>
+
+.user-card {
+  background: var(--blanco-suave);
+  border-radius: 8px;
+  padding: 16px;
+  width: 40%;
+  height: 35vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.avatar {
+  width: 72px;
+  height: 72px;
+  border-radius: 50%;
+  object-fit: cover;
+}
+
+h3 {
+  font-size: 16px;
+}
+
+.username {
+  font-size: 12px;
+  opacity: 0.7;
+}
+
+.role {
+  font-size: 14px;
+}
+
+.role.admin {
+  color: var(--rosa);
+}
+
+.role.user {
+  color: var(--azul);
+}
+
+.actions {
+  display: flex;
+  justify-content: end;
+  width: 100%;
+  gap: 12px;
+}
+
+button {
+  border: none;
+  background: none;
+  cursor: pointer;
+}
+
+.i-mob{
+    width: 22px;
+}
+.edit{
+    color: var(--verde);
+}
+.delete{
+    color: var(--rojo);
+}
+</style>

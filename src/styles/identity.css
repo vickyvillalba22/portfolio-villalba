@@ -10,6 +10,7 @@
   --violeta: #A259FF;
   --rosa: #FF84D4;
   --verde: #0ACF83;
+  --rojo: #DC3A55;
   --verde1: #41b883;
   --verde2: #80CFAC;
   --verde3: #DAFFEF;
@@ -19,6 +20,7 @@
   --code-box: #212121;
   --font-princ: "creatoDisplay", 'openSans';
   --font-bold: "creatoBold", 'openSans';
+  --font-thin: "creatoThin", 'openSans';
   --borde-rosa: 0.5px solid var(--rosa);
   --borde-azul: 0.5px solid var(--azul);
 }
@@ -38,9 +40,6 @@
 }
 h1,h2,h3,h4,p,button,span,input,label,a,li{
   font-family: "creatoDisplay", 'openSans';
-}
-.thin{
-  font-family: "creatoThin", 'openSans';
 }
 .mayus{
   text-transform: uppercase;

@@ -3,7 +3,7 @@
 import { ref, computed } from 'vue'
 import { useRouter } from 'vue-router'
 import type { User } from '@/types/user'
-import ProfileCard from '@/components/profileCard.vue'
+import ProfileCard from '@/components/small ui/log in/profileCard.vue'
 
 const router = useRouter()
 

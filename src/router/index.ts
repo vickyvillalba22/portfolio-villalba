@@ -43,13 +43,39 @@ const routes: RouteRecordRaw[] = [
     path: '/profile',
     name: 'profile',
     component: Profile
-  }
+  },
+  {
+    path: '/admin/users',
+    name: 'admin-users',
+    component: () => import('../pages/sub-pages/adminUsers.vue'),
+    meta: { requiresAdmin: true },
+  },
 ];
 
 const router = createRouter({
   history: createWebHistory(),
   routes
 });
+
+//guard global
+//AGREGARLE PAGINA UNAUTHORIZED
+router.beforeEach((to, from, next) => {
+  const session = localStorage.getItem('session')
+
+  if (!session && to.path !== '/login') {
+    return next('/login')
+  }
+
+  if (to.meta.requiresAdmin) {
+    const user = session ? JSON.parse(session) : null
+
+    if (!user || user.role !== 'admin') {
+      return next('/profile')
+    }
+  }
+
+  next()
+})
 
 export default router;
 

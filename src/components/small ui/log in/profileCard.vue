@@ -41,12 +41,15 @@ const actions = computed(() =>
 
 //mapa de acciones
 const actionHandlers: Record<string, () => void> = {
+  users: () => {
+    router.push('/admin/users')
+  },
   logout: () => {
     localStorage.removeItem('session')
     router.push('/login')
   },
 
-  // las demás las dejás “stub”
+  //SE IRÁN AJUSTANDO
   likes: () => {
     console.log('TODO: likes')
   },
@@ -71,7 +74,7 @@ const handleAction = (action: string) => {
 
 <div class="profile-card" :class="props.user.role">
 
-    <!--PONER IMAGEN-->
+    <!--PONER IMAGEN DINAMICA-->
       <div class="info">
         <div class="avatar">
             <span>{{ user.name.charAt(0) }}</span>
