@@ -23,6 +23,7 @@
   --font-thin: "creatoThin", 'openSans';
   --borde-rosa: 0.5px solid var(--rosa);
   --borde-azul: 0.5px solid var(--azul);
+  --forms1: #2D2D2D;
 }
 
 /*texto*/
@@ -43,6 +44,9 @@ h1,h2,h3,h4,p,button,span,input,label,a,li{
 }
 .mayus{
   text-transform: uppercase;
+}
+.subtitulo{
+  font-family: var(--font-thin);
 }
 
 body{

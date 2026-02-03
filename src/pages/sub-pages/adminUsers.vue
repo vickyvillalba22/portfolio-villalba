@@ -70,11 +70,10 @@ const goBack = () => {
   <section class="admin-users">
 
     <button class="back" @click="goBack">
-      ← Volver
+      <Icon icon="hugeicons:arrow-left-02" class="i-mob" />
     </button>
 
-    <!--AJUSTAR PESO-->
-    <h3>Administrar usuarios</h3>
+    <h3 class="subtitulo">Administrar usuarios</h3>
 
     <FilterTabs v-model="filter" />
 
@@ -136,7 +135,11 @@ const goBack = () => {
 .i-mob{
     width: 32px;
     height: 32px;
-    color: var(--negro);
+}
+
+.back{
+  width: 100%;
+  display: flex;
 }
 
 </style>

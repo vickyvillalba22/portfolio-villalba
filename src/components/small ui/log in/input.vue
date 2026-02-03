@@ -96,7 +96,7 @@ input {
   width: 100%;
   padding: 12px 50px;
   border-radius: 8px;
-  background-color: var(--blanco-suave);
+  background-color: var(--forms1);
   color: var(--color-texto-principal);
   font-family: var(--font-princ);
 }
@@ -114,6 +114,7 @@ button{
 
 label{
     font-size: 1.1em;
+    font-family: var(--font-princ);
 }
 
 </style>

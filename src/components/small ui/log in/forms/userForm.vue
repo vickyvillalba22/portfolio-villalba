@@ -77,15 +77,15 @@ const submit = () => {
 </script>
 
 <template>
+
   <section :class="['user-form', variant]">
 
-    <!-- avatar -->
-    <div class="avatar-upload">
+    <!--HACER IMAGEN DINAMICA-->
       <div class="circle">
-        <Icon icon="hugeicons:upload-04" />
+        <Icon icon="hugeicons:upload-01" class="i-mob" />
         <span>Subir imagen</span>
       </div>
-    </div>
+
 
     <form @submit.prevent="submit">
 
@@ -120,19 +120,60 @@ const submit = () => {
         </button>
       </div>
 
+      <!--VER SI SE PUEDE MEJORAR EL CALENDARIO-->
       <Input id="date" label="Fecha" type="date" v-model="registerDate" />
 
-      <button class="confirm" type="submit">
-        Confirmar
-      </button>
+      <div class="button-wrapper">
+        <button class="confirm" type="submit">
+            Confirmar
+        </button>
+      </div>
+
     </form>
+
   </section>
+
 </template>
 
 <style scoped>
-.user-form {
-  padding: 24px;
-  color: white;
+
+.user-form{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 15px;
+}
+
+.user-form form{
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+
+.circle{
+    width: 100px;
+    height: 100px;
+    border-radius: 50%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    background-color: var(--forms1);
+}
+
+.circle span{
+    font-size: 0.8em;
+}
+
+.role-buttons{
+    display: flex;
+    justify-content: space-between;
+}
+button{
+    width: 45%;
+    padding: 10px;
+    border-radius: 8px;
 }
 
 .user-form.admin {
@@ -143,9 +184,27 @@ const submit = () => {
   --accent: #4aa3ff;
 }
 
-.circle,
-.confirm,
 .role-buttons .active {
   background: var(--accent);
+  color: var(--negro);
 }
+
+.i-mob{
+    width: 20px;
+    color: var(--accent);
+    display: flex;
+}
+
+.confirm{
+    width: 45%;
+    border: 1px solid var(--accent);
+}
+
+.button-wrapper{
+    margin-top: 20px;
+    width: 100%;
+    display: flex;
+    justify-content: end;
+}
+
 </style>
