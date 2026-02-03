@@ -42,3 +42,26 @@ export function deleteUserById(id: number) {
   const users = getUsers().filter(u => u.id !== id)
   saveUsers(users)
 }
+
+export function updateUser(updated: User) {
+  const users = getUsers().map(u =>
+    u.id === updated.id ? updated : u
+  )
+  saveUsers(users)
+}
+
+export async function resetUsers() {
+  const res = await fetch('/public/data/users.json')
+  if (!res.ok) {
+    throw new Error('Error loading users.json')
+  }
+
+  const data: User[] = await res.json()
+
+  const normalized = data.map(u => ({
+    ...u,
+    likedPosts: u.likedPosts ?? [],
+  }))
+
+  localStorage.setItem(KEY, JSON.stringify(normalized))
+}

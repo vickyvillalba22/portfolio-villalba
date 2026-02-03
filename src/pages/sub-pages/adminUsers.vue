@@ -5,7 +5,7 @@ import FilterTabs from '@/components/small ui/log in/filterTabs.vue'
 import type { User } from '@/types/user'
 import { Icon } from '@iconify/vue'
 import router from '@/router'
-import { initUsers, getUsers, deleteUserById } from '@/utils/users'
+import { initUsers, getUsers, deleteUserById, resetUsers } from '@/utils/users'
 
 const users = ref<User[]>([])
 const filter = ref<'all' | 'admin' | 'user'>('all')
@@ -40,6 +40,7 @@ const editUser = (user: User) => {
     email: user.email,
     role: user.role,
   })
+  router.push(`/admin/users/edit/${user.id}`)
 }
 
 const deleteUser = (id: number) => {
@@ -53,11 +54,24 @@ const addUser = () => {
   console.log('ADD USER REQUEST')
 }
 
+const reset = async () => {
+  await resetUsers()
+  users.value = getUsers()
+}
+
+const goBack = () => {
+  router.back()
+}
+
 </script>
 
 <template>
 
   <section class="admin-users">
+
+    <button class="back" @click="goBack">
+      ← Volver
+    </button>
 
     <!--AJUSTAR PESO-->
     <h3>Administrar usuarios</h3>
@@ -77,9 +91,14 @@ const addUser = () => {
       />
     </div>
 
+    <button @click="reset">
+      Reset users
+    </button>
+
     <button class="add" @click="addUser">
         <Icon icon="hugeicons:plus-sign" class="i-mob" />
     </button>
+
   </section>
 </template>
 

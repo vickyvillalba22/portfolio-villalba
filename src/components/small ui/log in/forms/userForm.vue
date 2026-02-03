@@ -44,7 +44,11 @@ const passwordsMatch = computed(
 )
 
 const submit = () => {
-    if (props.mode !== 'profile' && !passwordsMatch.value) {
+    if (
+        props.mode !== 'profile' &&
+        password.value &&
+        !passwordsMatch.value
+    ) {
         alert('Las contraseñas no coinciden')
         return
     }
