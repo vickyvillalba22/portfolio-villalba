@@ -10,6 +10,6 @@ export interface User {
   isSubscribed: boolean
   registerDate: string
 
-  // ⬇️ PROPIEDADES DE USO EN LA APP
+  //props de uso en la app
   likedPosts: number[]
 }

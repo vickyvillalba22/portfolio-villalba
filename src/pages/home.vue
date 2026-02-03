@@ -18,6 +18,7 @@ onMounted(() => {
 
 <template>
 
+<!--CHEQUEAR IDIOMA GENERAL-->
 <section id="heroSection" class="blanco">
 
     <!--AJUSTAR-->

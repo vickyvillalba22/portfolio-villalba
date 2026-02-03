@@ -50,6 +50,12 @@ const routes: RouteRecordRaw[] = [
     component: () => import('../pages/sub-pages/adminUsers.vue'),
     meta: { requiresAdmin: true },
   },
+  {
+    path: '/admin/users/add',
+    name: 'add-user',
+    component: () => import('../pages/sub-pages/addUser.vue'),
+    meta: { requiresAdmin: true },
+  }
 ];
 
 const router = createRouter({

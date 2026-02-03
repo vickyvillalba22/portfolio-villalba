@@ -4,6 +4,8 @@ import UserCard from '@/components/small ui/log in/userCard.vue'
 import FilterTabs from '@/components/small ui/log in/filterTabs.vue'
 import type { User } from '@/types/user'
 import { Icon } from '@iconify/vue'
+import router from '@/router'
+import { initUsers, getUsers, deleteUserById } from '@/utils/users'
 
 const users = ref<User[]>([])
 const filter = ref<'all' | 'admin' | 'user'>('all')
@@ -16,14 +18,8 @@ onMounted(async () => {
   error.value = null
 
   try {
-    const res = await fetch('/public/data/users.json')
-
-    if (!res.ok) {
-      throw new Error('Error loading users')
-    }
-
-    const data: User[] = await res.json()
-    users.value = data
+    await initUsers()
+    users.value = getUsers()
   } catch (err) {
     error.value = 'No se pudieron cargar los usuarios'
     console.error(err)
@@ -31,6 +27,7 @@ onMounted(async () => {
     loading.value = false
   }
 })
+
 
 const filteredUsers = computed(() => {
   if (filter.value === 'all') return users.value
@@ -46,11 +43,13 @@ const editUser = (user: User) => {
 }
 
 const deleteUser = (id: number) => {
-  console.log('DELETE USER REQUEST', id)
-  users.value = users.value.filter(u => u.id !== id)
+  deleteUserById(id)
+  users.value = getUsers()
 }
 
+
 const addUser = () => {
+  router.push('/admin/users/add')
   console.log('ADD USER REQUEST')
 }
 
