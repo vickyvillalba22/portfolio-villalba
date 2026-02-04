@@ -31,6 +31,7 @@ const router = useRouter()
 </template>
 
 <style scoped>
+
 .add-user {
     width: 90%;
     height: 90vh;
@@ -49,5 +50,6 @@ const router = useRouter()
     display: flex;
     width: 24px;
 }
+
 </style>
 

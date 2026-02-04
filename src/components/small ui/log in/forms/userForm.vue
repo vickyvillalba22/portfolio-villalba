@@ -142,6 +142,7 @@ const submit = () => {
     flex-direction: column;
     align-items: center;
     gap: 15px;
+    width: 100%;
 }
 
 .user-form form{
