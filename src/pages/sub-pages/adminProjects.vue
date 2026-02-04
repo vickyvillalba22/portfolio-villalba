@@ -1,39 +1,43 @@
 <script setup lang="ts">
-import { ref, onMounted, computed } from 'vue'
+import { ref, onMounted } from 'vue'
 import { Icon } from '@iconify/vue'
-import { Project } from '@/types/project'
+import type { Project } from '@/types/project'
 import { cargarProyectos } from '@/utils/fetchData'
-import FilterTabs from '@/components/small ui/log in/filterTabs.vue'
+import { useProjectFilters } from '@/utils/useProjectFilters'
+import ProjectFilters from '@/components/ProjectFilters.vue'
 
 const projects = ref<Project[]>([])
-const selectedYear = ref<number | 'all'>('all')
 
 // carga asincrónica
 onMounted(async () => {
   projects.value = await cargarProyectos()
 })
 
-// filtro por año
-const filteredProjects = computed(() => {
-  if (selectedYear.value === 'all') return projects.value
-  return projects.value.filter(p => p.year === selectedYear.value)
-})
+// filtros reutilizados
+const {
+  years,
+  categories,
+  selectedYears,
+  selectedCategories,
+  toggleYear,
+  toggleCategory,
+  clearYears,
+  clearCategories,
+  filteredProjects
+} = useProjectFilters(projects, { ignoreMostrar: true })
 
 // acciones admin
 function deleteProject(project: Project) {
-  console.log('DELETE PROJECT REQUEST', project)
   projects.value = projects.value.filter(p => p.id !== project.id)
 }
 
 function editProject(project: Project) {
-  console.log('EDIT PROJECT REQUEST', project)
   project.updateTitle(project.titulo + ' (editado)')
 }
 
 function addProject() {
   console.log('ADD PROJECT REQUEST')
 }
-
 </script>
 
 <template>
@@ -41,18 +45,16 @@ function addProject() {
     <header class="header">
       <h2>Administrar proyectos</h2>
 
-      <!-- filtros -->
-      <div class="filters">
-        <span>Year</span>
-        <button
-          v-for="year in ['all', 2023, 2024, 2025, 2026]"
-          :key="year"
-          :class="{ active: selectedYear === year }"
-          @click="selectedYear = year"
-        >
-          {{ year === 'all' ? 'All' : year }}
-        </button>
-      </div>
+      <ProjectFilters
+        :years="years"
+        :categories="categories"
+        :selectedYears="selectedYears"
+        :selectedCategories="selectedCategories"
+        :toggleYear="toggleYear"
+        :toggleCategory="toggleCategory"
+        :clearYears="clearYears"
+        :clearCategories="clearCategories"
+      />
     </header>
 
     <!-- grid -->
@@ -94,23 +96,6 @@ function addProject() {
   display: flex;
   flex-direction: column;
   gap: 1rem;
-}
-
-.filters {
-  display: flex;
-  gap: 12px;
-}
-
-.filters button {
-  background: none;
-  border: none;
-  color: #aaa;
-  cursor: pointer;
-}
-
-.filters button.active {
-  color: var(--rosa);
-  font-weight: bold;
 }
 
 .grid {

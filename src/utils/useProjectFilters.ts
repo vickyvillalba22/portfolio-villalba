@@ -1,11 +1,20 @@
+// src/utils/useProjectFilters.ts
 import { ref, computed, type Ref } from 'vue'
-import { Project } from '@/models/Project'
+import { Project } from '@/types/project'
 
-export function useProjectFilters(projects: Ref<Project[]>) {
+type FilterOptions = {
+  ignoreMostrar?: boolean
+}
 
+export function useProjectFilters(
+  projects: Ref<Project[]>,
+  options?: FilterOptions
+) {
+  // estado de filtros
   const selectedYears = ref<Set<number>>(new Set())
   const selectedCategories = ref<Set<string>>(new Set())
 
+  // valores posibles
   const years: number[] = [2023, 2024, 2025]
   const categories: string[] = [
     'Photography',
@@ -18,6 +27,7 @@ export function useProjectFilters(projects: Ref<Project[]>) {
     '3D Design'
   ]
 
+  // helpers
   function toggle<T>(setRef: Ref<Set<T>>, value: T): void {
     const newSet = new Set(setRef.value)
     newSet.has(value) ? newSet.delete(value) : newSet.add(value)
@@ -30,19 +40,23 @@ export function useProjectFilters(projects: Ref<Project[]>) {
   const clearYears = () => (selectedYears.value = new Set())
   const clearCategories = () => (selectedCategories.value = new Set())
 
-  const filteredProjects = computed(() =>
-    projects.value.filter(project => {
-      const passMostrar = project.mostrar === true
+  // filtro final
+  const filteredProjects = computed<Project[]>(() => {
+    return projects.value.filter(project => {
+      const passMostrar =
+        options?.ignoreMostrar === true ? true : project.mostrar === true
+
       const passYear =
         selectedYears.value.size === 0 ||
         selectedYears.value.has(project.year)
+
       const passCategory =
         selectedCategories.value.size === 0 ||
         selectedCategories.value.has(project.categoria)
 
       return passMostrar && passYear && passCategory
     })
-  )
+  })
 
   return {
     years,
