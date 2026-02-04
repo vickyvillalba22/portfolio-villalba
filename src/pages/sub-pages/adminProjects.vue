@@ -4,7 +4,9 @@ import { Icon } from '@iconify/vue'
 import type { Project } from '@/types/project'
 import { cargarProyectos } from '@/utils/fetchData'
 import { useProjectFilters } from '@/utils/useProjectFilters'
-import ProjectFilters from '@/components/ProjectFilters.vue'
+import ProjectFilters from '@/components/small ui/projectFilters.vue'
+
+import router from '@/router'
 
 const projects = ref<Project[]>([])
 
@@ -41,20 +43,28 @@ function addProject() {
 </script>
 
 <template>
-  <section class="admin-projects">
-    <header class="header">
-      <h2>Administrar proyectos</h2>
 
-      <ProjectFilters
-        :years="years"
-        :categories="categories"
-        :selectedYears="selectedYears"
-        :selectedCategories="selectedCategories"
-        :toggleYear="toggleYear"
-        :toggleCategory="toggleCategory"
-        :clearYears="clearYears"
-        :clearCategories="clearCategories"
-      />
+  <section class="admin-projects">
+
+    <header class="header">
+
+        <button class="back" @click="router.back()">
+        <Icon icon="hugeicons:arrow-left-02" class="i-mob" />
+        </button>
+        <h3 class="subtitulo">Administrar proyectos</h3>
+
+        
+        <ProjectFilters
+            :years="years"
+            :categories="categories"
+            :selectedYears="selectedYears"
+            :selectedCategories="selectedCategories"
+            :toggleYear="toggleYear"
+            :toggleCategory="toggleCategory"
+            :clearYears="clearYears"
+            :clearCategories="clearCategories"
+        />
+
     </header>
 
     <!-- grid -->
@@ -64,6 +74,7 @@ function addProject() {
         :key="project.id"
         class="card"
       >
+      <!--LA IMAGEN DEBE SER LA DEL JSON DINAMICA-->
         <img :src="project.imagen" alt="" />
 
         <h3>{{ project.titulo }}</h3>
@@ -81,21 +92,26 @@ function addProject() {
     </div>
 
     <!-- botón flotante -->
-    <button class="add-btn" @click="addProject">
-      <Icon icon="hugeicons:add-01" />
+    <button class="add" @click="addProject">
+      <Icon icon="hugeicons:plus-sign" class="i-mob" />
     </button>
   </section>
 </template>
 
 <style scoped>
 .admin-projects {
-  padding: 2rem;
+  min-height: 90vh;
+  width: 90%;
 }
 
 .header {
   display: flex;
   flex-direction: column;
-  gap: 1rem;
+  gap: 15px;
+}
+
+.back{
+  display: flex;
 }
 
 .grid {
@@ -106,7 +122,7 @@ function addProject() {
 }
 
 .card {
-  background: #222;
+  background: var(--blanco-suave);
   padding: 1rem;
   border-radius: 12px;
   display: flex;
@@ -124,16 +140,21 @@ function addProject() {
   gap: 1rem;
 }
 
-.add-btn {
+.add {
   position: fixed;
-  bottom: 2rem;
-  right: 2rem;
-  background: var(--rosa);
-  border-radius: 50%;
+  bottom: 5%;
+  right: 5%;
   width: 56px;
   height: 56px;
+  border-radius: 50%;
+  background: var(--rosa);
   border: none;
-  color: white;
-  font-size: 1.5rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.i-mob{
+    color: var(--negro);
 }
 </style>

@@ -44,6 +44,9 @@ const actionHandlers: Record<string, () => void> = {
   users: () => {
     router.push('/admin/users')
   },
+  content: ()=>{
+    router.push('/admin/projects')
+  },
   logout: () => {
     localStorage.removeItem('session')
     router.push('/login')
