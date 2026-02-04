@@ -1,6 +1,6 @@
 import { ref, provide, Ref, onMounted } from "vue";
 import { cargarProyectos } from '../utils/fetchData'
-import type { Project } from "../types/project";
+import { Project } from "../types/project";
 
 export function useProjectsProvider() {
 
