@@ -1,29 +1,15 @@
-import { ref, provide, Ref, onMounted } from "vue";
-import { cargarProyectos } from '../utils/fetchData'
-import { Project } from "../types/project";
+import { onMounted, provide } from 'vue'
+import { initProjects, useProjects } from '@/utils/projectsStore'
 
 export function useProjectsProvider() {
+  const { projects, isLoading } = useProjects()
 
-  // tipado de la ref de los datos y del estado del loader
-  const projectData: Ref<Project[]> = ref([]);
-  const isLoading: Ref<boolean> = ref(true)
-
-  // llamamos una funcion async porque cargarProyectos como es async devuelve una promesa
-  onMounted(async ()=>{
-    try{
-      projectData.value = await cargarProyectos();
-    } finally {
-      isLoading.value = false
-    }
-    
+  onMounted(async () => {
+    await initProjects()
   })
 
-  // Tipado de la key del provide (opcional)
-  provide<Ref<Project[]>>("projects", projectData);
-  provide<Ref<boolean>>("isLoading", isLoading);
+  provide('projects', projects)
+  provide('isLoading', isLoading)
 
-  return {
-    projectData,
-    isLoading
-  };
+  return { projects, isLoading }
 }

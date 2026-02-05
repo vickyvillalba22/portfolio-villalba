@@ -89,17 +89,19 @@ h3 {
   display: flex;
   justify-content: end;
   width: 100%;
-  gap: 12px;
+  gap: 10px;
 }
 
-button {
-  border: none;
-  background: none;
-  cursor: pointer;
-}
+.actions button{
+  background-color: var(--forms1);
+  padding: 8px;
+  border-radius: 100%;
+} 
 
 .i-mob{
-    width: 22px;
+    width: 18px;
+    height: 18px;
+    display: flex;
 }
 .edit{
     color: var(--verde);

@@ -1,19 +1,18 @@
 <script setup lang="ts">
-import { ref, onMounted } from 'vue'
-import { Icon } from '@iconify/vue'
-import type { Project } from '@/types/project'
-import { cargarProyectos } from '@/utils/fetchData'
-import { useProjectFilters } from '@/utils/useProjectFilters'
-import ProjectFilters from '@/components/small ui/projectFilters.vue'
+import { Icon } from "@iconify/vue"
+import type { Project } from "@/types/project"
+import { useProjectFilters } from "@/utils/useProjectFilters"
+import ProjectFilters from "@/components/small ui/projectFilters.vue"
 
-import router from '@/router'
+import {
+  useProjects,
+  deleteProjectById,
+  resetProjects
+} from "@/utils/projectsStore"
 
-const projects = ref<Project[]>([])
+import router from "@/router"
 
-// carga asincrónica
-onMounted(async () => {
-  projects.value = await cargarProyectos()
-})
+const { projects } = useProjects()
 
 // filtros reutilizados
 const {
@@ -28,64 +27,60 @@ const {
   filteredProjects
 } = useProjectFilters(projects, { ignoreMostrar: true })
 
-// acciones admin
 function deleteProject(project: Project) {
-  projects.value = projects.value.filter(p => p.id !== project.id)
-}
-
-function editProject(project: Project) {
-  project.updateTitle(project.titulo + ' (editado)')
+  deleteProjectById(project.id)
 }
 
 function addProject() {
-  console.log('ADD PROJECT REQUEST')
+  router.push("/admin/projects/add")
+}
+
+function editProject(project: Project) {
+  router.push(`/admin/projects/edit/${project.id}`)
+}
+
+function reset() {
+  resetProjects()
 }
 </script>
 
+
 <template>
-
   <section class="admin-projects">
-
     <header class="header">
-
-        <button class="back" @click="router.back()">
+      <button class="back" @click="router.back()">
         <Icon icon="hugeicons:arrow-left-02" class="i-mob" />
-        </button>
-        <h3 class="subtitulo">Administrar proyectos</h3>
+      </button>
+      <h3 class="subtitulo">Administrar proyectos</h3>
 
-        
-        <ProjectFilters
-            :years="years"
-            :categories="categories"
-            :selectedYears="selectedYears"
-            :selectedCategories="selectedCategories"
-            :toggleYear="toggleYear"
-            :toggleCategory="toggleCategory"
-            :clearYears="clearYears"
-            :clearCategories="clearCategories"
-        />
+      <ProjectFilters
+        :years="years"
+        :categories="categories"
+        :selectedYears="selectedYears"
+        :selectedCategories="selectedCategories"
+        :toggleYear="toggleYear"
+        :toggleCategory="toggleCategory"
+        :clearYears="clearYears"
+        :clearCategories="clearCategories"
+      />
 
+      <button @click="reset">Reset projects</button>
     </header>
 
     <!-- grid -->
     <div class="grid">
-      <div
-        v-for="project in filteredProjects"
-        :key="project.id"
-        class="card"
-      >
-      <!--LA IMAGEN DEBE SER LA DEL JSON DINAMICA-->
-        <img :src="project.imagen" alt="" />
+      <div v-for="project in filteredProjects" :key="project.id" class="card">
+        <!--COMPLETAR IMGS DE PROJECTS SIN MOSTRAR-->
+        <img :src="`/imgs-projects/${project.id}.png`" :alt="project.titulo" />
 
         <h3>{{ project.titulo }}</h3>
-        <p>{{ project.descripcionCorta }}</p>
 
         <div class="actions">
           <button @click="editProject(project)">
-            <Icon icon="hugeicons:pencil-edit-02" />
+            <Icon icon="hugeicons:edit-02" class="edit" />
           </button>
           <button @click="deleteProject(project)">
-            <Icon icon="hugeicons:delete-02" />
+            <Icon icon="hugeicons:delete-02" class="delete" />
           </button>
         </div>
       </div>
@@ -102,42 +97,59 @@ function addProject() {
 .admin-projects {
   min-height: 90vh;
   width: 90%;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  align-items: center;
 }
 
 .header {
   display: flex;
   flex-direction: column;
   gap: 15px;
+  width: 100%;
 }
 
-.back{
+.back {
   display: flex;
 }
 
 .grid {
-  margin-top: 2rem;
-  display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
-  gap: 1.5rem;
+  display: flex;
+  gap: 16px;
+  flex-wrap: wrap;
+  justify-content: center;
+  width: 100%;
 }
 
 .card {
   background: var(--blanco-suave);
-  padding: 1rem;
-  border-radius: 12px;
+  border-radius: 8px;
+  padding: 16px;
+  width: 48%;
+  min-height: 40vh;
   display: flex;
   flex-direction: column;
-  gap: 0.5rem;
+  justify-content: space-between;
+  gap: 10px;
+}
+
+h3 {
+  font-size: 16px;
+  font-family: var(--font-thin);
 }
 
 .card img {
   width: 100%;
+  height: 20vh;
+  object-fit: cover;
   border-radius: 8px;
 }
 
 .actions {
   display: flex;
-  gap: 1rem;
+  gap: 10px;
+  justify-content: end;
 }
 
 .add {
@@ -154,7 +166,22 @@ function addProject() {
   justify-content: center;
 }
 
-.i-mob{
-    color: var(--negro);
+.actions button {
+  background-color: var(--forms1);
+  padding: 8px;
+  border-radius: 100%;
+}
+
+.edit,
+.delete {
+  width: 18px;
+  height: 18px;
+  display: flex;
+}
+.edit {
+  color: var(--verde);
+}
+.delete {
+  color: var(--rojo);
 }
 </style>
