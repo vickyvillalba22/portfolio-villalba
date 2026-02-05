@@ -58,6 +58,10 @@ body{
   width: 32px;
   height: 32px;
 }
+.button1{
+    padding: 2px 18px;
+    border-radius: 16px;
+}
 
 /*details*/
 body::selection {

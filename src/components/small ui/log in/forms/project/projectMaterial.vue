@@ -24,6 +24,7 @@ const emit = defineEmits([
 <template>
   <section class="step">
 
+    <h3 class="mayus">{{ mode === 'add' ? 'Agregar proyecto' : 'Editar proyecto' }}</h3>
     <h4>2. Material</h4>
 
     <Input id="descripcionLarga" label="Descripción larga" type="text"
@@ -44,8 +45,8 @@ const emit = defineEmits([
       @update:modelValue="emit('update:imagen', $event)" />
 
     <div class="actions">
-      <button @click="emit('back')">Volver</button>
-      <button class="confirm" @click="emit('submit')">
+      <button class="button2 volver" @click="emit('back')">Volver al paso anterior</button>
+      <button class="confirm button2" @click="emit('submit')">
         {{ mode === 'add' ? 'Subir' : 'Actualizar' }}
       </button>
     </div>
@@ -65,5 +66,21 @@ const emit = defineEmits([
 }
 .confirm {
   background: var(--rosa);
+  color: var(--negro);
+}
+h4{
+    font-size: 20px;
+    font-family: var(--font-princ);
+}
+h3{
+    font-family: var(--font-thin);
+}
+
+.button2{
+  padding: 8px 20px;
+  border-radius: 8px;
+}
+.volver{
+  border: 1px solid var(--blanco-suave)
 }
 </style>

@@ -1,11 +1,14 @@
 <script setup lang="ts">
+
 import { ref, computed, onMounted } from 'vue'
+import router from '@/router'
+
 import UserCard from '@/components/small ui/log in/userCard.vue'
 import FilterTabs from '@/components/small ui/log in/filterTabs.vue'
 import type { User } from '@/types/user'
-import { Icon } from '@iconify/vue'
-import router from '@/router'
 import { initUsers, getUsers, deleteUserById, resetUsers } from '@/utils/users'
+
+import { Icon } from '@iconify/vue'
 
 const users = ref<User[]>([])
 const filter = ref<'all' | 'admin' | 'user'>('all')
@@ -90,11 +93,11 @@ const goBack = () => {
       />
     </div>
 
-    <button @click="reset">
-      Reset users
+    <button class="reset flotante" @click="reset">
+        <Icon icon="hugeicons:reload" class="i-mob"/>
     </button>
 
-    <button class="add" @click="addUser">
+    <button class="add flotante" @click="addUser">
         <Icon icon="hugeicons:plus-sign" class="i-mob" />
     </button>
 
@@ -118,18 +121,26 @@ const goBack = () => {
   flex-wrap: wrap;
 }
 
-.add {
+.flotante{
   position: fixed;
   bottom: 5%;
-  right: 5%;
   width: 56px;
   height: 56px;
   border-radius: 50%;
-  background: var(--rosa);
   border: none;
   display: flex;
   align-items: center;
   justify-content: center;
+}
+
+.add {
+  right: 5%;
+  background: var(--rosa);
+}
+
+.reset{
+  left: 5%;
+  background: var(--azul);
 }
 
 .i-mob{

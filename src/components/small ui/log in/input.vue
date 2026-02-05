@@ -94,7 +94,7 @@ const inputType = computed(() => {
 
 input {
   width: 100%;
-  padding: 12px 50px;
+  padding: 12px 20px;
   border-radius: 8px;
   background-color: var(--forms1);
   color: var(--color-texto-principal);

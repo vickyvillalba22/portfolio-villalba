@@ -46,11 +46,15 @@ function reset() {
 
 
 <template>
+
   <section class="admin-projects">
+
     <header class="header">
+
       <button class="back" @click="router.back()">
         <Icon icon="hugeicons:arrow-left-02" class="i-mob" />
       </button>
+
       <h3 class="subtitulo">Administrar proyectos</h3>
 
       <ProjectFilters
@@ -64,7 +68,10 @@ function reset() {
         :clearCategories="clearCategories"
       />
 
-      <button @click="reset">Reset projects</button>
+      <button class="reset flotante" @click="reset">
+        <Icon icon="hugeicons:reload" class="i-mob"/>
+      </button>
+      
     </header>
 
     <!-- grid -->
@@ -87,7 +94,7 @@ function reset() {
     </div>
 
     <!-- botón flotante -->
-    <button class="add" @click="addProject">
+    <button class="add flotante" @click="addProject">
       <Icon icon="hugeicons:plus-sign" class="i-mob" />
     </button>
   </section>
@@ -152,18 +159,26 @@ h3 {
   justify-content: end;
 }
 
-.add {
+.flotante{
   position: fixed;
   bottom: 5%;
-  right: 5%;
   width: 56px;
   height: 56px;
   border-radius: 50%;
-  background: var(--rosa);
   border: none;
   display: flex;
   align-items: center;
   justify-content: center;
+}
+
+.add {
+  right: 5%;
+  background: var(--rosa);
+}
+
+.reset{
+  left: 5%;
+  background: var(--azul);
 }
 
 .actions button {

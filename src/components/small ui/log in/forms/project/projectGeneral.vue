@@ -28,7 +28,7 @@ const emit = defineEmits([
 <template>
   <section class="step">
 
-    <h3>{{ mode === 'add' ? 'Agregar proyecto' : 'Editar proyecto' }}</h3>
+    <h3 class="mayus">{{ mode === 'add' ? 'Agregar proyecto' : 'Editar proyecto' }}</h3>
     <h4>1. Información general</h4>
 
     <Input id="titulo" label="Título" type="text" :modelValue="titulo"
@@ -54,7 +54,7 @@ const emit = defineEmits([
     <Input id="herramientas" label="Herramientas utilizadas" type="text" :modelValue="herramientas"
       @update:modelValue="emit('update:herramientas', $event)" />
 
-    <button class="next" @click="emit('next')">Siguiente</button>
+    <button class="next button1" @click="emit('next')">Next</button>
 
   </section>
 </template>
@@ -67,9 +67,28 @@ const emit = defineEmits([
 }
 .next {
   align-self: flex-end;
+  border: 1px solid var(--rosa);
 }
+
 .type-buttons {
   display: flex;
-  gap: 12px;
+  justify-content: space-between;
+}
+.type-buttons button{
+    width: 45%;
+    border-radius: 8px;
+    background-color: var(--forms1);
+    padding: 12px;
+}
+.type-buttons button.active{
+    background-color: var(--rosa);
+}
+
+h4{
+    font-size: 20px;
+    font-family: var(--font-princ);
+}
+h3{
+    font-family: var(--font-thin);
 }
 </style>

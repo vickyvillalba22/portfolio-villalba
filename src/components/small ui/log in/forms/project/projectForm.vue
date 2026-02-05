@@ -1,5 +1,7 @@
 <script setup lang="ts">
+
 import { ref, watch } from 'vue'
+
 import { Project } from '@/types/project'
 import ProjectFormGeneral from '@/components/small ui/log in/forms/project/projectGeneral.vue'
 import ProjectFormMaterial from '@/components/small ui/log in/forms/project/projectMaterial.vue'
@@ -114,5 +116,6 @@ const submit = () => {
 .project-form {
   width: 100%;
   padding: 24px;
+  min-height: 90vh;
 }
 </style>
