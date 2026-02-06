@@ -22,14 +22,27 @@ const emit = defineEmits([
 </script>
 
 <template>
+
   <section class="step">
 
     <h3 class="mayus">{{ mode === 'add' ? 'Agregar proyecto' : 'Editar proyecto' }}</h3>
     <h4>2. Material</h4>
 
-    <Input id="descripcionLarga" label="Descripción larga" type="text"
+    <!--<Input id="descripcionLarga" label="Descripción larga" type="textarea"
       :modelValue="descripcionLarga"
-      @update:modelValue="emit('update:descripcionLarga', $event)" />
+      @update:modelValue="emit('update:descripcionLarga', $event)" />-->
+    <Input
+      id="descripcionLarga"
+      label="Descripción larga"
+      type="textarea"
+      :modelValue="descripcionLarga"
+      :placeholder="mode === 'add'
+        ? 'Escribí una descripción detallada del proyecto…'
+        : undefined"
+      :maxLength="200"
+      autoResize
+      @update:modelValue="emit('update:descripcionLarga', $event)"
+    />
 
     <Input id="enlace1" label="Enlace 1" type="text"
       :modelValue="linkPrincipal"
@@ -55,6 +68,7 @@ const emit = defineEmits([
 </template>
 
 <style scoped>
+
 .step {
   display: flex;
   flex-direction: column;
@@ -83,4 +97,5 @@ h3{
 .volver{
   border: 1px solid var(--blanco-suave)
 }
+
 </style>

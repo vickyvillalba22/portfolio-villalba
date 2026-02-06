@@ -42,6 +42,11 @@ function editProject(project: Project) {
 function reset() {
   resetProjects()
 }
+
+function back(){
+  router.push('/profile')
+}
+
 </script>
 
 
@@ -51,7 +56,7 @@ function reset() {
 
     <header class="header">
 
-      <button class="back" @click="router.back()">
+      <button class="back" @click="back">
         <Icon icon="hugeicons:arrow-left-02" class="i-mob" />
       </button>
 

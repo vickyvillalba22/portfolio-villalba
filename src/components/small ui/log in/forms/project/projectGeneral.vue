@@ -1,6 +1,7 @@
 <script setup lang="ts">
 
 import Input from '@/components/small ui/log in/input.vue'
+import { ref } from 'vue';
 
 type Mode = 'add' | 'edit'
 
@@ -23,6 +24,9 @@ const emit = defineEmits([
   'update:herramientas',
   'next'
 ])
+
+const workFrom = ref('materia')
+
 </script>
 
 <template>
@@ -44,8 +48,8 @@ const emit = defineEmits([
       @update:modelValue="emit('update:descripcionCorta', $event)" />
 
     <div class="type-buttons">
-      <button class="active">Materia</button>
-      <button>Trabajo</button>
+      <button :class="{ active: workFrom === 'materia' }" @click="workFrom = 'materia'">Materia</button>
+      <button :class="{ active: workFrom === 'trabajo' }" @click="workFrom = 'trabajo'">Trabajo</button>
     </div>
 
     <Input id="nombreMateria" label="Nombre de la materia" type="text" :modelValue="materia"
@@ -79,9 +83,11 @@ const emit = defineEmits([
     border-radius: 8px;
     background-color: var(--forms1);
     padding: 12px;
+    font-family: var(--font-princ);
 }
 .type-buttons button.active{
     background-color: var(--rosa);
+    color: var(--negro);
 }
 
 h4{
