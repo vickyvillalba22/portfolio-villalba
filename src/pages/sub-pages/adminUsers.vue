@@ -63,7 +63,7 @@ const reset = async () => {
 }
 
 const goBack = () => {
-  router.back()
+  router.push('/profile')
 }
 
 </script>

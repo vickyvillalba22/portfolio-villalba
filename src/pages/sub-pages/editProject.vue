@@ -29,6 +29,7 @@ function handleSubmit(updated: Project) {
     <div class="top">
         <button class="back" @click="router.back()">
         <Icon icon="hugeicons:arrow-left-02" class="i-mob" />
+        Volver a mis proyectos
         </button>
     </div>
 
@@ -47,6 +48,14 @@ function handleSubmit(updated: Project) {
 .top{
     width: 90%;
     display: flex;
+    color: var(--color-texto-secundario);
+}
+
+.back{
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    font-family: var(--font-princ);
 }
 
 </style>
