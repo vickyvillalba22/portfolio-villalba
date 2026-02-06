@@ -1,9 +1,15 @@
 <script setup lang="ts">
+
 import { ref, computed, watch } from 'vue'
+
+import { Icon } from '@iconify/vue'
+
 import Input from '@/components/small ui/log in/input.vue'
 import type { User, UserRole } from '@/types/user'
-import { Icon } from '@iconify/vue'
 import { addUser } from '@/utils/users'
+
+import { validate } from '@/utils/validation/validate'
+import { userAddSchema, userEditSchema } from '@/utils/validation/schemas'
 
 type Mode = 'add' | 'edit' | 'profile'
 type Variant = 'admin' | 'user'
@@ -18,7 +24,8 @@ const emit = defineEmits<{
   (e: 'success', user: User): void
 }>()
 
-//el form guarda inputs
+/* estado del form */
+
 const name = ref('')
 const password = ref('')
 const repeatPassword = ref('')
@@ -26,7 +33,15 @@ const email = ref('')
 const role = ref<UserRole>('user')
 const registerDate = ref('')
 
-// prefill si es edit / profile
+const form = computed(() => ({
+  name: name.value,
+  email: email.value,
+  password: password.value,
+  repeatPassword: repeatPassword.value,
+  registerDate: registerDate.value
+}))
+
+/* prefill */
 watch(
   () => props.user,
   (u) => {
@@ -39,42 +54,47 @@ watch(
   { immediate: true }
 )
 
-const passwordsMatch = computed(
-  () => password.value === repeatPassword.value
+/*manejo de errores*/
+const errors = ref<Record<string, string>>({})
+const schema = computed(() =>
+  props.mode === 'profile'
+    ? userEditSchema
+    : userAddSchema
 )
-
-const submit = () => {
-    if (
-        props.mode !== 'profile' &&
-        password.value &&
-        !passwordsMatch.value
-    ) {
-        alert('Las contraseñas no coinciden')
-        return
-    }
-
-    const user: User = {
-        id: props.user?.id ?? Date.now(),
-        name: name.value,
-        usuario: email.value.split('@')[0],
-        email: email.value,
-        password: password.value || props.user?.password || '',
-        role: role.value,
-        isSubscribed: props.user?.isSubscribed ?? false,
-        registerDate: registerDate.value,
-        likedPosts: props.user?.likedPosts ?? [],
-    }
-
-    console.log(user)
-
-    //solo en modo add
-    if (props.mode === 'add') {
-        addUser(user)
-    }
-
-    emit('success', user)
+const validateForm = () => {
+  const result = validate(form.value, schema.value)
+  errors.value = result.errors as Record<string, string>
+  return result.valid
 }
+
+/* submit */
+const submit = () => {
+  if (props.mode === 'profile') return
+
+  if (!validateForm()) return
+
+  const user: User = {
+    id: props.user?.id ?? Date.now(),
+    name: name.value,
+    usuario: email.value.split('@')[0],
+    email: email.value,
+    password: password.value || props.user?.password || '',
+    role: role.value,
+    isSubscribed: props.user?.isSubscribed ?? false,
+    registerDate: registerDate.value,
+    likedPosts: props.user?.likedPosts ?? []
+  }
+
+  if (props.mode === 'add') {
+    addUser(user)
+  }
+
+  emit('success', user)
+}
+
+
 </script>
+
 
 <template>
 
@@ -89,7 +109,7 @@ const submit = () => {
 
     <form @submit.prevent="submit">
 
-      <Input id="name" label="Nombre completo" type="text" v-model="name" />
+      <Input id="name" label="Nombre completo" type="text" v-model="name" :error="errors.name" />
 
       <Input
         v-if="mode !== 'profile'"
@@ -98,6 +118,7 @@ const submit = () => {
         type="password"
         hasEye
         v-model="password"
+        :error="errors.password"
       />
 
       <Input
@@ -107,9 +128,10 @@ const submit = () => {
         type="password"
         hasEye
         v-model="repeatPassword"
+        :error="errors.repeatPassword"
       />
 
-      <Input id="email" label="Email" type="email" v-model="email" />
+      <Input id="email" label="Email" type="email" v-model="email" :error="errors.email" />
 
       <div v-if="variant === 'admin'" class="role-buttons">
         <button type="button" :class="{ active: role === 'user' }" @click="role = 'user'">
@@ -121,8 +143,9 @@ const submit = () => {
       </div>
 
       <!--VER SI SE PUEDE MEJORAR EL CALENDARIO-->
-      <Input id="date" label="Fecha" type="date" v-model="registerDate" />
+      <Input id="date" label="Fecha" type="date" v-model="registerDate" :error="errors.registerDate" />
 
+      <!--VER SI ES NECESARIO HACER MAS ESPECÍFICA LA VALIDACIÓN-->
       <div class="button-wrapper">
         <button class="confirm" type="submit">
             Confirmar

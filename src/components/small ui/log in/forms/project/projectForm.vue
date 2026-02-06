@@ -1,10 +1,13 @@
 <script setup lang="ts">
 
-import { ref, watch } from 'vue'
+import { ref, watch, computed } from 'vue'
 
 import { Project } from '@/types/project'
 import ProjectFormGeneral from '@/components/small ui/log in/forms/project/projectGeneral.vue'
 import ProjectFormMaterial from '@/components/small ui/log in/forms/project/projectMaterial.vue'
+
+import { validate } from '@/utils/validation/validate'
+import { projectStep1Schema, projectStep2Schema } from '@/utils/validation/schemas'
 
 type Mode = 'add' | 'edit'
 
@@ -19,7 +22,7 @@ const emit = defineEmits<{
 
 const step = ref<1 | 2>(1)
 
-/* ---------- estado del proyecto ---------- */
+/* estado del proyecto */
 const titulo = ref('')
 const categoria = ref('')
 const descripcionCorta = ref('')
@@ -27,12 +30,24 @@ const year = ref<number | null>(null)
 const materia = ref('')
 const herramientas = ref('')
 
+const formStep1 = computed(() => ({
+  titulo: titulo.value,
+  categoria: categoria.value,
+  descripcionCorta: descripcionCorta.value,
+  year: year.value,
+  materia: materia.value
+}))
+
 const descripcionLarga = ref('')
 const linkPrincipal = ref('')
 const linkSecundario = ref('')
 const imagen = ref('')
 
-/* ---------- prefill en edit ---------- */
+const formStep2 = computed(() => ({
+  descripcionLarga: descripcionLarga.value
+}))
+
+/* prefill en edit */
 watch(
   () => props.project,
   (p) => {
@@ -53,16 +68,45 @@ watch(
   { immediate: true }
 )
 
-/* ---------- navegación ---------- */
-const nextStep = () => step.value = 2
+/* manejo de errores */
+const errors = ref<Record<string, string>>({})
+const touched = ref<Record<string, boolean>>({})
+
+const validateStep1 = () => {
+  const result = validate(formStep1.value, projectStep1Schema)
+  errors.value = result.errors as Record<string, string>
+  return result.valid
+}
+
+//validacion de step 1 antes de next step
+const nextStep = () => {
+  Object.keys(formStep1.value).forEach(key => {
+    touched.value[key] = true
+  })
+
+  if (!validateStep1()) return
+  step.value = 2
+}
+
 const prevStep = () => step.value = 1
 
+const validateStep2 = () => {
+  const result = validate(formStep2.value, projectStep2Schema)
+  errors.value = result.errors as Record<string, string>
+  return result.valid
+}
+
 const submit = () => {
+  Object.keys(formStep2.value).forEach(key => {
+    touched.value[key] = true
+  })
+
+  if (!validateStep2()) return
+
   const projectData = new Project(
     props.mode === 'edit' && props.project
       ? props.project.id
       : Date.now(),
-
     titulo.value,
     categoria.value,
     descripcionCorta.value,
@@ -81,6 +125,7 @@ const submit = () => {
   emit('submit', projectData)
 }
 
+
 </script>
 
 <template>
@@ -95,6 +140,8 @@ const submit = () => {
       v-model:year="year"
       v-model:materia="materia"
       v-model:herramientas="herramientas"
+      :errors="errors"
+      :touched="touched"
       @next="nextStep"
     />
 
@@ -105,6 +152,8 @@ const submit = () => {
       v-model:linkPrincipal="linkPrincipal"
       v-model:linkSecundario="linkSecundario"
       v-model:imagen="imagen"
+      :errors="errors"
+      :touched="touched"
       @back="prevStep"
       @submit="submit"
     />

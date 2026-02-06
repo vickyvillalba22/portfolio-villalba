@@ -4,6 +4,7 @@ import { ref, computed, watch, nextTick } from 'vue'
 import { Icon } from '@iconify/vue'
 
 interface Props {
+
   id: string
   label: string
   type: string
@@ -14,6 +15,9 @@ interface Props {
 
   maxLength?: number
   autoResize?: boolean 
+
+  error?: string
+
 }
 
 const props = defineProps<Props>()
@@ -21,6 +25,12 @@ const props = defineProps<Props>()
 const emit = defineEmits<{
   (e: 'update:modelValue', value: string): void
 }>()
+
+//touched
+const touched = ref(false)
+const onBlur = () => {
+  touched.value = true
+}
 
 const showPassword = ref(false)
 const textareaRef = ref<HTMLTextAreaElement | null>(null)
@@ -87,6 +97,8 @@ const today = computed(() => {
           :type="inputType"
           :placeholder="placeholder"
           :value="modelValue"
+          :class="{ error: error && touched }"
+          @blur="onBlur"
           v-bind="type === 'date' ? { max: today } : {}"
           @input="emit('update:modelValue', ($event.target as HTMLInputElement).value)"
         />
@@ -100,6 +112,8 @@ const today = computed(() => {
             :value="modelValue"
             :maxlength="maxLength"
             rows="1"
+            :class="{ error: error && touched }"
+            @blur="onBlur"
             @input="handleTextareaInput"
           ></textarea>
           <p v-if="type === 'textarea' && maxLength" class="counter">
@@ -138,6 +152,10 @@ const today = computed(() => {
         </div>
 
     </div>
+
+    <p v-if="error && touched" class="error-text">
+      {{ error }}
+    </p>
 
   </div>
 
@@ -215,6 +233,17 @@ textarea {
 input[type="date"]::-webkit-calendar-picker-indicator {
   opacity: 0;
   cursor: pointer;
+}
+
+/*error*/
+input.error,
+textarea.error {
+  border: 1px solid #ff6b6b;
+}
+
+.error-text {
+  font-size: 0.8em;
+  color: #ff6b6b;
 }
 
 </style>

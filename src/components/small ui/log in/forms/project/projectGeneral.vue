@@ -1,11 +1,11 @@
 <script setup lang="ts">
 
 import Input from '@/components/small ui/log in/input.vue'
-import { ref } from 'vue';
+import { ref } from 'vue'
 
 type Mode = 'add' | 'edit'
 
-defineProps<{
+const props = defineProps<{
   mode: Mode
   titulo: string
   categoria: string
@@ -13,6 +13,8 @@ defineProps<{
   year: number | null
   materia: string
   herramientas: string
+  errors: Record<string, string>
+  touched: Record<string, boolean>
 }>()
 
 const emit = defineEmits([
@@ -25,9 +27,10 @@ const emit = defineEmits([
   'next'
 ])
 
-const workFrom = ref('materia')
+const workFrom = ref<'materia' | 'trabajo'>('materia')
 
 </script>
+
 
 <template>
   <section class="step">
@@ -35,16 +38,17 @@ const workFrom = ref('materia')
     <h3 class="mayus">{{ mode === 'add' ? 'Agregar proyecto' : 'Editar proyecto' }}</h3>
     <h4>1. Información general</h4>
 
-    <Input id="titulo" label="Título" type="text" :modelValue="titulo"
-      @update:modelValue="emit('update:titulo', $event)" />
+    <Input id="titulo" label="Título" type="text" :modelValue="titulo" :error="errors.titulo" :touched="touched.titulo"
+    @update:modelValue="emit('update:titulo', $event)" />
 
-    <Input id="año" label="Año" type="number" :modelValue="year?.toString() ?? ''"
-      @update:modelValue="emit('update:year', Number($event))" />
+    <Input id="año" label="Año" type="number" :modelValue="year?.toString() ?? ''"   :error="errors.year" :touched="touched.year"
+    @update:modelValue="emit('update:year', Number($event))" />
 
-    <Input id="categoria" label="Categoría" type="text" :modelValue="categoria"
-      @update:modelValue="emit('update:categoria', $event)" />
+    <Input id="categoria" label="Categoría" type="text" :modelValue="categoria"   :error="errors.categoria"
+    :touched="touched.categoria"
+    @update:modelValue="emit('update:categoria', $event)" />
 
-    <Input id="descripcionBreve" label="Descripción breve" type="text" :modelValue="descripcionCorta"
+    <Input id="descripcionBreve" label="Descripción breve" type="text" :modelValue="descripcionCorta" :error="errors.descripcionCorta" :touched="touched.descripcionCorta"
       @update:modelValue="emit('update:descripcionCorta', $event)" />
 
     <div class="type-buttons">
@@ -52,8 +56,9 @@ const workFrom = ref('materia')
       <button :class="{ active: workFrom === 'trabajo' }" @click="workFrom = 'trabajo'">Trabajo</button>
     </div>
 
-    <Input id="nombreMateria" label="Nombre de la materia" type="text" :modelValue="materia"
-      @update:modelValue="emit('update:materia', $event)" />
+    <!--ESTE TIENE QUE APARECER CUANDO HAY CLICK EN MATERIA-->
+    <Input id="nombreMateria" label="Nombre de la materia" type="text" :modelValue="materia"   :error="errors.materia" :touched="touched.materia"
+    @update:modelValue="emit('update:materia', $event)" />
 
     <Input id="herramientas" label="Herramientas utilizadas" type="text" :modelValue="herramientas"
       @update:modelValue="emit('update:herramientas', $event)" />

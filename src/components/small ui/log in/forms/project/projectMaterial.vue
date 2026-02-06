@@ -1,14 +1,20 @@
 <script setup lang="ts">
+
 import Input from '@/components/small ui/log in/input.vue'
+
+import { validate } from '@/utils/validation/validate'
+import { projectStep2Schema } from '@/utils/validation/schemas'
 
 type Mode = 'add' | 'edit'
 
-defineProps<{
+const props = defineProps<{
   mode: Mode
   descripcionLarga: string
   linkPrincipal: string
   linkSecundario: string
   imagen: string
+  errors: Record<string, string>
+  touched: Record<string, boolean>
 }>()
 
 const emit = defineEmits([
@@ -19,7 +25,23 @@ const emit = defineEmits([
   'back',
   'submit'
 ])
+
+/* validar y enviar */
+const submit = () => {
+  const result = validate(
+    { descripcionLarga: props.descripcionLarga },
+    projectStep2Schema
+  )
+
+  if (!result.valid) {
+    console.log(result.errors)
+    return
+  }
+
+  emit('submit')
+}
 </script>
+
 
 <template>
 
@@ -28,14 +50,13 @@ const emit = defineEmits([
     <h3 class="mayus">{{ mode === 'add' ? 'Agregar proyecto' : 'Editar proyecto' }}</h3>
     <h4>2. Material</h4>
 
-    <!--<Input id="descripcionLarga" label="Descripción larga" type="textarea"
-      :modelValue="descripcionLarga"
-      @update:modelValue="emit('update:descripcionLarga', $event)" />-->
     <Input
       id="descripcionLarga"
       label="Descripción larga"
       type="textarea"
       :modelValue="descripcionLarga"
+      :error="errors.descripcionLarga"
+      :touched="touched.descripcionLarga"
       :placeholder="mode === 'add'
         ? 'Escribí una descripción detallada del proyecto…'
         : undefined"
@@ -52,14 +73,14 @@ const emit = defineEmits([
       :modelValue="linkSecundario"
       @update:modelValue="emit('update:linkSecundario', $event)" />
 
-    <!--VER SI DEJO UNA IMAGEN LINK O SUBIR UNA IMAGEN-->
+    <!--VER SI DEJO UNA IMAGEN LINK O SUBIR UNA IMAGEN, PARA QUE DESPUES SE VEAN TAMBIEN EN LA UI-->
     <Input id="imagen" label="Imagen" type="text"
       :modelValue="imagen"
       @update:modelValue="emit('update:imagen', $event)" />
 
     <div class="actions">
       <button class="button2 volver" @click="emit('back')">Volver al paso anterior</button>
-      <button class="confirm button2" @click="emit('submit')">
+      <button class="confirm button2" @click="submit">
         {{ mode === 'add' ? 'Subir' : 'Actualizar' }}
       </button>
     </div>
