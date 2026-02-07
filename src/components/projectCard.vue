@@ -4,6 +4,10 @@ import { inject, computed, ref, type Ref } from "vue";
 import type { Project } from '../types/project'
 import { Icon } from "@iconify/vue";
 
+import { User } from '@/types/user'
+import { currentUser } from '@/utils/session'
+
+
 // props tipadas
 const props = defineProps({
   projectId: {
@@ -23,6 +27,26 @@ const project = computed<Project | undefined>(() => {
   return projects.value.find((p) => p.id === props.projectId);
 });
 
+//rol y likeado
+const isUser = computed(() => currentUser.value?.role === 'user')
+
+const isLiked = computed(() =>
+  currentUser.value?.likedPosts.includes(project.value!.id)
+)
+
+//toggle like
+const toggleLike = () => {
+  if (!currentUser.value || !project.value) return
+
+  if (isLiked.value) {
+    currentUser.value.unlikePost(project.value.id)
+  } else {
+    currentUser.value.likePost(project.value.id)
+  }
+
+  localStorage.setItem('session', JSON.stringify(currentUser.value))
+}
+
 //estado card
 const isExpanded = ref(false)
 function toggleCard (){
@@ -41,6 +65,19 @@ function toggleCard (){
       <img :src="`/imgs-projects/${project.id}.png`" :alt="project.titulo" />
       <h4 class="label-simple posAb">{{ project.categoria }}</h4>
       <span class="year posAb">{{ project.year }}</span>
+
+      <!--like-->
+      <button
+        v-if="isUser&&!isExpanded"
+        class="like-btn"
+        @click.stop="toggleLike"
+      >
+        <Icon
+          :icon="isLiked ? 'mdi:heart' : 'mdi:heart-outline'"
+          class="heart"
+        />
+      </button>
+
     </div>
 
     <!--contenido general-->
@@ -50,7 +87,7 @@ function toggleCard (){
       <!-- Botón cerrar (solo cuando está expandida) -->
       <div class="contBoton">
         <button v-if="isExpanded" @click="toggleCard" class="botonSimple">
-          <Icon icon="hugeicons:cancel-01" class="i-mob blanco" />
+          <Icon icon="hugeicons:cancel-01" class="i-mob" />
         </button>
       </div>
 
@@ -287,5 +324,23 @@ i{
   }
 
 }
+
+/*LIKE*/
+.like-btn {
+  position: absolute;
+  top: 5%;
+  left: 5%;
+  background: transparent;
+  border: none;
+  cursor: pointer;
+  z-index: 2;
+}
+
+.heart {
+  color: #ff4d6d;
+  width: 18px;
+  height: 18px;
+}
+
 
 </style>

@@ -5,6 +5,8 @@ import { useRouter } from 'vue-router'
 import Input from '../components/small ui/log in/input.vue'
 
 import { loginUser } from '@/utils/auth'
+import { currentUser } from '@/utils/session'
+import { User } from '@/types/user'
 
 const router = useRouter()
 
@@ -25,7 +27,21 @@ const handleLogin = async () => {
     error.value = ''
 
     //MEJORAR
-    localStorage.setItem('session',JSON.stringify(user))
+    const userInstance = new User(
+        user.id,
+        user.name,
+        user.usuario,
+        user.email ?? '',
+        '',
+        user.role,
+        false,
+        '',
+        user.likedPosts ?? []
+        )
+
+        currentUser.value = userInstance
+        localStorage.setItem('session', JSON.stringify(userInstance))
+
     router.push('/')
 }
 
@@ -44,7 +60,6 @@ const handleLogin = async () => {
             label="User"
             type="text"
             placeholder="vickyVillalba22"
-            icon="hugeicons:user"
             v-model="usuario"
         />
 
@@ -53,7 +68,6 @@ const handleLogin = async () => {
             label="Password"
             type="password"
             placeholder="Contraseña"
-            icon="hugeicons:lock"
             :hasEye="true"
             v-model="password"
         />

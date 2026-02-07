@@ -1,39 +1,30 @@
-export interface User {
-  id: number
-  name: string
-  usuario: string
-  role: 'admin' | 'user'
-  likedPosts: number[]
-}
-
-interface RawUser {
-  id: number
-  name: string
-  usuario: string
-  password: string
-  role: string
-}
+import { User } from '@/types/user'
 
 export async function loginUser(
   usuario: string,
   password: string
 ): Promise<User | null> {
   const res = await fetch('/data/users.json')
-  const users: RawUser[] = await res.json()
+  const users = await res.json()
 
-  const user = users.find(
-    (u) => u.usuario === usuario && u.password === password
+  const raw = users.find(
+    (u: any) => u.usuario === usuario && u.password === password
   )
 
-  if (!user) return null
+  if (!raw) return null
 
-  return {
-    id: user.id,
-    name: user.name,
-    usuario: user.usuario,
-    role: user.role as 'admin' | 'user',
-    likedPosts: []
-  }
+  return new User(
+    raw.id,
+    raw.name,
+    raw.usuario,
+    raw.email ?? '',
+    raw.password,
+    raw.role,
+    raw.isSubscribed ?? false,
+    raw.registerDate ?? '',
+    raw.likedPosts ?? []
+  )
 }
+
 
 

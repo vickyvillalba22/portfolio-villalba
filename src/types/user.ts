@@ -1,15 +1,36 @@
 export type UserRole = 'admin' | 'user'
 
-export interface User {
-  id: number
-  name: string
-  usuario: string
-  email: string
-  password: string
-  role: UserRole
-  isSubscribed: boolean
-  registerDate: string
+export class User {
+  constructor(
+    public id: number,
+    public name: string,
+    public usuario: string,
+    public email: string,
+    public password: string,
+    public role: UserRole,
+    public isSubscribed: boolean,
+    public registerDate: string,
+    public likedPosts: number[]
+  ) {}
 
-  //props de uso en la app
-  likedPosts: number[]
+  isAdmin() {
+    return this.role === 'admin'
+  }
+
+  get likedCount() {
+    return this.likedPosts.length
+  }
+
+  likePost(postId: number) {
+    if (!this.likedPosts.includes(postId)) {
+      this.likedPosts.push(postId)
+    }
+  }
+  unlikePost(postId: number) {
+    this.likedPosts = this.likedPosts.filter(id => id !== postId)
+  }
+
+    toggleSubscription() {
+    this.isSubscribed = !this.isSubscribed
+  }
 }

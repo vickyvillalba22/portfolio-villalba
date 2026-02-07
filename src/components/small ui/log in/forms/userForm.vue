@@ -5,7 +5,7 @@ import { ref, computed, watch } from 'vue'
 import { Icon } from '@iconify/vue'
 
 import Input from '@/components/small ui/log in/input.vue'
-import type { User, UserRole } from '@/types/user'
+import { User, UserRole } from '@/types/user'
 import { addUser } from '@/utils/users'
 
 import { validate } from '@/utils/validation/validate'
@@ -73,17 +73,17 @@ const submit = () => {
 
   if (!validateForm()) return
 
-  const user: User = {
-    id: props.user?.id ?? Date.now(),
-    name: name.value,
-    usuario: email.value.split('@')[0],
-    email: email.value,
-    password: password.value || props.user?.password || '',
-    role: role.value,
-    isSubscribed: props.user?.isSubscribed ?? false,
-    registerDate: registerDate.value,
-    likedPosts: props.user?.likedPosts ?? []
-  }
+  const user = new User(
+    props.user?.id ?? Date.now(),
+    name.value,
+    email.value.split('@')[0],
+    email.value,
+    password.value || props.user?.password || '',
+    role.value,
+    props.user?.isSubscribed ?? false,
+    registerDate.value,
+    props.user?.likedPosts ?? []
+  )
 
   if (props.mode === 'add') {
     addUser(user)

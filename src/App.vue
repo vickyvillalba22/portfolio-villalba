@@ -8,6 +8,18 @@ import Header from './components/header.vue';
 import { useRoute } from 'vue-router';
 import { computed } from 'vue';
 
+import { currentUser } from '@/utils/session'
+import { User } from '@/types/user'
+
+const raw = localStorage.getItem('session')
+if (raw) {
+  const u = JSON.parse(raw)
+  currentUser.value = Object.assign(
+    new User(0,'','','','', 'user', false,'',[]),
+    u
+  )
+}
+
 const route = useRoute();
 
 //tipado de las rutas

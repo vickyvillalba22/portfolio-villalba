@@ -1,8 +1,10 @@
 <script setup lang="ts">
 
-import { computed } from 'vue'
-import type { User } from '@/types/user'
+import { computed, ref } from 'vue'
 import { useRouter } from 'vue-router'
+
+import type { User } from '@/types/user'
+
 import { Icon } from '@iconify/vue';
 
 const router = useRouter()
@@ -10,6 +12,8 @@ const router = useRouter()
 const props = defineProps<{
     user: User
 }>()
+
+const emit = defineEmits(['likes'])
 
 const isAdmin = computed(() => props.user.role === 'admin')
 
@@ -39,6 +43,8 @@ const actions = computed(() =>
     : userActions
 )
 
+const activeAction = ref<string | null>(null)
+
 //mapa de acciones
 const actionHandlers: Record<string, () => void> = {
   users: () => {
@@ -53,9 +59,8 @@ const actionHandlers: Record<string, () => void> = {
   },
 
   //SE IRÁN AJUSTANDO
-  likes: () => {
-    console.log('TODO: likes')
-  },
+  likes: () => emit('likes'),
+
   subscribe: () => {
     console.log('TODO: subscribe')
   },
@@ -65,10 +70,14 @@ const actionHandlers: Record<string, () => void> = {
 }
 
 const handleAction = (action: string) => {
+
+  activeAction.value = action
+
   const handler = actionHandlers[action]
   if (handler) {
     handler()
   }
+
 }
 
 </script>
@@ -85,7 +94,7 @@ const handleAction = (action: string) => {
         <h3 class="name">{{ user.name }}</h3>
         <p class="username">@{{ user.usuario }}</p>
         <!--LA FECHA NO SE RENDERIZA-->
-        <p>{{ user.registerDate }}</p>
+        <p class="date">Register date: {{ user.registerDate }}</p>
       </div>
 
       <div class="actions">
@@ -95,6 +104,7 @@ const handleAction = (action: string) => {
                 v-for="item in actions"
                 :key="item.action"
                 class="menu-item"
+                :class="{ active: activeAction === item.action }"
                 @click="handleAction(item.action)"
             >
                 <Icon :icon="item.icon" class="i-mob" />
@@ -112,7 +122,6 @@ const handleAction = (action: string) => {
 .profile-card {
     text-align: center;
     width: 70%;
-    height: 70vh;
     display: flex;
     flex-direction: column;
     gap: 30px;
@@ -141,8 +150,12 @@ const handleAction = (action: string) => {
 }
 
 .username {
-  font-size: 0.8em;
+  font-size: 1em;
   opacity: 0.6;
+}
+.date{
+  color: var(--color-texto-secundario);
+  font-size: 0.8em;
 }
 
 .actions {
@@ -160,6 +173,16 @@ const handleAction = (action: string) => {
     align-items: center;
     gap: 10px;
     font-size: 14px;
+    padding: 5px 10px;
+}
+
+.menu-item.active {
+  background-color: rgba(255, 255, 255, 0.1);
+  border-radius: 12px;
+}
+
+.menu-item.active span {
+  font-weight: 600;
 }
 
 .profile-card.user svg {
