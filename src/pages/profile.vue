@@ -15,11 +15,11 @@ if (storedUser) {
   user.value = JSON.parse(storedUser)
 }
 
-//liked posts
-const showLikes = ref(false)
+//actions
+const activeSection = ref<string | null>(null)
 
-const toggleLikes = () => {
-  showLikes.value = !showLikes.value
+const handleAction = (action: string | null) => {
+  activeSection.value = action
 }
 
 </script>
@@ -28,14 +28,14 @@ const toggleLikes = () => {
 
     <section class="profile">
 
-    <ProfileCard v-if="user" :user="user" @likes="toggleLikes" />
+    <ProfileCard v-if="user" :user="user" @action="handleAction" />
 
     <p v-else class="error">
       No hay usuario logueado
     </p>
 
     <LikedPosts
-      v-if="user && showLikes"
+      v-if="user && activeSection === 'likes'"
       :user="user"
     />
 

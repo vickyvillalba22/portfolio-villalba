@@ -13,7 +13,9 @@ const props = defineProps<{
     user: User
 }>()
 
-const emit = defineEmits(['likes'])
+const emit = defineEmits<{
+  (e: 'action', value: string | null): void
+}>()
 
 const isAdmin = computed(() => props.user.role === 'admin')
 
@@ -59,7 +61,6 @@ const actionHandlers: Record<string, () => void> = {
   },
 
   //SE IRÁN AJUSTANDO
-  likes: () => emit('likes'),
 
   subscribe: () => {
     console.log('TODO: subscribe')
@@ -70,15 +71,15 @@ const actionHandlers: Record<string, () => void> = {
 }
 
 const handleAction = (action: string) => {
+  activeAction.value =
+    activeAction.value === action ? null : action
 
-  activeAction.value = action
+  emit('action', activeAction.value)
 
   const handler = actionHandlers[action]
-  if (handler) {
-    handler()
-  }
-
+  if (handler) handler()
 }
+
 
 </script>
 

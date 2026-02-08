@@ -36,16 +36,19 @@ const isLiked = computed(() =>
 
 //toggle like
 const toggleLike = () => {
-  if (!currentUser.value || !project.value) return
+  if (!currentUser.value) return
 
-  if (isLiked.value) {
-    currentUser.value.unlikePost(project.value.id)
+  const index = currentUser.value.likedPosts.indexOf(project.value!.id)
+
+  if (index >= 0) {
+    currentUser.value.likedPosts.splice(index, 1)
   } else {
-    currentUser.value.likePost(project.value.id)
+    currentUser.value.likedPosts.push(project.value!.id)
   }
 
   localStorage.setItem('session', JSON.stringify(currentUser.value))
 }
+
 
 //estado card
 const isExpanded = ref(false)
@@ -133,40 +136,32 @@ function toggleCard (){
 <style scoped>
 
 .card-simple {
-
-  height: 50vh;
-  width: 15%;
+  width: 100%;
+  height: 18vh;
   display: flex;
-  flex-direction: column;
-  gap: 1rem;
+  flex-direction: row;
+  position: relative;
 
+  gap: 1rem;
   padding: 16px;
   border-radius: 10px;
   background: rgba(255,255,255,0.1);
   border: 1px solid rgba(255,255,255,0.2);
   position: relative;
+
   transition: all .35s ease;
-
   transition: width 0.5s ease, height 0.5s ease, flex-direction 0.3s ease;
-}
-
-.card-simple.expanded{
-  width: 40%;
-  flex-direction: row;
-}
-.card-simple.expanded .card-img-container {
-  max-height: 50vh;
 }
 
 .i-mob{
   width: 20px;
-  height: 24px;
+  height: 20px;
 }
 
 /* Imagen */
 .card-img-container {
-  flex: 1;
-  max-height: 25vh;
+    flex: 1.7;
+  max-height: 15vh;
   position: relative;
 }
 
@@ -190,14 +185,15 @@ function toggleCard (){
 }
 .label-simple {
   top: 8%;
-  background: white;
-  color: black;
+  background: var(--blanco);
+  color: var(--negro);
   padding: 3px 10px;
   border-radius: 15px;
+  font-size: 0.7em;
 }
 .year {
   bottom: 8%;
-  color: #ffffff;
+  color: var(--blanco);
 }
 
 /* Info */
@@ -209,7 +205,9 @@ function toggleCard (){
 }
 
 .card-info h2 {
-  font-size: 1.2em;
+  font-size: 1em;
+  width: 50%;
+  position: absolute;
   font-weight: 300;
 }
 
@@ -220,6 +218,7 @@ function toggleCard (){
   justify-content: space-evenly;
   height: 100%;
   gap: 10px;
+  font-size: 0.8em;
 }
 
 .tools{
@@ -231,8 +230,8 @@ function toggleCard (){
 
 .goto-link {
   margin-top: auto;
-  font-size: .9em;
-  color: white;
+  font-size: 1em;
+  color: var(--blanco);
   display: flex;
   align-items: center;
   gap: 5px;
@@ -242,19 +241,23 @@ function toggleCard (){
 .contBoton {
   display: flex;
   justify-content: flex-end;
+  align-items: end;
 }
 
 button {
   border: none;
   display: flex;
+  height: fit-content;
+  align-items: center;
   gap: 5px;
   padding: 4px 10px;
   border-radius: 16px;
   cursor: pointer;
+  font-size: 0.8em;
 }
 .botonSimple{
   background-color: #ffffff00;
-  color: #ffffff;
+  color: var(--blanco);
   padding: 0;
 }
 
@@ -263,66 +266,30 @@ i{
   font-size: 1.4em;
 }
 
-@media (max-width: 600px){
-  .card-simple{
-    width: 100%;
-    height: 18vh;
-    display: flex;
-    flex-direction: row;
-    position: relative;
-  }
-  .card-info h2{
-    font-size: 1em;
-    width: 50%;
-    position: absolute;
-  }
-  .card-img-container{
-    flex: 1.7;
-    max-height: 15vh;
-  }
-  button{
-    font-size: 0.7em;
-  }
-  .label-simple{
-    font-size: 0.5em;
-  }
-  .extra-content p{
-    font-size: 0.8em;
-  }
-  .contBoton{
-    align-items: end;
-  }
-  .contBoton button{
-    height: fit-content;
-    display: flex;
-    align-items: center;
-  }
-  /*expanded*/
-  .card-simple.expanded{
-    width: 100%;
-    height: 50vh;
-    flex-direction: column;
-  }
-  .botonSimple{
-    position: absolute;
-    left: 9%;
-    top: 8%;
-  }
-  .card-simple.expanded h2{
-    width: 90%;
-    font-size: 1.1em;
-  }
-  .card-simple.expanded p{
-    margin-top: 10px;
-  }
-  .card-simple.expanded .card-img-container{
-    flex: 0.5;
-    max-height: 20vh;
-  }
-  .card-simple.expanded .label-simple, .year{
-    right: 5%;
-  }
-
+/*expanded*/
+.card-simple.expanded{
+  width: 100%;
+  height: 50vh;
+  flex-direction: column;
+}
+.botonSimple{
+  position: absolute;
+  left: 9%;
+  top: 8%;
+}
+.card-simple.expanded h2{
+  width: 90%;
+  font-size: 1.1em;
+}
+.card-simple.expanded p{
+  margin-top: 10px;
+}
+.card-simple.expanded .card-img-container{
+  flex: 0.5;
+  max-height: 20vh;
+}
+.card-simple.expanded .label-simple, .year{
+  right: 5%;
 }
 
 /*LIKE*/

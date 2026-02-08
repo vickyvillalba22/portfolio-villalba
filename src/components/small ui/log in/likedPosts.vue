@@ -3,6 +3,7 @@ import { inject, computed, type Ref } from 'vue'
 import type { Project } from '@/types/project'
 import type { User } from '@/types/user'
 import ProjectCard from '@/components/projectCard.vue'
+import { currentUser } from '@/utils/session';
 
 const props = defineProps<{
   user: User
@@ -13,9 +14,10 @@ if (!projects) throw new Error('Projects not found')
 
 const likedProjects = computed(() =>
   projects.value.filter(p =>
-    props.user.likedPosts.includes(p.id)
+    currentUser.value?.likedPosts.includes(p.id)
   )
 )
+
 </script>
 
 <template>
