@@ -4,7 +4,8 @@ import { computed, ref } from 'vue'
 import { useRouter } from 'vue-router'
 
 import type { User } from '@/types/user'
-import { clearSession } from '@/utils/session'
+import { updateUser } from '@/utils/users'
+import { clearSession, saveSession, currentUser } from '@/utils/session'
 
 import { Icon } from '@iconify/vue';
 
@@ -26,13 +27,16 @@ const userActions = [
   { label: 'Liked posts', icon: 'hugeicons:heart-check', action: 'likes' },
   { label: 'Subscribe to portfolio', icon: 'hugeicons:user-add-01', action: 'subscribe' },
   { label: 'Edit profile', icon: 'hugeicons:user-edit-01', action: 'edit' },
-  { label: 'Log out', icon: 'hugeicons:logout-04', action: 'logout' },
+  { label: 'Log out', icon: 'hugeicons:logout-04', action: 'logout' }
 ]
 
 const adminActions = [
   { label: 'Manage users', icon: 'hugeicons:user-edit-01', action: 'users' },
+  { label: 'Subscribed users', icon: 'hugeicons:user-check-01', action: 'subscribed' },
   { label: 'Manage projects', icon: 'hugeicons:pencil-edit-02', action: 'content' },
   { label: 'Log out', icon: 'hugeicons:logout-04', action: 'logout' },
+  
+
 ]
 
 //elije el array a usar
@@ -52,6 +56,7 @@ const actionHandlers: Record<string, () => void> = {
   content: ()=>{
     router.push('/admin/projects')
   },
+
   logout: () => {
     clearSession
     router.push('/login')
@@ -60,8 +65,14 @@ const actionHandlers: Record<string, () => void> = {
   //SE IRÁN AJUSTANDO
 
   subscribe: () => {
-    console.log('TODO: subscribe')
+
+    if (!currentUser.value) return
+    currentUser.value.toggleSubscription()
+    saveSession(currentUser.value)
+    updateUser(currentUser.value)
+
   },
+
   edit: () => {
     console.log('TODO: edit profile')
   },
@@ -76,7 +87,6 @@ const handleAction = (action: string) => {
   const handler = actionHandlers[action]
   if (handler) handler()
 }
-
 
 </script>
 
@@ -119,7 +129,7 @@ const handleAction = (action: string) => {
 
 .profile-card {
     text-align: center;
-    width: 70%;
+    width: 90%;
     display: flex;
     flex-direction: column;
     gap: 30px;
@@ -158,7 +168,7 @@ const handleAction = (action: string) => {
 
 .actions {
   display: flex;
-  gap: 2em;
+
 }
 
 .action {

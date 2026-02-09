@@ -47,6 +47,12 @@ export function getUsers(): User[] {
   
 }
 
+export function getSubscribedUsers(): User[] {
+  return getUsers().filter(u =>
+    u.role === 'user' && u.isSubscribed
+  )
+}
+
 export function saveUsers(users: User[]) {
   localStorage.setItem(KEY, JSON.stringify(users))
 }

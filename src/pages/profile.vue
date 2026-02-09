@@ -3,17 +3,14 @@
 import { ref, computed } from 'vue'
 import { useRouter } from 'vue-router'
 import type { User } from '@/types/user'
+import { currentUser } from '@/utils/session'
 import ProfileCard from '@/components/small ui/log in/profileCard.vue'
 import LikedPosts from '@/components/small ui/log in/likedPosts.vue'
+import SubscribedUsers from '@/components/small ui/log in/subscribedUsers.vue'
 
 const router = useRouter()
 
-const user = ref<User | null>(null)
-
-const storedUser = localStorage.getItem('session')
-if (storedUser) {
-  user.value = JSON.parse(storedUser)
-}
+const user = currentUser
 
 //actions
 const activeSection = ref<string | null>(null)
@@ -38,6 +35,8 @@ const handleAction = (action: string | null) => {
       v-if="user && activeSection === 'likes'"
       :user="user"
     />
+
+    <SubscribedUsers v-if="user && activeSection === 'subscribed'" />
 
   </section>
 
