@@ -77,6 +77,11 @@ const routes: RouteRecordRaw[] = [
     path: '/admin/projects/edit/:id',
     component: () => import('@/pages/sub-pages/editProject.vue'),
     meta: { requiresAdmin: true }
+  },
+  {
+    path: '/profile/edit',
+    name: 'edit',
+    component: () => import('@/pages/sub-pages/editProfile.vue')
   }
 ];
 

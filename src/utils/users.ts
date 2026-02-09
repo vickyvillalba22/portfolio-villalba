@@ -90,3 +90,25 @@ export async function resetUsers() {
 
   localStorage.setItem(KEY, JSON.stringify(normalized))
 }
+
+export async function resetUserById(id: number): Promise<User | null> {
+  const res = await fetch('/public/data/users.json')
+  if (!res.ok) {
+    throw new Error('Error loading users.json')
+  }
+
+  const data: User[] = await res.json()
+
+  const original = data.find(u => u.id === id)
+  if (!original) return null
+
+  const restored = toUserInstance(original)
+
+  const users = getUsers().map(u =>
+    u.id === id ? restored : u
+  )
+
+  saveUsers(users)
+  return restored
+}
+

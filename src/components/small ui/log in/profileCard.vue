@@ -4,7 +4,7 @@ import { computed, ref } from 'vue'
 import { useRouter } from 'vue-router'
 
 import type { User } from '@/types/user'
-import { updateUser } from '@/utils/users'
+import { updateUser, resetUserById } from '@/utils/users'
 import { clearSession, saveSession, currentUser } from '@/utils/session'
 
 import { Icon } from '@iconify/vue';
@@ -74,8 +74,8 @@ const actionHandlers: Record<string, () => void> = {
   },
 
   edit: () => {
-    console.log('TODO: edit profile')
-  },
+    router.push('/profile/edit')
+  }
 }
 
 const handleAction = (action: string) => {
@@ -88,11 +88,22 @@ const handleAction = (action: string) => {
   if (handler) handler()
 }
 
+/*reset*/
+const resetProfile = async () => {
+  if (!currentUser.value) return
+
+  const restored = await resetUserById(currentUser.value.id)
+  if (!restored) return
+
+  currentUser.value = restored
+  saveSession(restored)
+}
+
 </script>
 
 <template>
 
-<div class="profile-card" :class="props.user.role">
+<section class="profile-card" :class="props.user.role">
 
     <!--PONER IMAGEN DINAMICA-->
       <div class="info">
@@ -121,7 +132,15 @@ const handleAction = (action: string) => {
 
       </div>
 
-    </div>
+      <button
+        class="reset-profile"
+        @click="resetProfile"
+      >
+        <Icon icon="hugeicons:reload" class="i-mob"/>
+        Reset profile
+      </button>
+
+    </section>
 
 </template>
 
@@ -200,5 +219,26 @@ const handleAction = (action: string) => {
 .profile-card.admin svg {
   color: var(--rosa);
 }
+
+/*reset*/
+.reset-profile {
+  background: transparent;
+  border: none;
+  font-family: var(--font-princ);
+  font-size: 0.8em;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  width: fit-content;
+  align-self: center;
+  color: var(--color-texto-secundario);
+}
+.reset-profile .i-mob{
+  width: 24px;
+  height: 24px;
+  opacity: 0.6;
+}
+
 
 </style>

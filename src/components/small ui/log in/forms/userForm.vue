@@ -69,7 +69,20 @@ const validateForm = () => {
 
 /* submit */
 const submit = () => {
-  if (props.mode === 'profile') return
+
+  if (props.mode === 'profile' && props.user) {
+    props.user.name = name.value
+    props.user.email = email.value
+    props.user.usuario = email.value.split('@')[0]
+
+    if (password.value) {
+      props.user.password = password.value
+    }
+
+    updateUser(props.user)
+    emit('success', props.user)
+  }
+
   if (!validateForm()) return
 
   // add: crea uno nuevo
@@ -159,7 +172,7 @@ const submit = () => {
         </button>
       </div>
 
-      <Input id="date" label="Fecha" type="date" v-model="registerDate" :error="errors.registerDate" />
+      <Input id="date" label="Fecha de registro" type="date" v-model="registerDate" :error="errors.registerDate" />
 
       <!--VER SI ES NECESARIO HACER MAS ESPECÍFICA LA VALIDACIÓN-->
       <div class="button-wrapper">
