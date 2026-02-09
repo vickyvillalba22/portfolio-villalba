@@ -1,9 +1,12 @@
 <script setup lang="ts">
+
 import { ref, onMounted } from 'vue'
 import { useRoute, useRouter } from 'vue-router'
+
 import UserForm from '@/components/small ui/log in/forms/userForm.vue'
 import type { User } from '@/types/user'
-import { getUsers, updateUser } from '@/utils/users'
+import { getUsers } from '@/utils/users'
+
 import { Icon } from '@iconify/vue'
 
 const route = useRoute()
@@ -17,9 +20,9 @@ onMounted(() => {
 })
 
 const onSuccess = (updated: User) => {
-  updateUser(updated)
   router.push('/admin/users')
 }
+
 </script>
 
 <template>

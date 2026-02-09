@@ -4,9 +4,8 @@ import { inject, computed, ref, type Ref } from "vue";
 import type { Project } from '../types/project'
 import { Icon } from "@iconify/vue";
 
-import { User } from '@/types/user'
 import { currentUser } from '@/utils/session'
-
+import { saveSession } from '@/utils/session'
 
 // props tipadas
 const props = defineProps({
@@ -46,7 +45,7 @@ const toggleLike = () => {
     currentUser.value.likedPosts.push(project.value!.id)
   }
 
-  localStorage.setItem('session', JSON.stringify(currentUser.value))
+  saveSession(currentUser.value)
 }
 
 

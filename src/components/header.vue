@@ -3,7 +3,9 @@
 import { ref, computed, onMounted } from 'vue';
 import { Icon } from '@iconify/vue'
 import { navItems } from '@/utils/navItems'
-import type { User } from '@/utils/auth'
+import { currentUser } from '@/utils/session'
+
+const user = currentUser
 
 const props = defineProps<{
   isHome: boolean;
@@ -29,15 +31,7 @@ const visibleItems = computed(() =>
 
 const isMobileMenuOpen = ref(false)
 
-//log in
-const user = ref<User | null>(null)
 
-onMounted(() => {
-  const session = localStorage.getItem('session')
-  if (session) {
-    user.value = JSON.parse(session) as User
-  }
-})
 
 </script>
 

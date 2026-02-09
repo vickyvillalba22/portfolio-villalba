@@ -1,18 +1,10 @@
 <script setup lang="ts">
 
-import { ref, onMounted } from 'vue'
-import type { User } from '@/utils/auth'
+import { computed } from 'vue'
+import { currentUser } from '@/utils/session'
 import Header from '../components/header.vue'
 
-const user = ref<User | null>(null)
-
-onMounted(() => {
-  const session = localStorage.getItem('session')
-  if (session) {
-    user.value = JSON.parse(session) as User
-  }
-})
-
+const user = computed(() => currentUser.value)
 
 </script>
 

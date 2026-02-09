@@ -4,6 +4,7 @@ import { computed, ref } from 'vue'
 import { useRouter } from 'vue-router'
 
 import type { User } from '@/types/user'
+import { clearSession } from '@/utils/session'
 
 import { Icon } from '@iconify/vue';
 
@@ -19,10 +20,6 @@ const emit = defineEmits<{
 
 const isAdmin = computed(() => props.user.role === 'admin')
 
-const logout = () => {
-  localStorage.removeItem('session')
-  router.push('/login')
-}
 
 //manejo de menu 
 const userActions = [
@@ -56,7 +53,7 @@ const actionHandlers: Record<string, () => void> = {
     router.push('/admin/projects')
   },
   logout: () => {
-    localStorage.removeItem('session')
+    clearSession
     router.push('/login')
   },
 

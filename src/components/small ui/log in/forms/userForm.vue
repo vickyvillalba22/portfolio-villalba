@@ -6,7 +6,7 @@ import { Icon } from '@iconify/vue'
 
 import Input from '@/components/small ui/log in/input.vue'
 import { User, UserRole } from '@/types/user'
-import { addUser } from '@/utils/users'
+import { addUser, updateUser } from '@/utils/users'
 
 import { validate } from '@/utils/validation/validate'
 import { userAddSchema, userEditSchema } from '@/utils/validation/schemas'
@@ -56,11 +56,11 @@ watch(
 
 /*manejo de errores*/
 const errors = ref<Record<string, string>>({})
-const schema = computed(() =>
-  props.mode === 'profile'
-    ? userEditSchema
-    : userAddSchema
-)
+const schema = computed(() => {
+  if (props.mode === 'add') return userAddSchema
+  if (props.mode === 'edit') return userEditSchema
+  return userEditSchema
+})
 const validateForm = () => {
   const result = validate(form.value, schema.value)
   errors.value = result.errors as Record<string, string>
@@ -70,27 +70,44 @@ const validateForm = () => {
 /* submit */
 const submit = () => {
   if (props.mode === 'profile') return
-
   if (!validateForm()) return
 
-  const user = new User(
-    props.user?.id ?? Date.now(),
-    name.value,
-    email.value.split('@')[0],
-    email.value,
-    password.value || props.user?.password || '',
-    role.value,
-    props.user?.isSubscribed ?? false,
-    registerDate.value,
-    props.user?.likedPosts ?? []
-  )
-
+  // add: crea uno nuevo
   if (props.mode === 'add') {
+    const user = new User(
+      Date.now(),
+      name.value,
+      email.value.split('@')[0],
+      email.value,
+      password.value,
+      role.value,
+      false,
+      registerDate.value,
+      []
+    )
+
     addUser(user)
+    emit('success', user)
+    return
   }
 
-  emit('success', user)
+  // edit: muta el existente
+  if (props.mode === 'edit' && props.user) {
+    props.user.name = name.value
+    props.user.email = email.value
+    props.user.usuario = email.value.split('@')[0]
+    props.user.role = role.value
+    props.user.registerDate = registerDate.value
+
+    if (password.value) {
+      props.user.password = password.value
+    }
+
+    updateUser(props.user)
+    emit('success', props.user)
+  }
 }
+
 
 
 </script>
@@ -142,7 +159,6 @@ const submit = () => {
         </button>
       </div>
 
-      <!--VER SI SE PUEDE MEJORAR EL CALENDARIO-->
       <Input id="date" label="Fecha" type="date" v-model="registerDate" :error="errors.registerDate" />
 
       <!--VER SI ES NECESARIO HACER MAS ESPECÍFICA LA VALIDACIÓN-->

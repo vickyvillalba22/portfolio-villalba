@@ -5,7 +5,7 @@ import { useRouter } from 'vue-router'
 import Input from '../components/small ui/log in/input.vue'
 
 import { loginUser } from '@/utils/auth'
-import { currentUser } from '@/utils/session'
+import { saveSession } from '@/utils/session'
 import { User } from '@/types/user'
 
 const router = useRouter()
@@ -15,34 +15,15 @@ const password = ref('')
 const error = ref('')
 
 const handleLogin = async () => {
+  const user = await loginUser(usuario.value, password.value)
 
-    const user = await loginUser(usuario.value, password.value)
+  if (!user) {
+    error.value = 'Usuario o contraseña incorrectos'
+    return
+  }
 
-    //MEJORAR ESPECIFICIDAD DE LA VALIDACION
-    if (!user) {
-        error.value = 'Usuario o contraseña incorrectos'
-        return
-    }
-
-    error.value = ''
-
-    //MEJORAR
-    const userInstance = new User(
-        user.id,
-        user.name,
-        user.usuario,
-        user.email ?? '',
-        '',
-        user.role,
-        false,
-        '',
-        user.likedPosts ?? []
-        )
-
-        currentUser.value = userInstance
-        localStorage.setItem('session', JSON.stringify(userInstance))
-
-    router.push('/')
+  saveSession(user)
+  router.push('/')
 }
 
 </script>

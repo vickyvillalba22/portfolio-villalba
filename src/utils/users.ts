@@ -1,6 +1,20 @@
-import type { User } from '@/types/user'
+import { User } from '@/types/user'
 
 const KEY = 'users'
+
+function toUserInstance(u: any): User {
+  return new User(
+    u.id,
+    u.name,
+    u.usuario,
+    u.email,
+    u.password,
+    u.role,
+    u.isSubscribed,
+    u.registerDate,
+    u.likedPosts ?? []
+  )
+}
 
 // inicializa desde users.json SOLO una vez
 export async function initUsers() {
@@ -24,8 +38,13 @@ export async function initUsers() {
 }
 
 export function getUsers(): User[] {
+
   const data = localStorage.getItem(KEY)
-  return data ? JSON.parse(data) : []
+  if (!data) return []
+
+  const raw = JSON.parse(data)
+  return raw.map(toUserInstance)
+  
 }
 
 export function saveUsers(users: User[]) {

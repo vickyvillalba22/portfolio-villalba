@@ -5,9 +5,6 @@ import type { User } from '@/types/user'
 import ProjectCard from '@/components/projectCard.vue'
 import { currentUser } from '@/utils/session';
 
-const props = defineProps<{
-  user: User
-}>()
 
 const projects = inject<Ref<Project[]>>('projects')
 if (!projects) throw new Error('Projects not found')
