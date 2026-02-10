@@ -19,8 +19,16 @@ const emit = defineEmits<{
 
   <article class="user-card">
 
-    <!--HACER LA IMAGEN DINÁMICA-->
-    <img src="/public/imgs/foto Victoria Villalba.png" alt="avatar" class="avatar" />
+    <div class="avatar">
+      <img
+        v-if="user.avatar"
+        :src="user.avatar"
+        alt="avatar"
+      />
+      <span v-else>
+        {{ user.name.charAt(0) }}
+      </span>
+    </div>
 
     <h3>{{ user.name }}</h3>
     <p class="username">@{{ user.usuario }}</p>
@@ -61,7 +69,24 @@ const emit = defineEmits<{
   width: 72px;
   height: 72px;
   border-radius: 50%;
+}
+.avatar img,.avatar span{
+  width: 100%;
+  height: 100%;
+  border-radius: 50%;
+}
+.avatar img{
+  width: 100%;
+  height: 100%;
   object-fit: cover;
+}
+.avatar span{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: var(--color-texto-secundario);
+  color: var(--color-texto-principal);
+  font-size: 1.3em;
 }
 
 h3 {

@@ -32,6 +32,7 @@ const repeatPassword = ref('')
 const email = ref('')
 const role = ref<UserRole>('user')
 const registerDate = ref('')
+const avatar = ref<string | undefined>(undefined)
 
 const form = computed(() => ({
   name: name.value,
@@ -50,6 +51,7 @@ watch(
     email.value = u.email
     role.value = u.role
     registerDate.value = u.registerDate
+    avatar.value = u.avatar
   },
   { immediate: true }
 )
@@ -67,6 +69,18 @@ const validateForm = () => {
   return result.valid
 }
 
+/*manejo de imagen*/
+const onFileChange = (e: Event) => {
+  const file = (e.target as HTMLInputElement).files?.[0]
+  if (!file) return
+
+  const reader = new FileReader()
+  reader.onload = () => {
+    avatar.value = reader.result as string
+  }
+  reader.readAsDataURL(file)
+}
+
 /* submit */
 const submit = () => {
 
@@ -79,6 +93,7 @@ const submit = () => {
       props.user.password = password.value
     }
 
+    props.user.avatar = avatar.value
     updateUser(props.user)
     emit('success', props.user)
   }
@@ -96,7 +111,8 @@ const submit = () => {
       role.value,
       false,
       registerDate.value,
-      []
+      [],
+      avatar.value
     )
 
     addUser(user)
@@ -116,25 +132,34 @@ const submit = () => {
       props.user.password = password.value
     }
 
+    props.user.avatar = avatar.value
     updateUser(props.user)
     emit('success', props.user)
   }
 }
 
-
-
 </script>
-
 
 <template>
 
   <section :class="['user-form', variant]">
 
-    <!--HACER IMAGEN DINAMICA-->
-      <div class="circle">
+    <!--<div class="circle">
         <Icon icon="hugeicons:upload-01" class="i-mob" />
         <span>Subir imagen</span>
-      </div>
+      </div>-->
+
+    <!--imagen dinamica-->
+    <label class="circle">
+      <input
+        type="file"
+        accept="image/*"
+        hidden
+        @change="onFileChange"
+      />
+      <Icon icon="hugeicons:upload-01" class="i-mob" />
+      <span>Subir imagen</span>
+    </label>
 
 
     <form @submit.prevent="submit">

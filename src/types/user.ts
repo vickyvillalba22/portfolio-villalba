@@ -10,7 +10,8 @@ export class User {
     public role: UserRole,
     public isSubscribed: boolean,
     public registerDate: string,
-    public likedPosts: number[]
+    public likedPosts: number[],
+    public avatar?: string
   ) {}
 
   isAdmin() {

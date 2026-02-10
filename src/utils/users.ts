@@ -12,7 +12,8 @@ function toUserInstance(u: any): User {
     u.role,
     u.isSubscribed,
     u.registerDate,
-    u.likedPosts ?? []
+    u.likedPosts ?? [],
+    u.avatar
   )
 }
 

@@ -13,7 +13,8 @@ export function hydrateUser(raw: any): User {
     raw.role,
     raw.isSubscribed ?? false,
     raw.registerDate ?? '',
-    raw.likedPosts ?? []
+    raw.likedPosts ?? [],
+    raw.avatar
   )
 }
 

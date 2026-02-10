@@ -70,7 +70,7 @@ function toggleCard (){
 
       <!--like-->
       <button
-        v-if="isUser&&!isExpanded"
+        v-if="isUser"
         class="like-btn"
         @click.stop="toggleLike"
       >
@@ -169,7 +169,7 @@ function toggleCard (){
   height: 100%;
   object-fit: cover;
   border-radius: 10px;
-  filter: brightness(0.7);
+  filter: brightness(0.4);
 }
 
 .posAb{
@@ -300,6 +300,15 @@ i{
   border: none;
   cursor: pointer;
   z-index: 2;
+}
+.card-simple.expanded .like-btn{
+  left: 3%;
+  top: 75%;
+}
+
+.card-simple.expanded .like-btn .heart{
+  width: 20px;
+  height: 20px;
 }
 
 .heart {

@@ -105,15 +105,23 @@ const resetProfile = async () => {
 
 <section class="profile-card" :class="props.user.role">
 
-    <!--PONER IMAGEN DINAMICA-->
       <div class="info">
+
         <div class="avatar">
-            <span>{{ user.name.charAt(0) }}</span>
+          <img
+            v-if="user.avatar"
+            :src="user.avatar"
+          />
+          <span v-else>
+            {{ user.name.charAt(0) }}
+          </span>
         </div>
+
         <h3 class="name">{{ user.name }}</h3>
         <p class="username">@{{ user.usuario }}</p>
         <!--LA FECHA NO SE RENDERIZA-->
         <p class="date">Register date: {{ user.registerDate }}</p>
+
       </div>
 
       <div class="actions">
@@ -158,11 +166,20 @@ const resetProfile = async () => {
   width: 88px;
   height: 88px;
   border-radius: 50%;
-  background: #222;
-  color: #fff;
+  background: var(--color-texto-secundario);
+  color: var(--color-texto-principal);
   display: grid;
   place-items: center;
   font-size: 2rem;
+  
+}
+
+.avatar img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  aspect-ratio: 1 / 1;
+  border-radius: 50%;
 }
 
 .info{
@@ -187,9 +204,7 @@ const resetProfile = async () => {
 
 .actions {
   display: flex;
-
 }
-
 .action {
   cursor: pointer;
 }
