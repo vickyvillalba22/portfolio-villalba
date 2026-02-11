@@ -42,6 +42,8 @@ const form = computed(() => ({
   registerDate: registerDate.value
 }))
 
+const submitted = ref(false)
+
 /* prefill */
 watch(
   () => props.user,
@@ -83,6 +85,8 @@ const onFileChange = (e: Event) => {
 
 /* submit */
 const submit = () => {
+
+  submitted.value = true
 
   if (props.mode === 'profile' && props.user) {
     props.user.name = name.value
@@ -144,11 +148,6 @@ const submit = () => {
 
   <section :class="['user-form', variant]">
 
-    <!--<div class="circle">
-        <Icon icon="hugeicons:upload-01" class="i-mob" />
-        <span>Subir imagen</span>
-      </div>-->
-
     <!--imagen dinamica-->
     <label class="circle">
       <input
@@ -164,7 +163,13 @@ const submit = () => {
 
     <form @submit.prevent="submit">
 
-      <Input id="name" label="Nombre completo" type="text" v-model="name" :error="errors.name" />
+      <Input 
+        id="name" 
+        label="Nombre completo" 
+        type="text" v-model="name" 
+        :error="errors.name" 
+        :submitted="submitted"
+       />
 
       <Input
         v-if="mode !== 'profile'"
@@ -174,6 +179,7 @@ const submit = () => {
         hasEye
         v-model="password"
         :error="errors.password"
+        :submitted="submitted"
       />
 
       <Input
@@ -184,9 +190,17 @@ const submit = () => {
         hasEye
         v-model="repeatPassword"
         :error="errors.repeatPassword"
+        :submitted="submitted"
       />
 
-      <Input id="email" label="Email" type="email" v-model="email" :error="errors.email" />
+      <Input 
+        id="email" 
+        label="Email" 
+        type="email" 
+        v-model="email" 
+        :error="errors.email"
+        :submitted="submitted" 
+      />
 
       <div v-if="variant === 'admin'" class="role-buttons">
         <button type="button" :class="{ active: role === 'user' }" @click="role = 'user'">
@@ -197,7 +211,14 @@ const submit = () => {
         </button>
       </div>
 
-      <Input id="date" label="Fecha de registro" type="date" v-model="registerDate" :error="errors.registerDate" />
+      <Input 
+        id="date" 
+        label="Fecha de registro" 
+        type="date" 
+        v-model="registerDate" 
+        :error="errors.registerDate"
+        :submitted="submitted"
+      />
 
       <!--VER SI ES NECESARIO HACER MAS ESPECÍFICA LA VALIDACIÓN-->
       <div class="button-wrapper">

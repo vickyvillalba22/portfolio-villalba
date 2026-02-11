@@ -14,6 +14,7 @@ const props = defineProps<{
   materia: string
   herramientas: string
   errors: Record<string, string>
+  submitted: boolean
   touched: Record<string, boolean>
 }>()
 
@@ -33,35 +34,78 @@ const workFrom = ref<'materia' | 'trabajo'>('materia')
 
 
 <template>
+
   <section class="step">
 
-    <h3 class="mayus">{{ mode === 'add' ? 'Agregar proyecto' : 'Editar proyecto' }}</h3>
+    <h3 class="mayus">
+      {{ mode === 'add' ? 'Agregar proyecto' : 'Editar proyecto' }}
+    </h3>
+
     <h4>1. Información general</h4>
 
-    <Input id="titulo" label="Título" type="text" :modelValue="titulo" :error="errors.titulo" :touched="touched.titulo"
-    @update:modelValue="emit('update:titulo', $event)" />
+    <Input 
+      id="titulo" 
+      label="Título" 
+      type="text" 
+      :modelValue="titulo" 
+      :error="errors.titulo" 
+      :submitted="submitted"
+      @update:modelValue="emit('update:titulo', $event)" 
+    />
 
-    <Input id="año" label="Año" type="number" :modelValue="year?.toString() ?? ''"   :error="errors.year" :touched="touched.year"
-    @update:modelValue="emit('update:year', Number($event))" />
+    <Input 
+      id="año" 
+      label="Año" 
+      type="number" 
+      :modelValue="year?.toString() ?? ''"   
+      :error="errors.year" 
+      :submitted="submitted"
+      @update:modelValue="emit('update:year', Number($event))" 
+    />
 
-    <Input id="categoria" label="Categoría" type="text" :modelValue="categoria"   :error="errors.categoria"
-    :touched="touched.categoria"
-    @update:modelValue="emit('update:categoria', $event)" />
+    <Input 
+      id="categoria" 
+      label="Categoría" 
+      type="text" 
+      :modelValue="categoria"   
+      :error="errors.categoria"
+      :submitted="submitted"
+      @update:modelValue="emit('update:categoria', $event)" 
+    />
 
-    <Input id="descripcionBreve" label="Descripción breve" type="text" :modelValue="descripcionCorta" :error="errors.descripcionCorta" :touched="touched.descripcionCorta"
-      @update:modelValue="emit('update:descripcionCorta', $event)" />
+    <Input 
+      id="descripcionBreve" 
+      label="Descripción breve" 
+      type="text" 
+      :modelValue="descripcionCorta" 
+      :error="errors.descripcionCorta" 
+      :touched="touched.descripcionCorta"
+      @update:modelValue="emit('update:descripcionCorta', $event)" 
+    />
 
     <div class="type-buttons">
       <button :class="{ active: workFrom === 'materia' }" @click="workFrom = 'materia'">Materia</button>
       <button :class="{ active: workFrom === 'trabajo' }" @click="workFrom = 'trabajo'">Trabajo</button>
     </div>
 
-    <!--ESTE TIENE QUE APARECER CUANDO HAY CLICK EN MATERIA-->
-    <Input id="nombreMateria" label="Nombre de la materia" type="text" :modelValue="materia"   :error="errors.materia" :touched="touched.materia"
-    @update:modelValue="emit('update:materia', $event)" />
+    <Input 
+      v-if="workFrom === 'materia'"
+      id="nombreMateria" 
+      label="Nombre de la materia" 
+      type="text" 
+      :modelValue="materia"   
+      :error="errors.materia" 
+      :submitted="submitted"
+      @update:modelValue="emit('update:materia', $event)" 
+    />
 
-    <Input id="herramientas" label="Herramientas utilizadas" type="text" :modelValue="herramientas"
-      @update:modelValue="emit('update:herramientas', $event)" />
+    <Input 
+      id="herramientas" 
+      label="Herramientas utilizadas" 
+      type="text" 
+      :modelValue="herramientas"
+      @update:modelValue="emit('update:herramientas', $event)" 
+    />
 
     <button class="next button1" @click="emit('next')">Next</button>
 

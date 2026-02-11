@@ -1,4 +1,3 @@
-// utils/validation/validate.ts
 import type { Rule } from './rules'
 
 export type Schema<T> = {

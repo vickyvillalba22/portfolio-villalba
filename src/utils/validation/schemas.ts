@@ -1,4 +1,3 @@
-// utils/validation/schemas.ts
 import { required, minLength, isEmail, matchField, noFutureDate } from './rules'
 import type { Schema } from './validate'
 

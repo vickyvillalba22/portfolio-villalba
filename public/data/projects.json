@@ -10,7 +10,7 @@
     "linkSecundario": "",
     "year": 2023,
     "materia": "Visual Production",
-    "imagen": "/imgs/def project.jpg",
+    "imagen": "",
     "mostrar": true
   },
 
@@ -25,7 +25,7 @@
     "linkSecundario": "",
     "year": 2023,
     "materia": "Digital Projects I",
-    "imagen": "/public/imgs/def project.jpg",
+    "imagen": "",
     "mostrar": true
   },
 
@@ -40,7 +40,7 @@
     "linkSecundario": "",
     "year": 2023,
     "materia": null,
-    "imagen": "/public/imgs/def project.jpg",
+    "imagen": "",
     "mostrar": true
   },
 
@@ -55,7 +55,7 @@
     "linkSecundario": "",
     "year": 2025,
     "materia": "UX/UI Design",
-    "imagen": "/public/imgs/def project.jpg",
+    "imagen": "",
     "mostrar": true
   },
 
@@ -70,7 +70,7 @@
     "linkSecundario": "",
     "year": 2025,
     "materia": "UX/UI Design",
-    "imagen": "/public/imgs/def project.jpg",
+    "imagen": "",
     "mostrar": true
   },
 
@@ -85,7 +85,7 @@
     "linkSecundario": "",
     "year": 2025,
     "materia": "UX Research Techniques",
-    "imagen": "/imgs/def project.jpg",
+    "imagen": "",
     "mostrar": true
   },
 
@@ -100,7 +100,7 @@
     "linkSecundario": "",
     "year": 2025,
     "materia": null,
-    "imagen": "/public/imgs/def project.jpg",
+    "imagen": "",
     "mostrar": true
   },
 
@@ -115,7 +115,7 @@
     "linkSecundario": "",
     "year": 2024,
     "materia": "2D Animation",
-    "imagen": "/public/imgs/def project.jpg",
+    "imagen": "",
     "mostrar": true
   },
 
@@ -130,7 +130,7 @@
     "linkSecundario": "",
     "year": 2024,
     "materia": "2D Animation",
-    "imagen": "/public/imgs/def project.jpg",
+    "imagen": "",
     "mostrar": true
   },
 
@@ -145,7 +145,7 @@
     "linkSecundario": "",
     "year": 2024,
     "materia": "2D Animation",
-    "imagen": "/public/imgs/def project.jpg",
+    "imagen": "",
     "mostrar": true
   },
 
@@ -160,7 +160,7 @@
     "linkSecundario": "",
     "year": 2024,
     "materia": "Audiovisual Techniques",
-    "imagen": "/public/imgs/def project.jpg",
+    "imagen": "",
     "mostrar": true
   },
 
@@ -175,7 +175,7 @@
     "linkSecundario": "",
     "year": 2024,
     "materia": "Audiovisual Techniques",
-    "imagen": "/public/imgs/def project.jpg",
+    "imagen": "",
     "mostrar": true
   },
 
@@ -190,7 +190,7 @@
     "linkSecundario": "",
     "year": 2025,
     "materia": "Experimental Lab",
-    "imagen": "/public/imgs/def project.jpg",
+    "imagen": "",
     "mostrar": false
   },
 
@@ -205,7 +205,7 @@
     "linkSecundario": "",
     "year": 2024,
     "materia": "Graphic Design",
-    "imagen": "/public/imgs/def project.jpg",
+    "imagen": "",
     "mostrar": true
   },
 
@@ -220,7 +220,7 @@
     "linkSecundario": "",
     "year": 2024,
     "materia": "Graphic Design",
-    "imagen": "/public/imgs/def project.jpg",
+    "imagen": "",
     "mostrar": true
   },
 
@@ -235,7 +235,7 @@
     "linkSecundario": "",
     "year": 2024,
     "materia": "Digital Bussinesses I",
-    "imagen": "/public/imgs/def project.jpg",
+    "imagen": "",
     "mostrar": true
   },
 
@@ -250,7 +250,7 @@
     "linkSecundario": "",
     "year": 2025,
     "materia": "Basic Graphic Design",
-    "imagen": "/public/imgs/def project.jpg",
+    "imagen": "",
     "mostrar": true
   },
 
@@ -265,7 +265,7 @@
     "linkSecundario": "",
     "year": 2025,
     "materia": "Basic Graphic Design",
-    "imagen": "/public/imgs/def project.jpg",
+    "imagen": "",
     "mostrar": false
   },
 
@@ -280,7 +280,7 @@
     "linkSecundario": "",
     "year": 2023,
     "materia": null,
-    "imagen": "/public/imgs/def project.jpg",
+    "imagen": "",
     "mostrar": true
   },
 
@@ -295,7 +295,7 @@
     "linkSecundario": "",
     "year": 2025,
     "materia": null,
-    "imagen": "/public/imgs/def project.jpg",
+    "imagen": "",
     "mostrar": true
   },
 
@@ -310,7 +310,7 @@
     "linkSecundario": "",
     "year": 2023,
     "materia": null,
-    "imagen": "/public/imgs/def project.jpg",
+    "imagen": "",
     "mostrar": true
   },
 
@@ -325,7 +325,7 @@
     "linkSecundario": "",
     "year": 2023,
     "materia": null,
-    "imagen": "/public/imgs/def project.jpg",
+    "imagen": "",
     "mostrar": true
   },
 
@@ -340,7 +340,7 @@
     "linkSecundario": "",
     "year": 2025,
     "materia": null,
-    "imagen": "/public/imgs/def project.jpg",
+    "imagen": "",
     "mostrar": false
   },
 
@@ -355,7 +355,7 @@
     "linkSecundario": "",
     "year": 2024,
     "materia": "Multimedia Programming I",
-    "imagen": "/public/imgs/def project.jpg",
+    "imagen": "",
     "mostrar": true
   },
 
@@ -370,7 +370,7 @@
     "linkSecundario": "",
     "year": 2025,
     "materia": "Multimedia Programming II",
-    "imagen": "/public/imgs/def project.jpg",
+    "imagen": "",
     "mostrar": false
   },
   {
@@ -384,7 +384,7 @@
     "linkSecundario": "",
     "year": 2025,
     "materia": "Multimedia Programming II",
-    "imagen": "/public/imgs/def project.jpg",
+    "imagen": "",
     "mostrar": false
   },
 
@@ -399,7 +399,7 @@
     "linkSecundario": "",
     "year": 2025,
     "materia": "Multimedia Programming II",
-    "imagen": "/public/imgs/def project.jpg",
+    "imagen": "",
     "mostrar": true
   },
 
@@ -414,7 +414,7 @@
     "linkSecundario": "",
     "year": 2025,
     "materia": "Multimedia Programming II",
-    "imagen": "/public/imgs/def project.jpg",
+    "imagen": "",
     "mostrar": true
   },
 
@@ -429,7 +429,7 @@
     "linkSecundario": "",
     "year": 2025,
     "materia": "Object-Oriented Programming",
-    "imagen": "/public/imgs/def project.jpg",
+    "imagen": "",
     "mostrar": true
   },
 
@@ -444,7 +444,7 @@
     "linkSecundario": "",
     "year": 2025,
     "materia": null,
-    "imagen": "/public/imgs/def project.jpg",
+    "imagen": "",
     "mostrar": true
   },
 
@@ -459,7 +459,7 @@
     "linkSecundario": "",
     "year": 2024,
     "materia": "Multimedia Programming I",
-    "imagen": "/public/imgs/def project.jpg",
+    "imagen": "",
     "mostrar": true
   },
 
@@ -474,7 +474,7 @@
     "linkSecundario": "",
     "year": 2025,
     "materia": "Game Design",
-    "imagen": "/public/imgs/def project.jpg",
+    "imagen": "",
     "mostrar": true
   },
 
@@ -489,7 +489,7 @@
     "linkSecundario": "",
     "year": 2025,
     "materia": "3D Design",
-    "imagen": "/public/imgs/def project.jpg",
+    "imagen": "",
     "mostrar": true
   },
   {
@@ -503,7 +503,7 @@
     "linkSecundario": "",
     "year": 2025,
     "materia": "History and Appreciation of Art",
-    "imagen": "/public/imgs/galeria-digital-interactiva.jpg",
+    "imagen": "",
     "mostrar": true
   }
 

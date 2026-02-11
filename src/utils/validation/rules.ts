@@ -1,4 +1,3 @@
-// utils/validation/rules.ts
 export type Rule<T = any> = (value: T, data?: any) => string | null
 
 export const required = (msg = 'Campo obligatorio'): Rule =>

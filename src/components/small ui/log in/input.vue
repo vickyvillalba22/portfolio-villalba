@@ -17,6 +17,7 @@ interface Props {
   autoResize?: boolean 
 
   error?: string
+  submitted?: boolean
 
 }
 
@@ -97,7 +98,7 @@ const today = computed(() => {
           :type="inputType"
           :placeholder="placeholder"
           :value="modelValue"
-          :class="{ error: error && touched }"
+          :class="{ error: error && (touched || submitted) }"
           @blur="onBlur"
           v-bind="type === 'date' ? { max: today } : {}"
           @input="emit('update:modelValue', ($event.target as HTMLInputElement).value)"
@@ -153,7 +154,7 @@ const today = computed(() => {
 
     </div>
 
-    <p v-if="error && touched" class="error-text">
+    <p v-if="error && (touched || submitted)" class="error-text">
       {{ error }}
     </p>
 

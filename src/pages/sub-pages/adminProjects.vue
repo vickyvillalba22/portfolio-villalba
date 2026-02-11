@@ -79,11 +79,14 @@ function back(){
       
     </header>
 
-    <!-- grid -->
+    <!--projects-->
     <div class="grid">
       <div v-for="project in filteredProjects" :key="project.id" class="card">
         <!--COMPLETAR IMGS DE PROJECTS SIN MOSTRAR-->
-        <img :src="`/imgs-projects/${project.id}.png`" :alt="project.titulo" />
+        <img 
+        :src="project.imagen || `/imgs-projects/${project.id}.png`" 
+        :alt="project.titulo"
+        />
 
         <h3>{{ project.titulo }}</h3>
 

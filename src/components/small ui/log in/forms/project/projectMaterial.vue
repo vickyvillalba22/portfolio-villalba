@@ -2,9 +2,6 @@
 
 import Input from '@/components/small ui/log in/input.vue'
 
-import { validate } from '@/utils/validation/validate'
-import { projectStep2Schema } from '@/utils/validation/schemas'
-
 type Mode = 'add' | 'edit'
 
 const props = defineProps<{
@@ -14,6 +11,7 @@ const props = defineProps<{
   linkSecundario: string
   imagen: string
   errors: Record<string, string>
+  submitted: boolean
   touched: Record<string, boolean>
 }>()
 
@@ -26,22 +24,7 @@ const emit = defineEmits([
   'submit'
 ])
 
-/* validar y enviar */
-const submit = () => {
-  const result = validate(
-    { descripcionLarga: props.descripcionLarga },
-    projectStep2Schema
-  )
-
-  if (!result.valid) {
-    console.log(result.errors)
-    return
-  }
-
-  emit('submit')
-}
 </script>
-
 
 <template>
 
@@ -56,7 +39,7 @@ const submit = () => {
       type="textarea"
       :modelValue="descripcionLarga"
       :error="errors.descripcionLarga"
-      :touched="touched.descripcionLarga"
+      :submitted="submitted"
       :placeholder="mode === 'add'
         ? 'Escribí una descripción detallada del proyecto…'
         : undefined"
@@ -80,7 +63,7 @@ const submit = () => {
 
     <div class="actions">
       <button class="button2 volver" @click="emit('back')">Volver al paso anterior</button>
-      <button class="confirm button2" @click="submit">
+      <button class="confirm button2" @click="emit('submit')">
         {{ mode === 'add' ? 'Subir' : 'Actualizar' }}
       </button>
     </div>

@@ -22,6 +22,9 @@ const emit = defineEmits<{
 
 const step = ref<1 | 2>(1)
 
+const submittedStep1 = ref(false)
+const submittedStep2 = ref(false)
+
 /* estado del proyecto */
 const titulo = ref('')
 const categoria = ref('')
@@ -80,10 +83,7 @@ const validateStep1 = () => {
 
 //validacion de step 1 antes de next step
 const nextStep = () => {
-  Object.keys(formStep1.value).forEach(key => {
-    touched.value[key] = true
-  })
-
+  submittedStep1.value = true
   if (!validateStep1()) return
   step.value = 2
 }
@@ -97,9 +97,8 @@ const validateStep2 = () => {
 }
 
 const submit = () => {
-  Object.keys(formStep2.value).forEach(key => {
-    touched.value[key] = true
-  })
+
+  submittedStep2.value = true
 
   if (!validateStep2()) return
 
@@ -111,7 +110,10 @@ const submit = () => {
     categoria.value,
     descripcionCorta.value,
     descripcionLarga.value,
-    herramientas.value.split(',').map(h => h.trim()),
+    herramientas.value
+      .split(',')
+      .map(h => h.trim())
+      .filter(h => h.length > 0),
     linkPrincipal.value,
     linkSecundario.value,
     year.value!,
@@ -141,6 +143,7 @@ const submit = () => {
       v-model:materia="materia"
       v-model:herramientas="herramientas"
       :errors="errors"
+      :submitted="submittedStep1"
       :touched="touched"
       @next="nextStep"
     />
@@ -153,6 +156,7 @@ const submit = () => {
       v-model:linkSecundario="linkSecundario"
       v-model:imagen="imagen"
       :errors="errors"
+      :submitted="submittedStep2"
       :touched="touched"
       @back="prevStep"
       @submit="submit"
