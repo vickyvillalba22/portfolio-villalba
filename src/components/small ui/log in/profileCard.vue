@@ -6,6 +6,7 @@ import { useRouter } from 'vue-router'
 import type { User } from '@/types/user'
 import { updateUser, resetUserById } from '@/utils/users'
 import { clearSession, saveSession, currentUser } from '@/utils/session'
+import ModalPregunta from '@/components/small ui/log in/modals/modalPregunta.vue'
 
 import { Icon } from '@iconify/vue';
 
@@ -20,7 +21,7 @@ const emit = defineEmits<{
 }>()
 
 const isAdmin = computed(() => props.user.role === 'admin')
-
+const isLogoutModalOpen = ref(false)
 
 //manejo de menu 
 const userActions = [
@@ -50,6 +51,7 @@ const activeAction = ref<string | null>(null)
 
 //mapa de acciones
 const actionHandlers: Record<string, () => void> = {
+
   users: () => {
     router.push('/admin/users')
   },
@@ -58,11 +60,8 @@ const actionHandlers: Record<string, () => void> = {
   },
 
   logout: () => {
-    clearSession
-    router.push('/login')
+    isLogoutModalOpen.value = true
   },
-
-  //SE IRÁN AJUSTANDO
 
   subscribe: () => {
 
@@ -76,6 +75,11 @@ const actionHandlers: Record<string, () => void> = {
   edit: () => {
     router.push('/profile/edit')
   }
+}
+
+const confirmLogout = () => {
+  clearSession() 
+  router.push('/login')
 }
 
 const handleAction = (action: string) => {
@@ -147,6 +151,15 @@ const resetProfile = async () => {
         <Icon icon="hugeicons:reload" class="i-mob"/>
         Reset profile
       </button>
+
+      <ModalPregunta
+        v-model="isLogoutModalOpen"
+        question="Are you sure you want to log out?"
+        confirmText="Log out"
+        cancelText="Cancel"
+        confirmColor="error"
+        :onConfirm="confirmLogout"
+      />
 
     </section>
 
