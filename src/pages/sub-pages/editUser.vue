@@ -6,6 +6,7 @@ import { useRoute, useRouter } from 'vue-router'
 import UserForm from '@/components/small ui/log in/forms/userForm.vue'
 import type { User } from '@/types/user'
 import { getUsers } from '@/utils/users'
+import ModalAviso from '@/components/small ui/log in/modals/modalAviso.vue'
 
 import { Icon } from '@iconify/vue'
 
@@ -13,6 +14,7 @@ const route = useRoute()
 const router = useRouter()
 
 const user = ref<User | null>(null)
+const isSuccessModalOpen = ref(false)
 
 onMounted(() => {
   const id = Number(route.params.id)
@@ -20,6 +22,9 @@ onMounted(() => {
 })
 
 const onSuccess = (updated: User) => {
+  isSuccessModalOpen.value = true
+}
+const goBackToUsers = () => {
   router.push('/admin/users')
 }
 
@@ -41,6 +46,14 @@ const onSuccess = (updated: User) => {
       variant="admin"
       :user="user"
       @success="onSuccess"
+    />
+
+    <ModalAviso
+      v-model="isSuccessModalOpen"
+      message="User updated successfully!"
+      buttonText="Back to users"
+      buttonColor="success"
+      :action="goBackToUsers"
     />
 
   </section>

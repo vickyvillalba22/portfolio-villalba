@@ -1,8 +1,12 @@
 <script setup lang="ts">
+
+import { ref } from "vue"
+
 import { Icon } from "@iconify/vue"
 import type { Project } from "@/types/project"
 import { useProjectFilters } from "@/utils/useProjectFilters"
 import ProjectFilters from "@/components/small ui/projectFilters.vue"
+import ModalPregunta from "@/components/small ui/log in/modals/modalPregunta.vue"
 
 import {
   useProjects,
@@ -13,6 +17,9 @@ import {
 import router from "@/router"
 
 const { projects } = useProjects()
+
+const isDeleteModalOpen = ref(false)
+const projectToDelete = ref<Project | null>(null)
 
 // filtros reutilizados
 const {
@@ -28,7 +35,14 @@ const {
 } = useProjectFilters(projects, { ignoreMostrar: true })
 
 function deleteProject(project: Project) {
-  deleteProjectById(project.id)
+  projectToDelete.value = project
+  isDeleteModalOpen.value = true
+}
+function confirmDeleteProject() {
+  if (!projectToDelete.value) return
+
+  deleteProjectById(projectToDelete.value.id)
+  projectToDelete.value = null
 }
 
 function addProject() {
@@ -82,7 +96,6 @@ function back(){
     <!--projects-->
     <div class="grid">
       <div v-for="project in filteredProjects" :key="project.id" class="card">
-        <!--COMPLETAR IMGS DE PROJECTS SIN MOSTRAR-->
         <img 
         :src="project.imagen || `/imgs-projects/${project.id}.png`" 
         :alt="project.titulo"
@@ -105,7 +118,18 @@ function back(){
     <button class="add flotante" @click="addProject">
       <Icon icon="hugeicons:plus-sign" class="i-mob" />
     </button>
+
+    <ModalPregunta
+      v-model="isDeleteModalOpen"
+      :question="`Are you sure you want to delete '${projectToDelete?.titulo}'?`"
+      confirmText="Delete"
+      cancelText="Cancel"
+      confirmColor="error"
+      :onConfirm="confirmDeleteProject"
+    />
+
   </section>
+  
 </template>
 
 <style scoped>

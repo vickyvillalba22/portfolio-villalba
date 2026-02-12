@@ -48,9 +48,7 @@ const adminActions = [
   { label: 'Manage users', icon: 'hugeicons:user-edit-01', action: 'users' },
   { label: 'Subscribed users', icon: 'hugeicons:user-check-01', action: 'subscribed' },
   { label: 'Manage projects', icon: 'hugeicons:pencil-edit-02', action: 'content' },
-  { label: 'Log out', icon: 'hugeicons:logout-04', action: 'logout' },
-  
-
+  { label: 'Log out', icon: 'hugeicons:logout-04', action: 'logout' }
 ]
 
 //elije el array a usar
@@ -138,7 +136,6 @@ const resetProfile = async () => {
 
         <h3 class="name">{{ user.name }}</h3>
         <p class="username">@{{ user.usuario }}</p>
-        <!--LA FECHA NO SE RENDERIZA-->
         <p class="date">Register date: {{ user.registerDate }}</p>
 
       </div>

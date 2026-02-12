@@ -7,6 +7,7 @@ import UserCard from '@/components/small ui/log in/userCard.vue'
 import FilterTabs from '@/components/small ui/log in/filterTabs.vue'
 import type { User } from '@/types/user'
 import { initUsers, getUsers, deleteUserById, resetUsers } from '@/utils/users'
+import ModalPregunta from '@/components/small ui/log in/modals/modalPregunta.vue'
 
 import { Icon } from '@iconify/vue'
 
@@ -15,6 +16,9 @@ const filter = ref<'all' | 'admin' | 'user'>('all')
 
 const loading = ref(false)
 const error = ref<string | null>(null)
+
+const isDeleteModalOpen = ref(false)
+const userToDelete = ref<number | null>(null)
 
 onMounted(async () => {
   loading.value = true
@@ -47,10 +51,17 @@ const editUser = (user: User) => {
 }
 
 const deleteUser = (id: number) => {
-  deleteUserById(id)
-  users.value = getUsers()
+  userToDelete.value = id
+  isDeleteModalOpen.value = true
 }
+const confirmDelete = () => {
+  if (userToDelete.value === null) return
 
+  deleteUserById(userToDelete.value)
+  users.value = getUsers()
+
+  userToDelete.value = null
+}
 
 const addUser = () => {
   router.push('/admin/users/add')
@@ -100,6 +111,15 @@ const goBack = () => {
     <button class="add flotante" @click="addUser">
         <Icon icon="hugeicons:plus-sign" class="i-mob" />
     </button>
+
+    <ModalPregunta
+      v-model="isDeleteModalOpen"
+      question="Are you sure you want to delete this user?"
+      confirmText="Delete"
+      cancelText="Cancel"
+      confirmColor="error"
+      :onConfirm="confirmDelete"
+    />
 
   </section>
 </template>

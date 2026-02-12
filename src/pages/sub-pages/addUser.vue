@@ -1,10 +1,23 @@
 <script setup lang="ts">
 
 import { useRouter } from 'vue-router'
+import { ref } from 'vue'
+
 import { Icon } from '@iconify/vue'
 import UserForm from '@/components/small ui/log in/forms/userForm.vue'
+import ModalAviso from '@/components/small ui/log in/modals/modalAviso.vue'
 
 const router = useRouter()
+
+const isSuccessModalOpen = ref(false)
+
+const handleSuccess = () => {
+  isSuccessModalOpen.value = true
+}
+
+const goBackToUsers = () => {
+  router.push('/admin/users')
+}
 
 </script>
 
@@ -12,7 +25,6 @@ const router = useRouter()
 
   <section class="add-user">
 
-    <!-- header -->
     <header class="top">
       <button @click="router.back()">
         <Icon icon="hugeicons:arrow-left-02" class="i-mob" />
@@ -20,12 +32,20 @@ const router = useRouter()
       <h3 class="subtitulo">Agregar usuario o administrador</h3>
     </header>
 
-    <!-- form -->
     <UserForm
       mode="add"
       variant="admin"
-      @success="router.push('/admin/users')"
+      @success="handleSuccess"
     />
+
+    <ModalAviso
+      v-model="isSuccessModalOpen"
+      message="User created successfully!"
+      buttonText="Back to users"
+      buttonColor="success"
+      :action="goBackToUsers"
+    />
+    
   </section>
 
 </template>

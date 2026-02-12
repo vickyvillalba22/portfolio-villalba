@@ -1,19 +1,28 @@
 <script setup lang="ts">
 
+import { ref } from "vue"
 import { useRouter } from "vue-router"
 
 import ProjectForm from "@/components/small ui/log in/forms/project/projectForm.vue"
 import type { Project } from "@/types/project"
 import { addProject } from "@/utils/projectsStore"
+import ModalAviso from "@/components/small ui/log in/modals/modalAviso.vue"
 
 import { Icon } from "@iconify/vue"
 
 const router = useRouter()
 
+const isSuccessModalOpen = ref(false)
+
 function handleSubmit(project: Project) {
   addProject(project)
+  isSuccessModalOpen.value = true
+}
+
+function goBackToProjects() {
   router.push("/admin/projects")
 }
+
 </script>
 
 <template>
@@ -29,6 +38,14 @@ function handleSubmit(project: Project) {
         mode="add"
         title="Agregar proyecto"
         @submit="handleSubmit"
+    />
+
+    <ModalAviso
+        v-model="isSuccessModalOpen"
+        message="Project created successfully!"
+        buttonText="Back to projects"
+        buttonColor="success"
+        :action="goBackToProjects"
     />
 
 </template>
