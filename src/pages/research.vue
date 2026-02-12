@@ -245,8 +245,6 @@ h4{
 
 .principio button{
     padding: 2px 18px;
-    border: 1px solid var(--verde);
-    border-radius: 16px;
     width: fit-content;
 }
 
@@ -309,13 +307,6 @@ h4{
 
   .principio h4{
     color: var(--verde);
-  }
-
-  .principio button{
-    padding: 2px 18px;
-    border: 1px solid var(--verde);
-    border-radius: 16px;
-    width: fit-content;
   }
 
 </style>
