@@ -91,7 +91,7 @@ provide('carousel-items', toolsItems)
 
   <main id="about">
 
-    <h2 class="mayus thin">About Me</h2>
+    <h2 class="mayus">About Me</h2>
 
     <!--INTRO-->
     <section class="intro">
@@ -176,8 +176,9 @@ provide('carousel-items', toolsItems)
 }
 
 h2{
-  font-size: 40px;
+  font-size: 2.2em;
   width: 100%;
+  font-family: var(--font-thin);
 }
 h4{
   font-size: 24px;

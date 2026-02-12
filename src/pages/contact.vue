@@ -97,4 +97,9 @@ p{
   color: var(--color-texto-principal);
 }
 
+:deep(.i-mob g),
+:deep(.i-mob path) {
+  stroke-width: 0.8;
+}
+
 </style>

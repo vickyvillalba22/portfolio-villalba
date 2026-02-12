@@ -107,7 +107,7 @@ const reasons: ReasonItem[] = [
 
     <main id="research">
 
-        <h2 class="mayus thin">Research</h2>
+        <h2 class="mayus">Research</h2>
 
         <section id="heroR">
 
@@ -193,10 +193,12 @@ section{
 }
 h2{
     width: 100%;
-    font-size: 40px;
+    font-size: 2.2em;
+    font-family: var(--font-thin);
 }
 h4{
     font-size: 20px;
+    font-family: var(--font-thin);
 }
 .intro{
     display: flex;

@@ -26,7 +26,7 @@ const isLoading = inject<Ref<boolean>>("isLoading");
 
     <section id="projects">
 
-        <h2 class="mayus thin">Projects</h2>
+        <h2 class="mayus">Projects</h2>
 
         <!--loader-->
         <LoaderFilters v-if="isLoading" />
@@ -77,7 +77,8 @@ const isLoading = inject<Ref<boolean>>("isLoading");
 }
 
 h2{
-    font-size: 40px;
+    font-size: 2.2em;
+    font-family: var(--font-thin);
     width: 100%;
 }
 

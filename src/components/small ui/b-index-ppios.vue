@@ -21,7 +21,6 @@ const emit = defineEmits<{
 <template>
 
     <button
-        class="thin"
         :class="{ active: isActive }"
         @click="emit('select')"
     >
@@ -37,12 +36,13 @@ button{
     border-radius: 8px;
     padding: 5px 15px;
     background-color: var(--negro);
+    font-family: var(--font-thin);
 }
 
 button.active{
     background-color: var(--verde);
     color: var(--negro);
-    font-weight: 700;
+    font-family: var(--font-bold);
     border: none;
 }
 

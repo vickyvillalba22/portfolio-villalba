@@ -240,6 +240,8 @@ const resetProfile = async () => {
 
 .actions {
   display: flex;
+  justify-content: center;
+  gap: 10px;
 }
 .action {
   cursor: pointer;
@@ -252,6 +254,7 @@ const resetProfile = async () => {
     gap: 10px;
     font-size: 14px;
     padding: 5px 10px;
+    max-width: 20%;
 }
 
 .menu-item.active {
