@@ -21,6 +21,7 @@
   --font-princ: "creatoDisplay", 'openSans';
   --font-bold: "creatoBold", 'openSans';
   --font-thin: "creatoThin", 'openSans';
+  --font-light: "creatoLight", "openSans";
   --borde-rosa: 0.5px solid var(--rosa);
   --borde-azul: 0.5px solid var(--azul);
   --forms1: #2D2D2D;
@@ -37,6 +38,10 @@
   src: url('/src/assets/font/creato_display/CreatoDisplay-Thin.otf'); 
 }
 @font-face {
+  font-family: 'creatoLight';
+  src: url('/src/assets/font/creato_display/CreatoDisplay-Light.otf'); 
+}
+@font-face {
   font-family: 'creatoBold';
   src: url('/src/assets/font/creato_display/CreatoDisplay-Bold.otf'); 
 }
@@ -48,6 +53,7 @@ h1,h2,h3,h4,p,button,span,input,label,a,li{
 }
 .subtitulo{
   font-family: var(--font-thin);
+  font-size: 1.6em;
 }
 
 body{

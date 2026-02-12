@@ -33,6 +33,7 @@ const isLoading = inject<Ref<boolean>>("isLoading");
 
         <ProjectFilters
             v-if="!isLoading"
+            mode="violeta"
             :years="projectFilters.years"
             :categories="projectFilters.categories"
             :selectedYears="projectFilters.selectedYears.value"

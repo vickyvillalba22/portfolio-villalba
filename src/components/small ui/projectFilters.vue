@@ -1,8 +1,8 @@
 <script setup lang="ts">
-import { ref, type Ref } from 'vue'
+import { ref, computed } from 'vue'
 import { Icon } from '@iconify/vue'
 
-defineProps<{
+const props = defineProps<{
   years: number[]
   categories: string[]
   selectedYears: Set<number>
@@ -11,18 +11,30 @@ defineProps<{
   toggleCategory: (cat: string) => void
   clearYears: () => void
   clearCategories: () => void
+  mode: 'rosa' | 'violeta'
 }>()
 
 const activeYear = ref(false)
 const activeArea = ref(false)
+
+const accentColor = computed(() => {
+  return props.mode === 'rosa'
+    ? 'var(--rosa)'
+    : 'var(--violeta)'
+})
+
 </script>
 
 <template>
-  <div id="filters">
+
+  <div id="filters" :style="{ '--accent': accentColor }">
+
     <div class="manageF">
+
       <Icon icon="hugeicons:filter" class="i-mob" />
       <p @click="activeYear = !activeYear" :class="{ bold: activeYear }">Year</p>
       <p @click="activeArea = !activeArea" :class="{ bold: activeArea }">Area</p>
+
     </div>
 
     <!-- AÑOS -->
@@ -96,7 +108,7 @@ const activeArea = ref(false)
     font-size: 15px;
 }
 .pill.active {
-    color: var(--violeta);
+  color: var(--accent);
 }
 
 .contPills{
@@ -108,8 +120,8 @@ const activeArea = ref(false)
 }
 
 .i-mob{
-    color: var(--violeta);
     width: 24px;
+    color: var(--accent);
 }
 
 </style>

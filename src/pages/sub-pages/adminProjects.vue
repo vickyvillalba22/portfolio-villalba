@@ -77,6 +77,7 @@ function back(){
       <h3 class="subtitulo">Administrar proyectos</h3>
 
       <ProjectFilters
+        mode="rosa"
         :years="years"
         :categories="categories"
         :selectedYears="selectedYears"
@@ -95,6 +96,7 @@ function back(){
 
     <!--projects-->
     <div class="grid">
+
       <div v-for="project in filteredProjects" :key="project.id" class="card">
         <img 
         :src="project.imagen || `/imgs-projects/${project.id}.png`" 
@@ -148,7 +150,6 @@ function back(){
   gap: 15px;
   width: 100%;
 }
-
 .back {
   display: flex;
 }
@@ -162,7 +163,7 @@ function back(){
 }
 
 .card {
-  background: var(--blanco-suave);
+  background: var(--forms1);
   border-radius: 8px;
   padding: 16px;
   width: 48%;
@@ -173,8 +174,8 @@ function back(){
   gap: 10px;
 }
 
-h3 {
-  font-size: 16px;
+.card h3{
+  font-size: 1.1em;
   font-family: var(--font-thin);
 }
 
@@ -214,7 +215,7 @@ h3 {
 }
 
 .actions button {
-  background-color: var(--forms1);
+  background-color: var(--blanco-suave);
   padding: 8px;
   border-radius: 100%;
 }
