@@ -78,7 +78,7 @@ function getColor() {
   text-align: center;
   display: flex;
   flex-direction: column;
-  justify-content: space-between;
+  gap: 20px;
   height: 90%;
   width: 100%;
 }
@@ -94,6 +94,7 @@ button{
     padding: 10px 16px;
     border-radius: 8px;
     cursor: pointer;
+    font-family: var(--font-princ);
 }
 
 .btn-confirm {

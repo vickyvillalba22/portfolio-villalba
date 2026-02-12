@@ -1,6 +1,12 @@
 <script setup lang="ts">
+
 import { useRouter } from 'vue-router'
+import { computed } from 'vue'
+
 import BaseModal from '@/components/small ui/log in/modals/baseModal.vue'
+
+import successImg from '@/assets/imgs/success1.png'
+import errorImg from '@/assets/imgs/error1.png'
 
 const props = defineProps<{
   modelValue: boolean
@@ -33,25 +39,39 @@ function getColor() {
     default: return 'var(--azul)'
   }
 }
+
+const resolvedImage = computed(() => {
+  if (props.image) return props.image
+
+  if (props.buttonColor === 'success') return successImg
+  if (props.buttonColor === 'error') return errorImg
+
+  return undefined
+})
+
 </script>
 
 <template>
   <BaseModal :modelValue="modelValue" @update:modelValue="emit('update:modelValue', $event)">
     <div class="modal-content">
       
-      <img v-if="image" :src="image" class="modal-image" />
+        <img
+            v-if="resolvedImage"
+            :src="resolvedImage"
+            class="modal-image"
+        />
 
-      <p class="modal-message">
-        {{ message }}
-      </p>
+        <p class="modal-message">
+            {{ message }}
+        </p>
 
-      <button
-        class="modal-button"
-        :style="{ backgroundColor: getColor() }"
-        @click="handleAction"
-      >
-        {{ buttonText }}
-      </button>
+        <button
+            class="modal-button"
+            :style="{ backgroundColor: getColor() }"
+            @click="handleAction"
+        >
+            {{ buttonText }}
+        </button>
 
     </div>
   </BaseModal>

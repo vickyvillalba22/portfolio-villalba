@@ -38,9 +38,8 @@ function close() {
   padding: 2rem;
   border-radius: 8px;
   width: 70%;
-  height: 25vh;
+  min-height: 25vh;
   display: flex;
-  align-items: center;
   justify-content: center;
 }
 </style>

@@ -22,14 +22,27 @@ const emit = defineEmits<{
 
 const isAdmin = computed(() => props.user.role === 'admin')
 const isLogoutModalOpen = ref(false)
+const isSubscribeModalOpen = ref(false)
 
 //manejo de menu 
-const userActions = [
-  { label: 'Liked posts', icon: 'hugeicons:heart-check', action: 'likes' },
-  { label: 'Subscribe to portfolio', icon: 'hugeicons:user-add-01', action: 'subscribe' },
-  { label: 'Edit profile', icon: 'hugeicons:user-edit-01', action: 'edit' },
-  { label: 'Log out', icon: 'hugeicons:logout-04', action: 'logout' }
-]
+const userActions = computed(() => {
+  const subscribed = currentUser.value?.isSubscribed
+
+  return [
+    { label: 'Liked posts', icon: 'hugeicons:heart-check', action: 'likes' },
+    { 
+      label: subscribed 
+        ? 'Unsubscribe from portfolio' 
+        : 'Subscribe to portfolio',
+      icon: subscribed 
+        ? 'hugeicons:user-remove-01' 
+        : 'hugeicons:user-add-01',
+      action: 'subscribe'
+    },
+    { label: 'Edit profile', icon: 'hugeicons:user-edit-01', action: 'edit' },
+    { label: 'Log out', icon: 'hugeicons:logout-04', action: 'logout' }
+  ]
+})
 
 const adminActions = [
   { label: 'Manage users', icon: 'hugeicons:user-edit-01', action: 'users' },
@@ -44,7 +57,7 @@ const adminActions = [
 const actions = computed(() =>
   props.user.role === 'admin'
     ? adminActions
-    : userActions
+    : userActions.value
 )
 
 const activeAction = ref<string | null>(null)
@@ -64,12 +77,7 @@ const actionHandlers: Record<string, () => void> = {
   },
 
   subscribe: () => {
-
-    if (!currentUser.value) return
-    currentUser.value.toggleSubscription()
-    saveSession(currentUser.value)
-    updateUser(currentUser.value)
-
+    isSubscribeModalOpen.value = true
   },
 
   edit: () => {
@@ -80,6 +88,13 @@ const actionHandlers: Record<string, () => void> = {
 const confirmLogout = () => {
   clearSession() 
   router.push('/login')
+}
+const confirmSubscribe = () => {
+  if (!currentUser.value) return
+
+  currentUser.value.toggleSubscription()
+  saveSession(currentUser.value)
+  updateUser(currentUser.value)
 }
 
 const handleAction = (action: string) => {
@@ -159,6 +174,17 @@ const resetProfile = async () => {
         cancelText="Cancel"
         confirmColor="error"
         :onConfirm="confirmLogout"
+      />
+
+      <ModalPregunta
+        v-model="isSubscribeModalOpen"
+        :question="currentUser?.isSubscribed 
+          ? 'Do you want to unsubscribe from the portfolio?' 
+          : 'Do you want to subscribe to the portfolio?'"
+        :confirmText="currentUser?.isSubscribed ? 'Unsubscribe' : 'Subscribe'"
+        cancelText="Cancel"
+        confirmColor="user"
+        :onConfirm="confirmSubscribe"
       />
 
     </section>

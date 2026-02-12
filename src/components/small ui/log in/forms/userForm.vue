@@ -98,7 +98,6 @@ const submit = () => {
     }
 
     props.user.avatar = avatar.value
-    updateUser(props.user)
     emit('success', props.user)
   }
 
