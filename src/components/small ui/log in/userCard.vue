@@ -55,7 +55,7 @@ const emit = defineEmits<{
 <style scoped>
 
 .user-card {
-  background: var(--blanco-suave);
+  background: var(--forms1);
   border-radius: 8px;
   padding: 16px;
   width: 40%;
@@ -118,7 +118,7 @@ h3 {
 }
 
 .actions button{
-  background-color: var(--forms1);
+  background-color: var(--blanco-suave);
   padding: 8px;
   border-radius: 100%;
 } 

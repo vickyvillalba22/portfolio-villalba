@@ -219,7 +219,6 @@ const submit = () => {
         :submitted="submitted"
       />
 
-      <!--VER SI ES NECESARIO HACER MAS ESPECÍFICA LA VALIDACIÓN-->
       <div class="button-wrapper">
         <button class="confirm" type="submit">
             Confirmar

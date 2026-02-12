@@ -9,15 +9,21 @@ import { Icon } from '@iconify/vue';
   <section id="contact">
 
     <div class="message">
-      <h1>Contact</h1>
-      <p>
-        Feel free to reach out if you want to talk about projects, collaborations,
-        or if you simply want to say hi.
-      </p>
-      <p>
-        I'm always open to connecting with other developers, designers, and creative people.
-      </p>
-      <img src="/public/imgs/my-notion-face-transparent.png" alt="">
+
+      <h2 class="mayus">Contact</h2>
+
+      <div class="text">
+        <div>
+          <p>
+            Feel free to reach out if you want to talk about projects, collaborations,
+            or if you simply want to say hi.
+          </p>
+          <p>
+            I'm always open to connecting with other developers, designers, and creative people.
+          </p>
+          </div>
+        <img src="/public/imgs/my-notion-face-transparent.png" alt="">
+      </div>
 
       <div class="contIcons">
         
@@ -36,39 +42,55 @@ import { Icon } from '@iconify/vue';
 
 #contact{
     height: 90vh;
-
     display: flex;
-    align-items: center;
-    justify-content: center;
     flex-direction: column;
-
+    align-items: center;
     color: var(--color-texto-principal);
 }
 
 .message{
-  width: 70%;
-  height: 60vh;
+  width: 90%;
+  min-height: 40vh;
   display: flex;
-  align-items: center;
-  justify-content: center;
   flex-direction: column;
-  justify-content: space-evenly;
+  justify-content: space-between;
+  gap: 20px;
+}
+
+h2{
+  font-size: 2.2em;
+  font-family: var(--font-thin);
+}
+
+.text{
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.text div{
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+  width: 65%;
 }
 
 #contact img{
   width: 30%;
   object-fit: cover;
+  transform: rotate(15deg);
 }
 
 p{
-  text-align: center;
+  text-align: left;
+  font-size: 0.9em;
+  font-family: var(--font-princ);
 }
 
 .contIcons{
-  width: 50%;
+  width: 35%;
   display: flex;
   align-items: center;
-  justify-content: space-evenly;
+  justify-content: space-between;
 }
 
 .i-mob{

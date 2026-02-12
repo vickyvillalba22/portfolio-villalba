@@ -1,11 +1,13 @@
 <script setup lang="ts">
 
-import { ref, computed, onMounted } from 'vue';
+import { ref, computed, onMounted, onBeforeUnmount } from 'vue';
 import { Icon } from '@iconify/vue'
 import { navItems } from '@/utils/navItems'
 import { currentUser } from '@/utils/session'
 
 const user = currentUser
+const isMobileMenuOpen = ref(false)
+const navRef = ref<HTMLElement | null>(null)
 
 const props = defineProps<{
   isHome: boolean;
@@ -29,9 +31,23 @@ const visibleItems = computed(() =>
   
 )
 
-const isMobileMenuOpen = ref(false)
+const handleClickOutside = (event: MouseEvent) => {
+  if (!isMobileMenuOpen.value) return
 
+  const target = event.target as Node
 
+  if (navRef.value && !navRef.value.contains(target)) {
+    isMobileMenuOpen.value = false
+  }
+}
+
+onMounted(() => {
+  document.addEventListener('click', handleClickOutside)
+})
+
+onBeforeUnmount(() => {
+  document.removeEventListener('click', handleClickOutside)
+})
 
 </script>
 
@@ -41,16 +57,22 @@ const isMobileMenuOpen = ref(false)
 
   <header class="header" :class="[{ 'header-home': isHome, 'header-mobile': !isHome }]">
 
+    <div
+      v-if="isMobileMenuOpen && !isHome"
+      class="backdrop"
+      @click="isMobileMenuOpen = false"
+    />
+
     <!--boton hamburguesa-->
     <div class="contI" v-if="!isHome">
-      <Icon icon="hugeicons:menu-11" class="i-mob blanco" @click="isMobileMenuOpen = !isMobileMenuOpen" />
+      <Icon icon="hugeicons:menu-11" class="i-mob" @click.stop="isMobileMenuOpen = !isMobileMenuOpen" />
     </div>
 
     <!--nav-->
-    <nav class="nav close" :class="[{ open: isMobileMenuOpen || isHome, 'nav-mobile': isMobileMenuOpen }]">
+    <nav ref="navRef" class="nav close" :class="[{ open: isMobileMenuOpen || isHome, 'nav-mobile': isMobileMenuOpen }]">
 
       <div class="contI" v-if="!isHome">
-        <Icon icon="hugeicons:cancel-01" class="i-mob blanco" @click="isMobileMenuOpen = !isMobileMenuOpen" />
+        <Icon icon="hugeicons:cancel-01" class="i-mob cerrar" @click.stop="isMobileMenuOpen = !isMobileMenuOpen" />
       </div>
       
         <router-link 
@@ -134,8 +156,8 @@ const isMobileMenuOpen = ref(false)
   height: 100vh;
   width: 40%;
   top: 0;
-  z-index: 1;
-  margin-top: 20px;
+  z-index: 2;
+  padding-top: 20px;
   background-color: var(--negro);
 }
 
@@ -157,5 +179,13 @@ const isMobileMenuOpen = ref(false)
   color: #E8E8E8;
 }
 
+.backdrop {
+  position: fixed;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.45);
+  backdrop-filter: blur(2px);
+  z-index: 1;
+  transition: opacity 0.3s ease;
+}
 
 </style>

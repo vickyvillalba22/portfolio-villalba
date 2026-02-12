@@ -200,7 +200,7 @@ button{
 }
 
 .icon {
-  color: var(--rosa);
+  color: var(--accent, var(--rosa));
   width: 24px;
   height: 24px;
 }
