@@ -12,7 +12,7 @@ const items: ComparisonItem[] = [
     id: 'complexity',
     title: 'Complexity',
     description:
-      'Comparación del nivel de complejidad entre Vue y JavaScript Vanilla.',
+      'Comparison of complexity between Vue and Vanilla JavaScript',
     chart: 'bars',
     data: {
       vue: 2,
@@ -23,7 +23,7 @@ const items: ComparisonItem[] = [
     id: 'learning',
     title: 'Learning curve',
     description:
-      'Evolución de la dificultad de aprendizaje a lo largo del tiempo.',
+      'Evolution of learning difficulty over time.',
     chart: 'curve',
     data: {
       vuePath: 'M10 80 Q50 20 90 30',
@@ -34,7 +34,7 @@ const items: ComparisonItem[] = [
     id: 'scalability',
     title: 'Scalability',
     description:
-      'Comportamiento del proyecto cuando aumenta su tamaño y complejidad.',
+      'Project behavior as its size and complexity increase.',
     chart: 'growth',
     data: {
       path: 'M10 90 L50 40 L90 20',
@@ -131,6 +131,11 @@ section{
     display: flex;
     flex-direction: column;
     gap: 2em;
+}
+
+h4{
+  font-size: 40px;
+  font-family: var(--font-thin);
 }
 
 nav, .tabs, .content{

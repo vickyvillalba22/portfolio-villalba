@@ -69,7 +69,7 @@ interface ReasonItem {
 const reasons: ReasonItem[] = [
   {
     id: 'learning-curve',
-    text: 'Curva de aprendizaje accesible',
+    text: 'Accesible learning curve',
     animation: {
       type: 'slide',
       delay: 0,
@@ -77,7 +77,7 @@ const reasons: ReasonItem[] = [
   },
   {
     id: 'architecture',
-    text: 'Arquitectura clara',
+    text: 'Clear architecture',
     animation: {
       type: 'slide',
       delay: 100,
@@ -85,7 +85,7 @@ const reasons: ReasonItem[] = [
   },
   {
     id: 'typescript',
-    text: 'Integración con TypeScript',
+    text: 'Typescript integration',
     animation: {
       type: 'slide',
       delay: 200,
@@ -93,7 +93,7 @@ const reasons: ReasonItem[] = [
   },
   {
     id: 'interactive-projects',
-    text: 'Ideal para proyectos interactivos',
+    text: 'Ideal for highly interactive projects',
     animation: {
       type: 'slide',
       delay: 300,
@@ -113,21 +113,21 @@ const reasons: ReasonItem[] = [
 
             <div class="title">
                 <h2>Vue.js</h2>
-                <h4 class="thin">Framework progresivo para interfaces interactivas</h4>
+                <h3 class="thin">Progressive framework for interactive interfaces</h3>
             </div>
 
             <div class="intro">
                 <img src="../assets/imgs/vue-logo.png" alt="">
-                <p>Vue.js permite construir aplicaciones web dinámicas de forma escalable, combinando simplicidad, reactividad y componentes reutilizables.</p>
+                <p>Vue.js allows building scalable dynamic web applications by combining simplicity, reactivity, and reusable components.</p>
             </div>
 
-            <p class="frase">Adoptado por <span>1000</span> proyectos</p>
+            <p class="frase">Adopted by <span>1000</span> projects</p>
 
         </section>
 
         <section class="principios">
 
-            <h4>Principios clave</h4>
+            <h4>Key principles</h4>
 
             <Circle
               :items="vuePrinciples"
@@ -145,9 +145,9 @@ const reasons: ReasonItem[] = [
 
         <section class="eleccion">
 
-            <h4>¿Por qué elegí Vue.js?</h4>
+            <h4>Why did I choose Vue.js?</h4>
 
-            <p>Elegí Vue.js como tema de investigación por su equilibrio entre simplicidad y potencia, y su adecuación para proyectos académicos y profesionales.</p>
+            <p>I chose Vue.js as my research topic because of its balance between simplicity and power, and its suitability for academic and professional projects.</p>
 
             <div class="contReasons">
 
@@ -161,11 +161,12 @@ const reasons: ReasonItem[] = [
 
         </section>
 
-        <p class="quote">Vue.js se posiciona como una herramienta moderna y eficiente para el desarrollo de <span>interfaces dinámicas</span>, alineada con las <span>buenas prácticas</span> actuales del desarrollo web.</p>
+        <p class="quote">Vue.js positions itself as a modern and efficient tool for developing <span>dynamic interfaces</span>, aligned with current <span>best practices</span> in web development.</p>
 
     </main>
     
 </template>
+
 
 <style scoped>
 
@@ -187,17 +188,23 @@ section{
     flex-direction: column;
 }
 
-/* HERO SECTION */
-#heroR{
-    gap: 30px;
-}
 h2{
     width: 100%;
     font-size: 2.2em;
     font-family: var(--font-thin);
 }
+
+/* HERO SECTION */
+#heroR{
+    gap: 30px;
+}
+.title h2{
+    width: 100%;
+    font-size: 2.8em;
+    font-family: var(--font-bold);
+}
 h4{
-    font-size: 20px;
+    font-size: 40px;
     font-family: var(--font-thin);
 }
 .intro{

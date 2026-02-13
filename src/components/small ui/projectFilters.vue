@@ -44,7 +44,7 @@ const accentColor = computed(() => {
         :class="{ active: selectedYears.size === 0 }"
         @click="clearYears"
       >
-        Todas
+        All
       </button>
 
       <button
@@ -65,7 +65,7 @@ const accentColor = computed(() => {
         :class="{ active: selectedCategories.size === 0 }"
         @click="clearCategories"
       >
-        Todas
+        All
       </button>
 
       <button

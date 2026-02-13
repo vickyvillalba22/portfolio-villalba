@@ -156,7 +156,7 @@ const submit = () => {
         @change="onFileChange"
       />
       <Icon icon="hugeicons:upload-01" class="i-mob" />
-      <span>Subir imagen</span>
+      <span>Load image</span>
     </label>
 
 
@@ -164,7 +164,7 @@ const submit = () => {
 
       <Input 
         id="name" 
-        label="Nombre completo" 
+        label="Full name" 
         type="text" v-model="name" 
         :error="errors.name" 
         :submitted="submitted"
@@ -173,7 +173,7 @@ const submit = () => {
       <Input
         v-if="mode !== 'profile'"
         id="password"
-        label="Contraseña"
+        label="Password"
         type="password"
         hasEye
         v-model="password"
@@ -184,7 +184,7 @@ const submit = () => {
       <Input
         v-if="mode !== 'profile'"
         id="repeat-password"
-        label="Repetir contraseña"
+        label="Repeat password"
         type="password"
         hasEye
         v-model="repeatPassword"
@@ -203,16 +203,16 @@ const submit = () => {
 
       <div v-if="variant === 'admin'" class="role-buttons">
         <button type="button" :class="{ active: role === 'user' }" @click="role = 'user'">
-          Usuario
+          User
         </button>
         <button type="button" :class="{ active: role === 'admin' }" @click="role = 'admin'">
-          Administrador
+          Administrator
         </button>
       </div>
 
       <Input 
         id="date" 
-        label="Fecha de registro" 
+        label="Register date" 
         type="date" 
         v-model="registerDate" 
         :error="errors.registerDate"
@@ -221,7 +221,7 @@ const submit = () => {
 
       <div class="button-wrapper">
         <button class="confirm" type="submit">
-            Confirmar
+            Confirm
         </button>
       </div>
 
@@ -293,7 +293,7 @@ button{
 }
 
 .confirm{
-    width: 45%;
+    width: 30%;
     border: 1px solid var(--accent);
 }
 

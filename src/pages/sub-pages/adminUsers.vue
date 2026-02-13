@@ -87,7 +87,7 @@ const goBack = () => {
       <Icon icon="hugeicons:arrow-left-02" class="i-mob" />
     </button>
 
-    <h3 class="subtitulo">Administrar usuarios</h3>
+    <h3 class="subtitulo">Manage users</h3>
 
     <FilterTabs v-model="filter" />
 

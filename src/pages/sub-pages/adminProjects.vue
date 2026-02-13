@@ -74,7 +74,7 @@ function back(){
         <Icon icon="hugeicons:arrow-left-02" class="i-mob" />
       </button>
 
-      <h3 class="subtitulo">Administrar proyectos</h3>
+      <h3 class="subtitulo">Manage projects</h3>
 
       <ProjectFilters
         mode="rosa"

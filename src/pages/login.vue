@@ -32,7 +32,7 @@ const handleLogin = async () => {
 
     <section class="login">
 
-      <h2 class="mayus thin">Log in</h2>
+      <h2 class="mayus">Log in</h2>
 
         <form @submit.prevent="handleLogin">
 
@@ -40,7 +40,7 @@ const handleLogin = async () => {
             id="usuario"
             label="User"
             type="text"
-            placeholder="vickyVillalba22"
+            placeholder="Ex: vickyVillalba22"
             v-model="usuario"
         />
 
@@ -48,7 +48,7 @@ const handleLogin = async () => {
             id="password"
             label="Password"
             type="password"
-            placeholder="Contraseña"
+            placeholder="Must include at least 4 characters"
             :hasEye="true"
             v-model="password"
         />
@@ -69,6 +69,7 @@ const handleLogin = async () => {
 
 h2{
     font-size: 2.5em;
+    font-family: var(--font-thin);
 }
 
 .login{
@@ -87,6 +88,7 @@ form{
 
 button{
     border: var(--borde-rosa);
+    font-family: var(--font-princ);
 }
 
 .wrapper-button{
@@ -95,15 +97,6 @@ button{
     justify-content: end;
 }
 
-</style>
-
-<style>
-
-.button1{
-    padding: 2px 18px;
-    border-radius: 16px;
-    width: fit-content;
-    font-family: var(--fuente-texto-principal);
-}
 
 </style>
+

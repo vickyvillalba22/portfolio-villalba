@@ -213,6 +213,7 @@ button{
 label{
     font-size: 1.1em;
     font-family: var(--font-princ);
+    color: var(--color-texto-secundario);
 }
 
 /*text area*/

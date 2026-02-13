@@ -131,6 +131,7 @@ const submit = () => {
 </script>
 
 <template>
+  
   <section class="project-form">
 
     <ProjectFormGeneral

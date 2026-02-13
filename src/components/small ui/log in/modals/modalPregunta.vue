@@ -78,8 +78,9 @@ function getColor() {
   text-align: center;
   display: flex;
   flex-direction: column;
+  justify-content: space-evenly;
   gap: 20px;
-  height: 90%;
+  height: 100%;
   width: 100%;
 }
 

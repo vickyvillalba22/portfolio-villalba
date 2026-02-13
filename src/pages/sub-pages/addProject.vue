@@ -30,7 +30,7 @@ function goBackToProjects() {
     <div class="top">
         <button class="back" @click="router.back()">
         <Icon icon="hugeicons:arrow-left-02" class="i-mob" />
-        Volver a mis proyectos
+        Return to projects
         </button>
     </div>
 

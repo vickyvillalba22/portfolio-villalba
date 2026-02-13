@@ -30,41 +30,40 @@ const emit = defineEmits([
 
   <section class="step">
 
-    <h3 class="mayus">{{ mode === 'add' ? 'Agregar proyecto' : 'Editar proyecto' }}</h3>
+    <h3 class="mayus">{{ mode === 'add' ? 'Add project' : 'Edit project' }}</h3>
     <h4>2. Material</h4>
 
     <Input
       id="descripcionLarga"
-      label="Descripción larga"
+      label="Long description"
       type="textarea"
       :modelValue="descripcionLarga"
       :error="errors.descripcionLarga"
       :submitted="submitted"
       :placeholder="mode === 'add'
-        ? 'Escribí una descripción detallada del proyecto…'
+        ? 'Write a detailed project description...'
         : undefined"
       :maxLength="200"
       autoResize
       @update:modelValue="emit('update:descripcionLarga', $event)"
     />
 
-    <Input id="enlace1" label="Enlace 1" type="text"
+    <Input id="enlace1" label="Link 1" type="text"
       :modelValue="linkPrincipal"
       @update:modelValue="emit('update:linkPrincipal', $event)" />
 
-    <Input id="enlace2" label="Enlace 2" type="text"
+    <Input id="enlace2" label="Link 2" type="text"
       :modelValue="linkSecundario"
       @update:modelValue="emit('update:linkSecundario', $event)" />
 
-    <!--VER SI DEJO UNA IMAGEN LINK O SUBIR UNA IMAGEN, PARA QUE DESPUES SE VEAN TAMBIEN EN LA UI-->
-    <Input id="imagen" label="Imagen" type="text"
+    <Input id="imagen" label="Image link" type="text"
       :modelValue="imagen"
       @update:modelValue="emit('update:imagen', $event)" />
 
     <div class="actions">
-      <button class="button2 volver" @click="emit('back')">Volver al paso anterior</button>
+      <button class="button2 volver" @click="emit('back')">Previous step</button>
       <button class="confirm button2" @click="emit('submit')">
-        {{ mode === 'add' ? 'Subir' : 'Actualizar' }}
+        {{ mode === 'add' ? 'Upload' : 'Update project' }}
       </button>
     </div>
 
@@ -97,6 +96,7 @@ h3{
 .button2{
   padding: 8px 20px;
   border-radius: 8px;
+  font-family: var(--font-princ);
 }
 .volver{
   border: 1px solid var(--blanco-suave)

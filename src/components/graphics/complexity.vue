@@ -10,7 +10,7 @@ defineProps<{
 <template>
   <section
     class="chart chart-bars"
-    aria-label="Comparación de complejidad entre Vue y JavaScript Vanilla"
+    aria-label="Comparison of complexity between Vue and Vanilla JavaScript"
   >
     <div class="bars">
 

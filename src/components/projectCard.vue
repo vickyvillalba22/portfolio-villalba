@@ -111,7 +111,6 @@ function toggleCard (){
         <div class="contBoton">
           <a class="goto-link" :href="project.linkPrincipal" target="_blank">
             Go to project
-            <i class="fi fi-tr-arrow-small-right"></i>
           </a>
         </div>
 
@@ -232,7 +231,6 @@ function toggleCard (){
   font-size: 1em;
   color: var(--blanco);
   display: flex;
-  align-items: center;
   gap: 5px;
 }
 
@@ -240,7 +238,7 @@ function toggleCard (){
 .contBoton {
   display: flex;
   justify-content: flex-end;
-  align-items: end;
+  align-self: end;
 }
 
 button {
@@ -299,7 +297,6 @@ i{
   background: transparent;
   border: none;
   cursor: pointer;
-  z-index: 2;
 }
 .card-simple.expanded .like-btn{
   left: 3%;

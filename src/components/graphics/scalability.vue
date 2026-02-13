@@ -28,7 +28,7 @@ defineProps<{
     </svg>
 
     <p class="caption">
-      Crecimiento del proyecto a medida que aumenta su complejidad
+      Project growth as its complexity increases.
     </p>
   </section>
 </template>

@@ -5,7 +5,7 @@ import { ref } from "vue"
 import ProjectCard from "@/components/projectCard.vue"
 
 const isVisible = ref(true)
-const initialState = [1]
+const initialState = [4]
 const instances = ref<number[]>([...initialState])
 
 function hideCard() {

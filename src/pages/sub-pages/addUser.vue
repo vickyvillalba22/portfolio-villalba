@@ -29,7 +29,7 @@ const goBackToUsers = () => {
       <button @click="router.back()">
         <Icon icon="hugeicons:arrow-left-02" class="i-mob" />
       </button>
-      <h3 class="subtitulo">Agregar usuario o administrador</h3>
+      <h3 class="subtitulo">Add user or administrator</h3>
     </header>
 
     <UserForm

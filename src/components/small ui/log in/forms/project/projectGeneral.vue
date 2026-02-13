@@ -38,14 +38,14 @@ const workFrom = ref<'materia' | 'trabajo'>('materia')
   <section class="step">
 
     <h3 class="mayus">
-      {{ mode === 'add' ? 'Agregar proyecto' : 'Editar proyecto' }}
+      {{ mode === 'add' ? 'Add project' : 'Edit project' }}
     </h3>
 
-    <h4>1. Información general</h4>
+    <h4>1. General information</h4>
 
     <Input 
       id="titulo" 
-      label="Título" 
+      label="Title" 
       type="text" 
       :modelValue="titulo" 
       :error="errors.titulo" 
@@ -55,7 +55,7 @@ const workFrom = ref<'materia' | 'trabajo'>('materia')
 
     <Input 
       id="año" 
-      label="Año" 
+      label="Year" 
       type="number" 
       :modelValue="year?.toString() ?? ''"   
       :error="errors.year" 
@@ -65,7 +65,7 @@ const workFrom = ref<'materia' | 'trabajo'>('materia')
 
     <Input 
       id="categoria" 
-      label="Categoría" 
+      label="Category" 
       type="text" 
       :modelValue="categoria"   
       :error="errors.categoria"
@@ -75,7 +75,7 @@ const workFrom = ref<'materia' | 'trabajo'>('materia')
 
     <Input 
       id="descripcionBreve" 
-      label="Descripción breve" 
+      label="Short description" 
       type="text" 
       :modelValue="descripcionCorta" 
       :error="errors.descripcionCorta" 
@@ -84,14 +84,14 @@ const workFrom = ref<'materia' | 'trabajo'>('materia')
     />
 
     <div class="type-buttons">
-      <button :class="{ active: workFrom === 'materia' }" @click="workFrom = 'materia'">Materia</button>
-      <button :class="{ active: workFrom === 'trabajo' }" @click="workFrom = 'trabajo'">Trabajo</button>
+      <button :class="{ active: workFrom === 'materia' }" @click="workFrom = 'materia'">Subject</button>
+      <button :class="{ active: workFrom === 'trabajo' }" @click="workFrom = 'trabajo'">Work</button>
     </div>
 
     <Input 
       v-if="workFrom === 'materia'"
       id="nombreMateria" 
-      label="Nombre de la materia" 
+      label="Subject name" 
       type="text" 
       :modelValue="materia"   
       :error="errors.materia" 
@@ -101,7 +101,7 @@ const workFrom = ref<'materia' | 'trabajo'>('materia')
 
     <Input 
       id="herramientas" 
-      label="Herramientas utilizadas" 
+      label="Tools used" 
       type="text" 
       :modelValue="herramientas"
       @update:modelValue="emit('update:herramientas', $event)" 

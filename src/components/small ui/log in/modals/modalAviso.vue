@@ -83,19 +83,22 @@ const resolvedImage = computed(() => {
 }
 
 .modal-image {
-  max-width: 120px;
+  max-width: 30vw;
   margin-bottom: 1rem;
 }
 
 .modal-message {
   margin-bottom: 1.5rem;
+  font-size: 1.8em;
+  font-family: var(--font-thin);
 }
 
 .modal-button {
-  padding: 0.7rem 1.5rem;
+  padding: 10px 25px;
   border-radius: 8px;
   border: none;
-  color: white;
+  color: var(--negro);
+  font-family: var(--font-princ);
   cursor: pointer;
 }
 </style>

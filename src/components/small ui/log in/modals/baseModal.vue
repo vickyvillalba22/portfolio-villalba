@@ -35,11 +35,12 @@ function close() {
 
 .modal-container {
   background: var(--modal);
-  padding: 2rem;
+  padding: 2em;
   border-radius: 8px;
   width: 70%;
-  min-height: 25vh;
+  min-height: 25%;
   display: flex;
   justify-content: center;
+  align-items: center;
 }
 </style>
