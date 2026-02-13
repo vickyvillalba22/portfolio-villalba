@@ -89,12 +89,13 @@ provide('carousel-items', toolsItems)
 
 <template>
 
-  <main id="about">
+  <h2 class="mayus">About Me</h2>
 
-    <h2 class="mayus">About Me</h2>
+  <main id="about">
 
     <!--INTRO-->
     <section class="intro">
+
       <img src="/public/imgs/foto Victoria Villalba.png" alt="">
       <p class="blanco">I am a Multimedia Technology student focused on front-end web development and UX/UI design. I am interested in creating clear, functional, and user-centered digital experiences.</p>
     </section>
@@ -278,6 +279,50 @@ li{
 }
 .cierre span{
   color: var(--celeste)
+}
+
+@media (min-width: 920px){
+
+section{
+  background-color: #26262667;
+  padding: 24px;
+}
+
+h2{
+  width: 90%;
+  margin-bottom: 16px;
+}
+
+#about {
+  display: grid;
+  grid-template-columns: repeat(6, 1fr);
+  grid-template-rows: repeat(3, 1fr);
+  gap: 16px;
+  min-height: 40vh;
+}
+
+.intro { 
+  height: 100%;
+  flex-direction: column;
+  grid-area: 1 / 1 / 3 / 3;
+}
+.focuson { 
+  grid-area: 3 / 1 / 4 / 3;
+  height: 100%;
+}
+.skills { 
+  grid-area: 1 / 3 / 4 / 5;
+  height: 100%; 
+}
+.tools { 
+  grid-area: 1 / 5 / 2 / 7;
+  height: 100%; 
+}
+.cierre { 
+  grid-area: 2 / 5 / 4 / 7;
+  height: 100%; 
+}
+
 }
 
 

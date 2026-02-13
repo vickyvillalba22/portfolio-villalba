@@ -53,8 +53,6 @@ onBeforeUnmount(() => {
 
 <template>
 
-  <!--PONERLE POSITION FIXED-->
-
   <header class="header" :class="[{ 'header-home': isHome, 'header-mobile': !isHome }]">
 
     <div
@@ -109,7 +107,7 @@ onBeforeUnmount(() => {
   align-items: center;
   gap: 15px;
   font-size: 20px;
-  color: #E8E8E8;
+  color: var(--blanco);
 }
 
 /* línea horizontal debajo de cada item */
@@ -125,7 +123,7 @@ onBeforeUnmount(() => {
   left: 0;
   width: 90%;
   height: 0.5px;
-  background-color: rgb(255, 255, 255);
+  background-color: var(--blanco);
 }
 
 /*menu hamburguesa*/
@@ -171,12 +169,12 @@ onBeforeUnmount(() => {
 
 .nav-mobile p{
   text-align: right;
-  color: #e8e8e869;
+  color: var(--color-texto-secundario);
   width: 100%;
 }
 
 .header-mobile .router-link-active p{
-  color: #E8E8E8;
+  color: var(--color-texto-principal);
 }
 
 .backdrop {
@@ -186,6 +184,23 @@ onBeforeUnmount(() => {
   backdrop-filter: blur(2px);
   z-index: 1;
   transition: opacity 0.3s ease;
+}
+
+@media (min-width: 920px){
+
+.header-home{
+  width: 40%;
+}
+
+.header-home .item::after {
+  width: 30%;
+}
+
+.i-mob{
+  width: 24px;
+  height: 24px;
+}
+
 }
 
 </style>

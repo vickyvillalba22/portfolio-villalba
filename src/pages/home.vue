@@ -10,10 +10,8 @@ const user = computed(() => currentUser.value)
 
 <template>
 
-<!--CHEQUEAR IDIOMA GENERAL-->
-<section id="heroSection" class="blanco">
+<section id="heroSection">
 
-    <!--AJUSTAR-->
     <div class="welcome-user">
 
         <div v-if="user">
@@ -36,7 +34,8 @@ const user = computed(() => currentUser.value)
 <style scoped>
 
 h1{
-    font-size: 3em;
+    font-size: 2.5em;
+    font-family: var(--font-thin);
 }
 
 h2{
@@ -73,6 +72,21 @@ h2{
 }
 .userColor{
     color: var(--azul);
+}
+
+/*desktop pequeño*/
+@media (min-width: 920px){
+
+#heroSection{
+    display: flex;
+    align-items: center;
+    flex-direction: row;
+    justify-content: space-evenly;
+}
+.welcome-user{
+    width: 40%;
+}
+
 }
 
 </style>

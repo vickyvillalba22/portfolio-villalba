@@ -94,16 +94,12 @@ const router = createRouter({
 //AGREGARLE PAGINA UNAUTHORIZED
 router.beforeEach((to, from, next) => {
   const session = localStorage.getItem('session')
+  const user = session ? JSON.parse(session) : null
 
-  if (!session && to.path !== '/login') {
-    return next('/login')
-  }
-
+  // Solo proteger rutas admin
   if (to.meta.requiresAdmin) {
-    const user = session ? JSON.parse(session) : null
-
     if (!user || user.role !== 'admin') {
-      return next('/profile')
+      return next('/login')
     }
   }
 
