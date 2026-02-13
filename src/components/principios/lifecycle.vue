@@ -1,17 +1,43 @@
 <script setup lang="ts">
 
-import { ref } from 'vue';
-import CodeBox from '../small ui/codeBox.vue';
+import { ref } from 'vue'
+import CodeBox from '../small ui/codeBox.vue'
+import ProjectCard from '@/components/projectCard.vue'
 
 const lifecycleExample = `<span>onMounted</span>() // first component render
 <span>onUpdated</span>() // component update
 <span>onUnmounted</span>() // disappearing`
 
-const estados = ['start', 'mounted', 'updated', 'unmount']
-
+const isMounted = ref(false)
+const cardKey = ref(0)
 const cardState = ref('start')
+const isUpdating = ref(false)
+
+function mountCard() {
+  isMounted.value = true
+  cardState.value = 'mounted'
+}
+
+function updateCard() {
+  if (!isMounted.value) return
+
+  cardKey.value++
+  cardState.value = 'updated'
+
+  isUpdating.value = true
+
+  setTimeout(() => {
+    isUpdating.value = false
+  }, 600)
+}
+
+function unmountCard() {
+  isMounted.value = false
+  cardState.value = 'unmount'
+}
 
 </script>
+
 
 <template>
 
@@ -26,20 +52,29 @@ const cardState = ref('start')
 
         <div class="example2">
 
-            <div class="card">
-                <div></div>
+        <div class="card">
+
+            <div class="cardWrapper" :class="{ updating: isUpdating }"
+            >
+            <ProjectCard
+                v-if="isMounted"
+                :key="cardKey"
+                :projectId="1"
+            />
             </div>
 
-            <div class="derecha">
-                <div class="contButtons">
-                <button>Mount</button>
-                <button>Update</button>
-                <button>Unmount</button>
-                </div>
-                <p>State: {{ cardState }}</p>
+            <p>State: {{ cardState }}</p>
+
+        </div>
+
+            <div class="contButtons">
+            <button @click="mountCard">Mount</button>
+            <button @click="updateCard">Update</button>
+            <button @click="unmountCard">Unmount</button>
             </div>
 
         </div>
+
         
 
     </article>
@@ -48,28 +83,52 @@ const cardState = ref('start')
 
 <style scoped>
 
+h3{
+    font-size: 24px;
+    font-family: var(--font-thin);
+}
+
 .card{
-    width: 50%;
-    height: 30vh;
-    background-color: gray;
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+    width: 100%;
     border-radius: 16px;
 }
 
 .contButtons{
     display: flex;
-    flex-direction: column;
     gap: 10px;
 }
 
 .example2{
     display: flex;
+    flex-direction: column;
     gap: 20px;
 }
 
 .derecha{
     display: flex;
-    flex-direction: column;
     justify-content: space-between;
+}
+
+button{
+    padding: 2px 18px;
+    border: 1px solid var(--verde);
+    border-radius: 16px;
+    width: fit-content;
+    font-family: var(--font-princ);
+    font-size: .8em;
+}
+
+.cardWrapper {
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  border-radius: 16px;
+}
+
+.cardWrapper.updating {
+  transform: scale(1.05);
+  box-shadow: 0 0 10px var(--verde);
 }
 
 
