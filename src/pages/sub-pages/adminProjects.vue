@@ -232,4 +232,15 @@ function back(){
 .delete {
   color: var(--rojo);
 }
+
+@media (min-width: 920px){
+
+  .grid{
+    justify-content: start;
+  }
+  .card{
+    width: 18%;
+  }
+
+}
 </style>

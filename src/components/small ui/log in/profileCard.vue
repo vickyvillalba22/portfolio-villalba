@@ -297,7 +297,7 @@ const resetProfile = async () => {
 @media (min-width: 920px){
 
 .profile-card{
-  width: 80%;
+  width: 90%;
 }
   
 }

@@ -132,7 +132,7 @@ const submit = () => {
 
 <template>
   
-  <section class="project-form">
+  <section class="project-form sectionDesktop">
 
     <ProjectFormGeneral
       v-if="step === 1"
@@ -171,5 +171,13 @@ const submit = () => {
   width: 100%;
   padding: 24px;
   min-height: 90vh;
+}
+
+@media (min-width: 920px){
+
+  .sectionDesktop{
+    width: 35%;
+  }
+
 }
 </style>

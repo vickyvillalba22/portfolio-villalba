@@ -52,4 +52,11 @@ const handleAction = (action: string | null) => {
   gap: 30px;
 }
 
+@media (min-width: 920px){
+  .profile{
+    flex-direction: row;
+    gap: 6em;
+  }
+}
+
 </style>

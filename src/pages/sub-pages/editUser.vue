@@ -32,7 +32,7 @@ const goBackToUsers = () => {
 
 <template>
 
-  <section v-if="user">
+  <section v-if="user" class="sectionDesktop">
 
     <header class="top">
       <button @click="router.back()">
@@ -82,6 +82,14 @@ section{
 .i-mob{
   display: flex;
   width: 24px;
+}
+
+@media (min-width: 920px){
+
+section{
+  width: 35%;
+}
+
 }
 
 </style>
