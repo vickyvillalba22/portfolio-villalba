@@ -201,6 +201,17 @@ onBeforeUnmount(() => {
   height: 24px;
 }
 
+.nav-mobile{
+  width: 15%;
+  padding-top: 30px;
+}
+.nav-mobile .item{
+  padding-right: 10%;
+}
+.contI{
+  padding-right: 10%;
+}
+
 }
 
 </style>

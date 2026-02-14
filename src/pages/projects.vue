@@ -91,4 +91,17 @@ h2{
     margin-top: 5vh;
 }
 
+@media (min-width: 920px){
+
+.contProjects{
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    grid-auto-rows: 20vh; /* altura base de cada celda */
+    gap: 20px;
+    width: 100%;
+    grid-auto-flow: dense;
+}
+
+}
+
 </style>

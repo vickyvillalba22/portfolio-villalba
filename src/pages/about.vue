@@ -97,7 +97,8 @@ provide('carousel-items', toolsItems)
     <section class="intro">
 
       <img src="/public/imgs/foto Victoria Villalba.png" alt="">
-      <p class="blanco">I am a Multimedia Technology student focused on front-end web development and UX/UI design. I am interested in creating clear, functional, and user-centered digital experiences.</p>
+      <p>I am a Multimedia Technology student focused on front-end web development and UX/UI design. I am interested in creating clear, functional, and user-centered digital experiences.</p>
+
     </section>
 
     <!--SKILLS-->
@@ -109,7 +110,7 @@ provide('carousel-items', toolsItems)
 
         <div>
           <Icon icon="hugeicons:pen-tool-02" class="i-mob" />
-          <ul>
+          <ul class="listSkills">
             <li>Responsive Design</li>
             <li>JavaScript (ES6+)</li>
             <li>TypeScript</li>
@@ -120,7 +121,7 @@ provide('carousel-items', toolsItems)
 
         <div>
           <Icon icon="hugeicons:user-group-02" class="i-mob" />
-          <ul>
+          <ul class="listSkills">
             <li>Problem-Solving</li>
             <li>Attention to Detail</li>
             <li>Time Management</li>
@@ -138,7 +139,7 @@ provide('carousel-items', toolsItems)
       <h4>Focus on...</h4>
       <div class="focuses">
         <div v-for="foc in focusItems" :key="foc.id">
-          <Icon :icon="foc.icon" class="foc-icon" />
+          <Icon :icon="foc.icon" class="foc-icon i-mob" />
           <p class="skill-title">{{ foc.title }}</p>
         </div>
       </div>
@@ -180,9 +181,12 @@ h2{
   font-size: 2.2em;
   width: 100%;
   font-family: var(--font-thin);
+  width: 90%;
+  margin-bottom: 16px;
 }
+
 h4{
-  font-size: 24px;
+  font-size: 1.5em;
 }
 
 section{
@@ -287,39 +291,62 @@ section{
   background-color: #26262667;
   padding: 24px;
 }
-
-h2{
-  width: 90%;
-  margin-bottom: 16px;
+h4{
+  font-size: 1.7em;
+  font-family: var(--font-thin);
 }
 
 #about {
+  min-height: 70vh;
   display: grid;
   grid-template-columns: repeat(6, 1fr);
-  grid-template-rows: repeat(3, 1fr);
+  grid-template-rows: repeat(6, 10vh);
   gap: 16px;
-  min-height: 40vh;
 }
 
 .intro { 
   height: 100%;
-  flex-direction: column;
-  grid-area: 1 / 1 / 3 / 3;
+  grid-area: 1 / 1 / 4 / 3;
+  overflow: hidden;
 }
-.focuson { 
-  grid-area: 3 / 1 / 4 / 3;
+.intro img{
   height: 100%;
 }
+.focuson { 
+  grid-area: 4 / 1 / 7 / 3;
+  height: 100%;
+}
+.foc-icon{
+  width: 60px;
+  height: 60px;
+}
+.focuses p{
+  font-size: 1em;
+  font-family: var(--font-thin);
+}
 .skills { 
-  grid-area: 1 / 3 / 4 / 5;
-  height: 100%; 
+  grid-area: 1 / 3 / 7 / 5;
+  height: 100%;
+  padding: 30px; 
+  gap: 24px;
+}
+.wrapSkills{
+  gap: 24px;
+}
+.skills .i-mob{
+  width: 60px;
+  height: 60px;
+}
+.listSkills{
+  font-size: 1.2em;
+  gap: 20px;
 }
 .tools { 
-  grid-area: 1 / 5 / 2 / 7;
+  grid-area: 1 / 5 / 3 / 7;
   height: 100%; 
 }
 .cierre { 
-  grid-area: 2 / 5 / 4 / 7;
+  grid-area: 3 / 5 / 7 / 7;
   height: 100%; 
 }
 

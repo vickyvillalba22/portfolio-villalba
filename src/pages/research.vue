@@ -117,11 +117,18 @@ const reasons: ReasonItem[] = [
             </div>
 
             <div class="intro">
+
+              <div class="derecha">
+
                 <img src="../assets/imgs/vue-logo.png" alt="">
                 <p>Vue.js allows building scalable dynamic web applications by combining simplicity, reactivity, and reusable components.</p>
+              </div>
+
+              <p class="frase">Adopted by <span>1000</span> projects</p>
+
             </div>
 
-            <p class="frase">Adopted by <span>1000</span> projects</p>
+            
 
         </section>
 
@@ -210,16 +217,20 @@ h4{
 .intro{
     display: flex;
     justify-content: space-evenly;
+    flex-direction: column;
+    gap: 30px;
+}
+.intro .derecha{
+  display: flex;
+  gap: 40px;
 }
 .intro img{
     width: 30%;
     object-fit: contain;
 }
-.intro p{
-    width: 50%;
-}
 .frase{
     font-size: 20px;
+    width: fit-content;
 }
 .frase span{
     color: var(--verde);
@@ -315,5 +326,29 @@ h4{
   .principio h4{
     color: var(--verde);
   }
+
+@media (min-width: 920px){
+
+.title h2, .title h3{
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+.title h2{
+  font-size: 3em;
+}
+.intro .derecha{
+  width: 40%;
+  display: flex;
+  gap: 40px;
+}
+.intro p{
+  font-size: 1.2em;
+}
+.intro .frase{
+  font-size: 2em;
+}
+}
 
 </style>

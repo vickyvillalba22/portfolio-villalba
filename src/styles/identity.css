@@ -45,6 +45,7 @@
   font-family: 'creatoBold';
   src: url('/src/assets/font/creato_display/CreatoDisplay-Bold.otf'); 
 }
+
 h1,h2,h3,h4,p,button,span,input,label,a,li{
   font-family: "creatoDisplay", 'openSans';
 }

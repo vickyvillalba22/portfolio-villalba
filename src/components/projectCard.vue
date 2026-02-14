@@ -314,5 +314,59 @@ i{
   height: 18px;
 }
 
+@media (min-width: 920px){
+
+.card-simple{
+  width: 100%;
+  height: 100%;
+  transition:
+    transform 0.4s cubic-bezier(.25,.8,.25,1),
+    opacity 0.3s ease,
+    box-shadow 0.3s ease;
+}
+
+.card-simple.expanded{
+  grid-row: span 2;
+  height: 100%;
+  flex-direction: row;
+  transform: scale(1.02);
+  z-index: 2;
+}
+
+.card-simple.expanded .card-img-container{
+  max-height: 40vh;
+}
+
+.card-simple.expanded .label-simple, .year{
+  right: 10%;
+}
+
+.card-simple.expanded .label-simple{
+  top: 72%;
+}
+
+.botonSimple{
+  position: absolute;
+  left: 6%;
+  top: 8%;
+}
+
+.card-simple.expanded h2{
+  width: 60%;
+  font-size: 1.3em;
+  position: relative;
+}
+
+.card-simple.expanded .card-info {
+  height: 100%;
+  justify-content: space-between;
+  gap: 0;
+}
+
+.extra-content {
+  height: 70%;
+}
+
+}
 
 </style>
