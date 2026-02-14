@@ -118,7 +118,7 @@ const reasons: ReasonItem[] = [
 
             <div class="intro">
 
-              <div class="derecha">
+              <div class="izquierda">
 
                 <img src="../assets/imgs/vue-logo.png" alt="">
                 <p>Vue.js allows building scalable dynamic web applications by combining simplicity, reactivity, and reusable components.</p>
@@ -128,47 +128,51 @@ const reasons: ReasonItem[] = [
 
             </div>
 
-            
-
         </section>
 
         <section class="principios">
 
             <h4>Key principles</h4>
 
-            <Circle
-              :items="vuePrinciples"
-              :active-id="activePrinciple.id"
-              @select="activePrinciple = $event"
-            />
+            <div class="contGraficoPrinc">
+              <Circle
+                :items="vuePrinciples"
+                :active-id="activePrinciple.id"
+                @select="activePrinciple = $event"
+              />
 
-            <Transition name="fade-slide" mode="out-in">
-              <component :is="activePrinciple.component" />
-            </Transition>
+              <Transition name="fade-slide" mode="out-in">
+                <component :is="activePrinciple.component" />
+              </Transition>
+            </div>
 
         </section>
 
         <Comparison />
 
-        <section class="eleccion">
+        <div class="finalSection">
 
-            <h4>Why did I choose Vue.js?</h4>
+          <section class="eleccion">
 
-            <p>I chose Vue.js as my research topic because of its balance between simplicity and power, and its suitability for academic and professional projects.</p>
+              <h4>Why did I choose Vue.js?</h4>
 
-            <div class="contReasons">
+              <p>I chose Vue.js as my research topic because of its balance between simplicity and power, and its suitability for academic and professional projects.</p>
 
-                <div class="reason" v-for="reason in reasons">
-                    <Icon icon="hugeicons:arrow-right-02" class="i-mob" />
-                    <p>{{ reason.text }}</p>
-                </div>
+              <div class="contReasons">
 
-            </div>
+                  <div class="reason" v-for="reason in reasons">
+                      <Icon icon="hugeicons:arrow-right-02" class="i-mob" />
+                      <p>{{ reason.text }}</p>
+                  </div>
+
+              </div>
 
 
-        </section>
+          </section>
 
-        <p class="quote">Vue.js positions itself as a modern and efficient tool for developing <span>dynamic interfaces</span>, aligned with current <span>best practices</span> in web development.</p>
+          <p class="quote">Vue.js positions itself as a modern and efficient tool for developing <span>dynamic interfaces</span>, aligned with current <span>best practices</span> in web development.</p>
+
+        </div>
 
     </main>
     
@@ -247,12 +251,18 @@ h4{
   align-items: center;
   gap: 40px;
 }
+.contGraficoPrinc{
+  display: flex;
+  flex-direction: column;
+  gap: 40px;
+  align-items: center;
+}
 .principios h4{
   width: 100%;
 }
 
 .principio{
-    width: 90%;
+    width: 85%;
     display: flex;
     flex-direction: column;
     gap: 20px;
@@ -299,12 +309,87 @@ h4{
 }
 
 /*CIERRE*/
+.finalSection{
+  display: flex;
+  flex-direction: column;
+  gap: 40px;
+}
 .quote{
     font-size: 24px;
     line-height: 35px;
 }
 .quote span{
     color: var(--verde);
+}
+
+@media (min-width: 920px){
+
+#research{
+  gap: 6em;
+}
+
+.intro{
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+}
+
+.title h2, .title h3{
+  width: 100%;
+  display: flex;
+  justify-content: center;
+}
+.title h2{
+  font-size: 4em;
+}
+.title h3{
+  font-size: 1.5em;
+}
+.intro .izquierda{
+  width: 40%;
+  display: flex;
+  gap: 40px;
+}
+.intro p{
+  font-size: 1.2em;
+  display: flex;
+  align-items: center;
+}
+.intro .frase{
+  font-size: 2em;
+  display: block;
+}
+.principios{
+  justify-content: center;
+}
+.principios h4{
+  display: flex;
+  justify-content: center;
+  width: 100%;
+}
+.contGraficoPrinc{
+  width: 90%;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+}
+.principio{
+  width: 40%;
+}
+.finalSection{
+  display: flex;
+  flex-direction: row;
+  width: 90%;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 4em;
+}
+.eleccion{
+  width: 45%;
+}
+.quote{
+  width: 45%;
+}
 }
 
 </style>
@@ -326,29 +411,5 @@ h4{
   .principio h4{
     color: var(--verde);
   }
-
-@media (min-width: 920px){
-
-.title h2, .title h3{
-  width: 100%;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-}
-.title h2{
-  font-size: 3em;
-}
-.intro .derecha{
-  width: 40%;
-  display: flex;
-  gap: 40px;
-}
-.intro p{
-  font-size: 1.2em;
-}
-.intro .frase{
-  font-size: 2em;
-}
-}
 
 </style>

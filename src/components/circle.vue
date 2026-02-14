@@ -22,7 +22,7 @@ const emit = defineEmits<{
 
 //manejo del radio responsive y proporcionado
 const circleSize = computed(() => {
-  return Math.min(window.innerWidth * 0.6, 500)
+  return Math.min(window.innerWidth * 0.6, 400)
 })
 const radius = computed(() => circleSize.value / 2.5)
 
@@ -67,12 +67,13 @@ const getItemStyle = (angle: number) => {
   display: flex;
   justify-content: center;
   align-items: center;
+
 }
 
 .circle {
   position: relative;
   aspect-ratio: 1 / 1;
-  border: 2px solid #3ecf8e;
+  border: 2px solid var(--verde);
   border-radius: 50%;
 }
 

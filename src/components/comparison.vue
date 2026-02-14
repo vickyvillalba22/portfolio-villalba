@@ -75,7 +75,7 @@ const growthData = computed(() => {
 
         <h4>Vue vs JS Vainilla</h4>
 
-        <div>
+        <div class="contGraficos">
           <!-- Tabs -->
           <nav class="tabs">
               <button
@@ -182,6 +182,15 @@ nav, .tabs, .content{
 }
 .description{
   width: 40%;
+}
+
+@media (min-width: 920px){
+.contGraficos{
+  width: 45%;
+}
+section{
+  align-items: center;
+}
 }
 
 </style>
