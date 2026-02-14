@@ -96,11 +96,24 @@ h2{
 .contProjects{
     display: grid;
     grid-template-columns: repeat(3, 1fr);
-    grid-auto-rows: 20vh; /* altura base de cada celda */
+    grid-auto-rows: 20vh;
     gap: 20px;
     width: 100%;
     grid-auto-flow: dense;
 }
+
+}
+
+@media (min-width: 700px){
+
+    .contProjects{
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+        grid-auto-rows: 20vh;
+        gap: 20px;
+        width: 100%;
+        grid-auto-flow: dense;
+    }
 
 }
 

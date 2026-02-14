@@ -407,6 +407,12 @@ h4{
 }
 }
 
+@media (min-width: 700px){
+  .finalSection{
+    margin-bottom: 4em;
+  }
+}
+
 </style>
 
 <style>

@@ -38,7 +38,7 @@ const goBackToUsers = () => {
       <button @click="router.back()">
         <Icon icon="hugeicons:arrow-left-02" class="i-mob" />
       </button>
-      <h3 class="subtitulo">Editar usuario</h3>
+      <h3 class="subtitulo">Edit user</h3>
     </header>
 
     <UserForm

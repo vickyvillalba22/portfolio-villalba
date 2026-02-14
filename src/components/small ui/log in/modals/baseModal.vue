@@ -55,5 +55,13 @@ function close() {
   
 }
 
+@media (min-width: 700px){
+  .modal-container {
+    border-radius: 8px;
+    width: 50%;
+    max-height: 60vh;
+  }
+}
+
 
 </style>

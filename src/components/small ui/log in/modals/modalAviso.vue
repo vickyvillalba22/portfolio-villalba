@@ -111,4 +111,11 @@ const resolvedImage = computed(() => {
 
 }
 
+@media (min-width: 700px){
+  .modal-image {
+    max-width: 20vw;
+    margin-bottom: 1rem;
+  }
+}
+
 </style>

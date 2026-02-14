@@ -243,4 +243,13 @@ function back(){
   }
 
 }
+
+@media (min-width: 700px){
+  .grid{
+    justify-content: start;
+  }
+  .card{
+    width: 30%;
+  }
+}
 </style>

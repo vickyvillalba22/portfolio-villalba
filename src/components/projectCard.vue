@@ -369,4 +369,28 @@ i{
 
 }
 
+@media (min-width: 700px){
+  .card-simple.expanded{
+    grid-row: span 2;
+    height: 100%;
+    flex-direction: row;
+    z-index: 2;
+  }
+  .card-simple.expanded .card-img-container{
+    max-height: 40vh;
+  }
+  .card-simple.expanded .label-simple{
+    top: 72%;
+  }
+  .card-simple.expanded h2{
+    width: 80%;
+    position: relative;
+    font-size: 1em;
+  }
+  .card-info{
+    gap: 0;
+  }
+}
+
+
 </style>

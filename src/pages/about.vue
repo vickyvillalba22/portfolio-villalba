@@ -353,6 +353,23 @@ h4{
 
 }
 
+@media (min-width: 700px){
+
+  .intro{
+    display: flex;
+  }
+  .intro img{
+    width: 40%;
+  }
+  .intro p{
+    width: 60%;
+  }
+
+  .wrapSkills{
+    width: 60%;
+  }
+}
+
 
 
 </style>

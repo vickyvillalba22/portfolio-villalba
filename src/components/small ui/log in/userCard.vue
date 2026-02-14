@@ -144,4 +144,13 @@ h3 {
 
 }
 
+@media (min-width: 700px){
+
+.user-card{
+  width: 30%;
+  height: 35vh;
+}
+
+}
+
 </style>

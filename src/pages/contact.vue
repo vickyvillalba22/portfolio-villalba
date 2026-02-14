@@ -120,4 +120,13 @@ p{
 
 }
 
+@media (min-width: 700px){
+  .contIcons{
+    width: 20%;
+  }
+  .text{
+    font-size: 1.4em;
+  }
+}
+
 </style>
