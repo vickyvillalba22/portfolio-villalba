@@ -21,7 +21,7 @@ import { Icon } from '@iconify/vue';
           <p>
             I'm always open to connecting with other developers, designers, and creative people.
           </p>
-          </div>
+        </div>
         <img src="/public/imgs/my-notion-face-transparent.png" alt="">
       </div>
 
@@ -32,6 +32,7 @@ import { Icon } from '@iconify/vue';
         <a href="https://mail.google.com/mail/?view=cm&fs=1&to=villalbavictoria120@gmail.com" target="_blank"><Icon icon="hugeicons:mail-at-sign-01" class="i-mob"/></a>
 
       </div>
+
     </div>
 
   </section>
@@ -100,6 +101,23 @@ p{
 :deep(.i-mob g),
 :deep(.i-mob path) {
   stroke-width: 0.8;
+}
+
+@media (min-width: 920px){
+
+.message{
+  display: flex;
+  gap: 40px;
+}
+
+.text{
+  font-size: 1.4em;
+  width: 45%;
+}
+.contIcons{
+  width: 10%;
+}
+
 }
 
 </style>

@@ -120,7 +120,7 @@ const resetProfile = async () => {
 
 <template>
 
-<section class="profile-card" :class="props.user.role">
+<section class="profile-card sectionDesktop" :class="props.user.role">
 
       <div class="info">
 
@@ -292,6 +292,14 @@ const resetProfile = async () => {
   width: 24px;
   height: 24px;
   opacity: 0.6;
+}
+
+@media (min-width: 920px){
+
+.profile-card{
+  width: 80%;
+}
+  
 }
 
 

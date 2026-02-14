@@ -73,9 +73,27 @@ body{
 
 /*details*/
 body::selection {
-  background-color: #eff2f4; /* Azul */
-  color: #181818; /* Texto blanco */
+  background-color: #eff2f4; 
+  color: #181818; 
 }
+
+/*efecto desktop sections*/
+@media (min-width: 920px){
+
+.sectionDesktop{
+  background: var(--negro);
+  border-radius: 16px;
+
+  box-shadow:
+    0 30px 80px rgba(0, 0, 0, 0.7),
+    0 10px 30px rgba(0, 0, 0, 0.5),
+    inset 0 1px 0 rgba(255,255,255,0.03);
+  
+  padding: 32px;
+}
+
+}
+
 
 
 

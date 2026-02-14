@@ -23,7 +23,7 @@ const goBackToUsers = () => {
 
 <template>
 
-  <section class="add-user">
+  <section class="add-user sectionDesktop">
 
     <header class="top">
       <button @click="router.back()">
@@ -69,6 +69,15 @@ const goBackToUsers = () => {
 .i-mob{
     display: flex;
     width: 24px;
+}
+
+@media (min-width: 920px){
+
+.sectionDesktop{
+  width: 35%;
+  height: fit-content;
+}
+
 }
 
 </style>

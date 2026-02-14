@@ -30,7 +30,7 @@ const handleLogin = async () => {
 
 <template>
 
-    <section class="login">
+    <section class="login sectionDesktop">
 
       <h2 class="mayus">Log in</h2>
 
@@ -95,6 +95,20 @@ button{
     width: 100%;
     display: flex;
     justify-content: end;
+}
+
+@media (min-width: 920px){
+.login {
+    width: 25%;
+    height: 60vh;
+    gap: 30px;
+}
+form{
+    gap: 20px;
+}
+.wrapper-button{
+    margin-top: 30px;
+}
 }
 
 

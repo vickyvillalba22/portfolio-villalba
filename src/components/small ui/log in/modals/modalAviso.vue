@@ -101,4 +101,14 @@ const resolvedImage = computed(() => {
   font-family: var(--font-princ);
   cursor: pointer;
 }
+
+@media (min-width: 920px){
+
+.modal-image {
+  max-width: 10vw;
+  margin-bottom: 1rem;
+}
+
+}
+
 </style>

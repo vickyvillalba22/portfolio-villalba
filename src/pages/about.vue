@@ -289,6 +289,7 @@ li{
 
 section{
   background-color: #26262667;
+  border-radius: 16px;
   padding: 24px;
 }
 h4{

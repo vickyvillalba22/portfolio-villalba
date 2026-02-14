@@ -170,7 +170,10 @@ const reasons: ReasonItem[] = [
 
           </section>
 
-          <p class="quote">Vue.js positions itself as a modern and efficient tool for developing <span>dynamic interfaces</span>, aligned with current <span>best practices</span> in web development.</p>
+          <div class="contQuote">
+            <img src="/src/assets/imgs/vue1-ill.png" alt="">
+            <p class="quote">Vue.js positions itself as a modern and efficient tool for developing <span>dynamic interfaces</span>, aligned with current <span>best practices</span> in web development.</p>
+          </div>
 
         </div>
 
@@ -314,6 +317,9 @@ h4{
   flex-direction: column;
   gap: 40px;
 }
+.contQuote img{
+  display: none;
+}
 .quote{
     font-size: 24px;
     line-height: 35px;
@@ -386,9 +392,18 @@ h4{
 }
 .eleccion{
   width: 45%;
+  font-size: 1.2em;
 }
-.quote{
+.contQuote{
   width: 45%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 20px;
+}
+.contQuote img{
+  display: block;
+  width: 40%;
 }
 }
 

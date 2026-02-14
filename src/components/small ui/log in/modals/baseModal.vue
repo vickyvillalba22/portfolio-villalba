@@ -43,4 +43,17 @@ function close() {
   justify-content: center;
   align-items: center;
 }
+
+@media (min-width: 920px){
+ 
+.modal-container {
+  border-radius: 8px;
+  width: 30%;
+  min-height: 25%;
+  max-height: 70vh;
+}
+  
+}
+
+
 </style>

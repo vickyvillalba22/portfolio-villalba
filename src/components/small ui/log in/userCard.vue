@@ -134,4 +134,14 @@ h3 {
 .delete{
     color: var(--rojo);
 }
+
+@media (min-width: 920px){
+
+.user-card{
+  width: 15%;
+  height: 35vh;
+}
+
+}
+
 </style>
