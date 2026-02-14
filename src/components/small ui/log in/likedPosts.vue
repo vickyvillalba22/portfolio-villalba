@@ -1,7 +1,6 @@
 <script setup lang="ts">
 import { inject, computed, type Ref } from 'vue'
 import type { Project } from '@/types/project'
-import type { User } from '@/types/user'
 import ProjectCard from '@/components/projectCard.vue'
 import { currentUser } from '@/utils/session';
 
@@ -19,12 +18,12 @@ const likedProjects = computed(() =>
 
 <template>
 
-  <section>
+  <section class="sectionDesktop">
 
     <h3>Liked projects</h3>
 
     <p v-if="likedProjects.length === 0">
-      Todavía no diste like a ningún proyecto 💔
+      Todavía no diste like a ningún proyecto :(. 
     </p>
 
     <div class="contProjects">
@@ -53,6 +52,39 @@ section{
     display: flex;
     flex-direction: column;
     gap: 15px;
+}
+
+@media (min-width: 920px){
+
+section{
+  width: 50%;
+  max-height: 80vh;
+  overflow-y: auto;
+  overflow-x: hidden;
+
+  /* Firefox */
+  scrollbar-width: thin;
+  scrollbar-color: rgba(255,255,255,0.3) transparent;
+}
+
+/* Chrome, Edge, Safari */
+section::-webkit-scrollbar {
+  width: 6px;
+}
+
+section::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+section::-webkit-scrollbar-thumb {
+  background: rgba(255,255,255,0.3);
+  border-radius: 10px;
+}
+
+section::-webkit-scrollbar-thumb:hover {
+  background: rgba(255,255,255,0.5);
+}
+
 }
 
 </style>

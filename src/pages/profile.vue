@@ -54,7 +54,9 @@ const handleAction = (action: string | null) => {
 
 @media (min-width: 920px){
   .profile{
+    width: 90%;
     flex-direction: row;
+    justify-content: space-evenly;
     gap: 6em;
   }
 }

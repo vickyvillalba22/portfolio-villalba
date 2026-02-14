@@ -29,7 +29,7 @@ function goBackToProfile() {
 
 <template>
 
-    <section>
+    <section class="sectionDesktop">
 
         <button class="back" @click="goBackToProfile">
             <Icon icon="hugeicons:arrow-left-02" class="i-mob" />
@@ -60,6 +60,13 @@ function goBackToProfile() {
 section{
     width: 90%;
     height: 90vh;
+}
+
+@media (min-width: 920px){
+section{
+    width: 35%;
+    height: fit-content;
+}
 }
 
 </style>
