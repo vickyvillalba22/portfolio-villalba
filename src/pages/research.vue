@@ -13,6 +13,10 @@ import Directives from '@/components/principios/directives.vue'
 import Computed from '@/components/principios/computed.vue'
 import Lifecycle from '@/components/principios/lifecycle.vue'
 
+import { useTypewriter } from '@/animations/composables';
+
+const { displayed } = useTypewriter("Research")
+
 //PRINCIPIOS CLAVE
 interface VuePrinciple {
   id: string
@@ -107,7 +111,7 @@ const reasons: ReasonItem[] = [
 
     <main id="research">
 
-        <h2 class="mayus">Research</h2>
+        <h2 class="mayus">{{ displayed }}</h2>
 
         <section id="heroR">
 
@@ -158,15 +162,22 @@ const reasons: ReasonItem[] = [
 
               <p>I chose Vue.js as my research topic because of its balance between simplicity and power, and its suitability for academic and professional projects.</p>
 
-              <div class="contReasons">
+                <transition-group
+                  name="slide-left"
+                  tag="div"
+                  appear
+                  class="contReasons"
+                >
 
-                  <div class="reason" v-for="reason in reasons">
+                  <div 
+                    class="reason" 
+                    v-for="(reason, index) in reasons"               key="reason" 
+                    :style="{ transitionDelay: `${index * 150}ms` }">
                       <Icon icon="hugeicons:arrow-right-02" class="i-mob" />
                       <p>{{ reason.text }}</p>
                   </div>
 
-              </div>
-
+                </transition-group>
 
           </section>
 

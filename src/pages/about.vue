@@ -1,9 +1,13 @@
 <script setup lang="ts">
 
-import { ref } from 'vue';
+import { ref, computed } from 'vue';
 import { Icon } from '@iconify/vue';
 import { provide } from 'vue'
 import IconCarousel from '@/components/small ui/iconCarousel.vue'
+
+import { useTypewriter } from '@/animations/composables';
+
+const { displayed } = useTypewriter("About me")
 
 const loaded = ref<boolean>(false)
 
@@ -21,6 +25,50 @@ function handleIntroLoad(): void {
 function handleCierreLoad(): void {
   cierreLoaded.value = true
 }
+
+interface SkillCategory {
+  id: number
+  title: string
+  type: "technical" | "soft"
+  skills: string[]
+}
+
+//SKILLS
+const listSkills: SkillCategory[] = [
+  {
+    id: 0,
+    title: "Technical Skills",
+    type: "technical",
+    skills: [
+      "Responsive Design",
+      "JavaScript (ES6+)",
+      "TypeScript",
+      "Front-End Development",
+      "UI/UX Design"
+    ]
+  },
+  {
+    id: 1,
+    title: "Soft Skills",
+    type: "soft",
+    skills: [
+      "Problem-Solving",
+      "Attention to Detail",
+      "Time Management",
+      "Team Collaboration",
+      "Continuous Learning"
+    ]
+  }
+]
+
+const technicalSkills = computed(() =>
+  listSkills.find(cat => cat.type === "technical")
+)
+
+const softSkills = computed(() =>
+  listSkills.find(cat => cat.type === "soft")
+)
+
 
 // items de focus on
 const focusItems = [
@@ -107,7 +155,7 @@ provide('carousel-items', toolsItems)
 
 <template>
 
-  <h2 class="mayus">About Me</h2>
+  <h2 class="mayus">{{ displayed }}</h2>
 
   <main id="about">
 
@@ -133,24 +181,40 @@ provide('carousel-items', toolsItems)
 
         <div>
           <Icon icon="hugeicons:pen-tool-02" class="i-mob" />
-          <ul class="listSkills">
-            <li>Responsive Design</li>
-            <li>JavaScript (ES6+)</li>
-            <li>TypeScript</li>
-            <li>Front-End Development</li>
-            <li>UI/UX Design</li>
-          </ul>
+
+          <transition-group
+            name="slide-left"
+            tag="ul"
+            appear
+            class="listSkills"
+          >
+            <li
+              v-for="(skill, index) in technicalSkills?.skills"
+              :key="skill"
+              :style="{ transitionDelay: `${index * 100}ms` }"
+            >
+              {{ skill }}
+            </li>
+          </transition-group>
+          
         </div>
 
         <div>
           <Icon icon="hugeicons:user-group-02" class="i-mob" />
-          <ul class="listSkills">
-            <li>Problem-Solving</li>
-            <li>Attention to Detail</li>
-            <li>Time Management</li>
-            <li>Team Collaboration</li>
-            <li>Continuous Learning</li>
-          </ul>
+                    <transition-group
+            name="slide-left"
+            tag="ul"
+            appear
+            class="listSkills"
+          >
+            <li
+              v-for="(skill, index) in technicalSkills?.skills"
+              :key="skill"
+              :style="{ transitionDelay: `${index * 100}ms` }"
+            >
+              {{ skill }}
+            </li>
+          </transition-group>
         </div>
 
       </div>

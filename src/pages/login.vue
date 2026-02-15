@@ -7,6 +7,10 @@ import Input from '../components/small ui/log in/input.vue'
 import { loginUser } from '@/utils/auth'
 import { saveSession } from '@/utils/session'
 
+import { useTypewriter } from '@/animations/composables';
+
+const { displayed } = useTypewriter("Log in")
+
 const router = useRouter()
 
 const usuario = ref('')
@@ -32,7 +36,7 @@ const handleLogin = async () => {
     <div class="wrapperLogin">
         <section class="login sectionDesktop">
 
-        <h2 class="mayus">Log in</h2>
+        <h2 class="mayus">{{ displayed }}</h2>
 
             <form @submit.prevent="handleLogin">
 

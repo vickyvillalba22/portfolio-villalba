@@ -33,7 +33,13 @@ const handleReset = async () => {
       No hay usuarios suscriptos todavía
     </p>
 
-    <ul v-else class="user-list">
+    <transition-group
+      v-else
+      name="slide-left"
+      tag="ul"
+      appear
+      class="user-list"
+    >
       <li
         v-for="user in subscribedUsers"
         :key="user.id"
@@ -48,7 +54,7 @@ const handleReset = async () => {
           <p class="email">{{ user.email }}</p>
         </div>
       </li>
-    </ul>
+    </transition-group>
 
   </section>
 </template>

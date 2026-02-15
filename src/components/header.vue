@@ -86,19 +86,30 @@ onBeforeUnmount(() => {
       <div class="contI" v-if="!isHome">
         <Icon icon="hugeicons:cancel-01" class="i-mob cerrar" @click.stop="isMobileMenuOpen = !isMobileMenuOpen" />
       </div>
-      
+
+      <transition-group
+        name="slide-left"
+        tag="div"
+        appear
+        class="header-items"
+      >
+
         <router-link 
-          v-for="item in visibleItems"
+          v-for="(item, index) in visibleItems"
           :key="item.path" 
           :to="item.path"
           class="item escondido"
-          @click="isMobileMenuOpen = false"> 
+          :style="{ transitionDelay: `${index * 100}ms` }"
+          @click="isMobileMenuOpen = false"
+        > 
 
           <Icon v-if="isHome" icon="hugeicons:arrow-right-02" class="i-mob" />
 
           <p>{{ item.label }}</p>
 
         </router-link>
+
+      </transition-group>
 
     </nav>
 
@@ -138,6 +149,11 @@ onBeforeUnmount(() => {
   width: 90%;
   height: 0.5px;
   background-color: var(--blanco);
+}
+
+.header-items{
+  display: flex;
+  flex-direction: column;
 }
 
 /*menu hamburguesa*/
@@ -231,6 +247,11 @@ onBeforeUnmount(() => {
 
 .header-mobile .contI {
   display: none;
+}
+
+.header-mobile .header-items{
+  flex-direction: row;
+  gap: 20px;
 }
 
 .header-mobile .nav {

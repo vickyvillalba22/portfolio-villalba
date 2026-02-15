@@ -9,6 +9,10 @@ import { useProjectFilters } from '@/utils/useProjectFilters'
 import ProjectFilters from '@/components/small ui/projectFilters.vue'
 import type { Project } from '@/types/project'
 
+import { useTypewriter } from '@/animations/composables';
+
+const { displayed } = useTypewriter("Projects")
+
 // inject de proyectos
 const projects = inject<Ref<Project[]>>('projects');
 if (!projects) {
@@ -26,7 +30,7 @@ const isLoading = inject<Ref<boolean>>("isLoading");
 
     <section id="projects">
 
-        <h2 class="mayus">Projects</h2>
+        <h2 class="mayus">{{ displayed }}</h2>
 
         <!--loader-->
         <LoaderFilters v-if="isLoading" />

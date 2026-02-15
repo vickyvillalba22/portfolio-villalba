@@ -27,13 +27,15 @@
 
 /* 2. Slide Left */
 
-.slide-left-enter-active {
+.slide-left-enter-active,
+.slide-left-appear-active {
   transition: 
     opacity var(--anim-duration-base) var(--anim-ease-soft),
     transform var(--anim-duration-base) var(--anim-ease-soft);
 }
 
-.slide-left-enter-from {
+.slide-left-enter-from,
+.slide-left-appear-from {
   opacity: 0;
   transform: translateX(-16px);
 }

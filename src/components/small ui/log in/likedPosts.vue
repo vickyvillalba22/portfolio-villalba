@@ -26,13 +26,18 @@ const likedProjects = computed(() =>
       Todavía no diste like a ningún proyecto :(. 
     </p>
 
-    <div class="contProjects">
+    <transition-group
+      name="slide-left"
+      tag="div"
+      appear
+      class="contProjects"
+    >
       <ProjectCard
         v-for="proj in likedProjects"
         :key="proj.id"
         :projectId="proj.id"
       />
-    </div>
+    </transition-group>
 
   </section>
 

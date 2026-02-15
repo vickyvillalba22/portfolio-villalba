@@ -4,7 +4,11 @@ import { computed } from 'vue'
 import { currentUser } from '@/utils/session'
 import Header from '../components/header.vue'
 
+import { useTypewriter } from '@/animations/composables';
+
 const user = computed(() => currentUser.value)
+
+const { displayed } = useTypewriter("Welcome to my portfolio!")
 
 </script>
 
@@ -21,7 +25,7 @@ const user = computed(() => currentUser.value)
         
         
         <h1 v-else class="mayus thin">Hi! I'm Victoria Villalba</h1>
-        <h2 class="bold">Welcome to my portfolio!</h2>
+        <h2>{{ displayed }}</h2>
 
     </div>
 

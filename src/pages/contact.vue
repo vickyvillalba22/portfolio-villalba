@@ -2,6 +2,10 @@
 
 import { Icon } from '@iconify/vue';
 
+import { useTypewriter } from '@/animations/composables';
+
+const { displayed } = useTypewriter("Contact")
+
 </script>
 
 <template>
@@ -10,7 +14,7 @@ import { Icon } from '@iconify/vue';
 
     <div class="message">
 
-      <h2 class="mayus">Contact</h2>
+      <h2 class="mayus">{{ displayed }}</h2>
 
       <div class="text">
         <div>
