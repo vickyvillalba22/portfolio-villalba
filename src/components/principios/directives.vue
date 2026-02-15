@@ -31,7 +31,7 @@ function saludar() {
 
 <template>
 
-    <article class="principio">
+    <article class="principio efectoSection">
 
         <h3>Directives</h3>
         <p class="desc">Directives are special attributes that allow you to manipulate the DOM in a declarative way.</p>

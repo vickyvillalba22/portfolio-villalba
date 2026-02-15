@@ -40,5 +40,9 @@ code{
 .codeBox span{
     color: var(--verde);
     font-family: monospace; 
+    font-size: 0.9em;
+    display: flex;
+    flex-wrap: wrap;
+    width: 90%;
 }
 </style>

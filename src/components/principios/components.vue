@@ -29,7 +29,7 @@ function resetDemo() {
 
 <template>
 
-    <article class="principio">
+    <article class="principio efectoSection">
 
         <h3>Components</h3>
         <p class="desc">Components allow the interface to be divided into reusable and encapsulated pieces, facilitating maintenance and scalability.</p>
@@ -78,7 +78,9 @@ h3{
 }
 
 .contButtons{
+    width: 100%;
     display: flex;
+    flex-wrap: wrap;
     gap: 10px;
 }
 

@@ -4,9 +4,9 @@ import { ref } from 'vue'
 import CodeBox from '../small ui/codeBox.vue'
 import ProjectCard from '@/components/projectCard.vue'
 
-const lifecycleExample = `<span>onMounted</span>() // first component render
-<span>onUpdated</span>() // component update
-<span>onUnmounted</span>() // disappearing`
+const lifecycleExample = `<span>onMounted()//first component render</span> 
+<span>onUpdated()//component update</span>
+<span>onUnmounted()//disappearing</span>`
 
 const isMounted = ref(false)
 const cardKey = ref(0)
@@ -41,7 +41,7 @@ function unmountCard() {
 
 <template>
 
-    <article class="principio">
+    <article class="principio efectoSection">
 
         <h3>Lifecycle Hooks</h3>
         <p class="desc">Vue offers hooks that allow you to execute logic at different times in a component's lifecycle.</p>

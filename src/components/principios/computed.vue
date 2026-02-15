@@ -19,7 +19,7 @@
 
 <template>
 
-    <article class="principio">
+    <article class="principio efectoSection">
 
         <h3>Computed properties</h3>
         <p class="desc">Computed properties allow you to derive values ​​from the reactive state, optimizing performance and keeping the code more declarative.</p>

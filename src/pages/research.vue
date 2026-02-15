@@ -270,8 +270,7 @@ h4{
     flex-direction: column;
     gap: 20px;
     padding: 30px;
-    border-radius: 15px;
-    box-shadow: 8px 8px 16px rgba(148, 147, 147, 0.35);
+    border-radius: 16px;
 }
 
 .principio button{
