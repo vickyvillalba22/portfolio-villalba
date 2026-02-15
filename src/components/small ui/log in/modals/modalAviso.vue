@@ -102,6 +102,13 @@ const resolvedImage = computed(() => {
   cursor: pointer;
 }
 
+@media (min-width: 700px){
+  .modal-image {
+    max-width: 20vw;
+    margin-bottom: 1rem;
+  }
+}
+
 @media (min-width: 920px){
 
 .modal-image {
@@ -109,13 +116,6 @@ const resolvedImage = computed(() => {
   margin-bottom: 1rem;
 }
 
-}
-
-@media (min-width: 700px){
-  .modal-image {
-    max-width: 20vw;
-    margin-bottom: 1rem;
-  }
 }
 
 </style>

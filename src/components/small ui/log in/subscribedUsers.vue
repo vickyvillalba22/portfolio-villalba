@@ -112,4 +112,10 @@ const handleReset = async () => {
   opacity: 0.6;
 }
 
+@media (min-width: 920px){
+  .subscribed-users{
+    width: 40%;
+  }
+}
+
 </style>

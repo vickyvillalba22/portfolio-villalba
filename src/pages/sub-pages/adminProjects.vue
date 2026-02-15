@@ -233,6 +233,15 @@ function back(){
   color: var(--rojo);
 }
 
+@media (min-width: 700px){
+  .grid{
+    justify-content: start;
+  }
+  .card{
+    width: 30%;
+  }
+}
+
 @media (min-width: 920px){
 
   .grid{
@@ -244,12 +253,4 @@ function back(){
 
 }
 
-@media (min-width: 700px){
-  .grid{
-    justify-content: start;
-  }
-  .card{
-    width: 30%;
-  }
-}
 </style>

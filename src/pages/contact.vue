@@ -103,6 +103,15 @@ p{
   stroke-width: 0.8;
 }
 
+@media (min-width: 700px){
+  .contIcons{
+    width: 20%;
+  }
+  .text{
+    font-size: 1.4em;
+  }
+}
+
 @media (min-width: 920px){
 
 .message{
@@ -118,15 +127,6 @@ p{
   width: 10%;
 }
 
-}
-
-@media (min-width: 700px){
-  .contIcons{
-    width: 20%;
-  }
-  .text{
-    font-size: 1.4em;
-  }
 }
 
 </style>

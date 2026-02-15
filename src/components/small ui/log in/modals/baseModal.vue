@@ -44,6 +44,14 @@ function close() {
   align-items: center;
 }
 
+@media (min-width: 700px){
+  .modal-container {
+    border-radius: 8px;
+    width: 50%;
+    max-height: 60vh;
+  }
+}
+
 @media (min-width: 920px){
  
 .modal-container {
@@ -53,14 +61,6 @@ function close() {
   max-height: 70vh;
 }
   
-}
-
-@media (min-width: 700px){
-  .modal-container {
-    border-radius: 8px;
-    width: 50%;
-    max-height: 60vh;
-  }
 }
 
 

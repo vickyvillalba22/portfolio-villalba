@@ -1,8 +1,26 @@
 <script setup lang="ts">
 
+import { ref } from 'vue';
 import { Icon } from '@iconify/vue';
 import { provide } from 'vue'
 import IconCarousel from '@/components/small ui/iconCarousel.vue'
+
+const loaded = ref<boolean>(false)
+
+function handleLoad(): void {
+  loaded.value = true
+}
+
+const introLoaded = ref<boolean>(false)
+const cierreLoaded = ref<boolean>(false)
+
+function handleIntroLoad(): void {
+  introLoaded.value = true
+}
+
+function handleCierreLoad(): void {
+  cierreLoaded.value = true
+}
 
 // items de focus on
 const focusItems = [
@@ -96,7 +114,12 @@ provide('carousel-items', toolsItems)
     <!--INTRO-->
     <section class="intro">
 
-      <img src="/public/imgs/foto Victoria Villalba.png" alt="">
+      <img 
+        src="/imgs/foto Victoria Villalba.png"
+        alt="Victoria Villalba"
+        @load="handleIntroLoad"
+        :class="['image-reveal-base', { 'is-loaded': introLoaded }]"
+      />
       <p>I am a Multimedia Technology student focused on front-end web development and UX/UI design. I am interested in creating clear, functional, and user-centered digital experiences.</p>
 
     </section>
@@ -154,7 +177,12 @@ provide('carousel-items', toolsItems)
     <!--CIERRE-->
     <section class="cierre">
       <p class="thin">I’m looking to continue developing my skills through <span class="thin">real-world projects</span> real-world projects that combine front-end development, UX/UI design, and meaningful user experiences.</p>
-      <img src="/public/imgs/def project.jpg" alt="">
+      <img 
+        src="/imgs/def project.jpg"
+        alt="Project"
+        @load="handleCierreLoad"
+        :class="['image-reveal-base', { 'is-loaded': cierreLoaded }]"
+      />
     </section>
 
 
@@ -285,6 +313,23 @@ li{
   color: var(--celeste)
 }
 
+@media (min-width: 700px){
+
+  .intro{
+    display: flex;
+  }
+  .intro img{
+    width: 40%;
+  }
+  .intro p{
+    width: 60%;
+  }
+
+  .wrapSkills{
+    width: 60%;
+  }
+}
+
 @media (min-width: 920px){
 
 section{
@@ -333,6 +378,7 @@ h4{
 }
 .wrapSkills{
   gap: 24px;
+  width: 100%;
 }
 .skills .i-mob{
   width: 60px;
@@ -351,23 +397,6 @@ h4{
   height: 100%; 
 }
 
-}
-
-@media (min-width: 700px){
-
-  .intro{
-    display: flex;
-  }
-  .intro img{
-    width: 40%;
-  }
-  .intro p{
-    width: 60%;
-  }
-
-  .wrapSkills{
-    width: 60%;
-  }
 }
 
 

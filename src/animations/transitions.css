@@ -1,0 +1,94 @@
+
+/* Animation System - Global */
+
+:root {
+  --anim-duration-fast: 180ms;
+  --anim-duration-base: 280ms;
+  --anim-duration-slow: 820ms;
+
+  --anim-ease-standard: cubic-bezier(0.4, 0, 0.2, 1);
+  --anim-ease-soft: cubic-bezier(0.25, 0.1, 0.25, 1);
+}
+
+/* 1. Page Fade */
+
+.page-fade-enter-active,
+.page-fade-leave-active {
+  transition:
+    opacity var(--anim-duration-base) var(--anim-ease-standard),
+    transform var(--anim-duration-base) var(--anim-ease-standard);
+}
+
+.page-fade-enter-from,
+.page-fade-leave-to {
+  opacity: 0;
+  transform: translateY(6px);
+}
+
+/* 2. Slide Left */
+
+.slide-left-enter-active {
+  transition: 
+    opacity var(--anim-duration-base) var(--anim-ease-soft),
+    transform var(--anim-duration-base) var(--anim-ease-soft);
+}
+
+.slide-left-enter-from {
+  opacity: 0;
+  transform: translateX(-16px);
+}
+
+/* 3. Stagger Up (cards) */
+
+.stagger-up-enter-active,
+.stagger-up-appear-active {
+  transition:
+    opacity var(--anim-duration-base) var(--anim-ease-standard),
+    transform var(--anim-duration-base) var(--anim-ease-standard);
+}
+
+.stagger-up-enter-from,
+.stagger-up-appear-from {
+  opacity: 0;
+  transform: translateY(20px);
+}
+
+/* 4. Image Reveal */
+
+.image-reveal-enter-active {
+  transition:
+    clip-path var(--anim-duration-slow) var(--anim-ease-soft),
+    opacity var(--anim-duration-base) var(--anim-ease-soft);
+}
+
+.image-reveal-enter-from {
+  clip-path: inset(0 0 100% 0);
+  opacity: 0;
+}
+
+.image-reveal-base {
+  opacity: 0;
+  clip-path: inset(0 0 100% 0);
+  transition:
+    clip-path var(--anim-duration-slow) var(--anim-ease-soft),
+    opacity var(--anim-duration-base) var(--anim-ease-soft);
+}
+
+.image-reveal-base.is-loaded {
+  opacity: 1;
+  clip-path: inset(0 0 0 0);
+}
+
+/* 5. Microinteractions */
+
+.interactive {
+  transition:
+    background-color var(--anim-duration-fast) var(--anim-ease-standard),
+    color var(--anim-duration-fast) var(--anim-ease-standard),
+    transform var(--anim-duration-fast) var(--anim-ease-standard),
+    box-shadow var(--anim-duration-fast) var(--anim-ease-standard);
+}
+
+.interactive:hover {
+  transform: translateY(-2px);
+}

@@ -6,7 +6,6 @@ import Input from '../components/small ui/log in/input.vue'
 
 import { loginUser } from '@/utils/auth'
 import { saveSession } from '@/utils/session'
-import { User } from '@/types/user'
 
 const router = useRouter()
 
@@ -30,38 +29,40 @@ const handleLogin = async () => {
 
 <template>
 
-    <section class="login sectionDesktop">
+    <div class="wrapperLogin">
+        <section class="login sectionDesktop">
 
-      <h2 class="mayus">Log in</h2>
+        <h2 class="mayus">Log in</h2>
 
-        <form @submit.prevent="handleLogin">
+            <form @submit.prevent="handleLogin">
 
-        <Input
-            id="usuario"
-            label="User"
-            type="text"
-            placeholder="Ex: vickyVillalba22"
-            v-model="usuario"
-        />
+            <Input
+                id="usuario"
+                label="User"
+                type="text"
+                placeholder="Ex: vickyVillalba22"
+                v-model="usuario"
+            />
 
-        <Input
-            id="password"
-            label="Password"
-            type="password"
-            placeholder="Must include at least 4 characters"
-            :hasEye="true"
-            v-model="password"
-        />
+            <Input
+                id="password"
+                label="Password"
+                type="password"
+                placeholder="Must include at least 4 characters"
+                :hasEye="true"
+                v-model="password"
+            />
 
-        <p v-if="error" class="error">{{ error }}</p>
+            <p v-if="error" class="error">{{ error }}</p>
 
-        <div class="wrapper-button">
-            <button type="submit" class="button1">Log in</button>
-        </div>
+            <div class="wrapper-button">
+                <button type="submit" class="button1">Log in</button>
+            </div>
 
-        </form>
+            </form>
 
-    </section>
+        </section>
+    </div>
 
 </template>
 
@@ -97,10 +98,19 @@ button{
     justify-content: end;
 }
 
+.wrapperLogin{
+    height: 90vh;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
 @media (min-width: 920px){
+
 .login {
     width: 25%;
-    height: 60vh;
+    height: fit-content;
     gap: 30px;
 }
 form{

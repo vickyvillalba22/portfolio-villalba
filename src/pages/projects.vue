@@ -48,15 +48,17 @@ const isLoading = inject<Ref<boolean>>("isLoading");
         <!--loader-->
         <LoaderProjects v-if="isLoading" />
 
-        <div v-else class="contProjects">
+        <transition-group name="stagger-up" tag="div" appear v-else class="contProjects">
 
             <ProjectCard
                 v-for="proj in projectFilters.filteredProjects.value"
                 :key="proj.id"
                 :projectId="proj.id"
+                :style="{ transitionDelay: `${proj.id * 80}ms` }"
             />
 
-        </div>
+        </transition-group>
+
 
     </section>
 
@@ -91,19 +93,6 @@ h2{
     margin-top: 5vh;
 }
 
-@media (min-width: 920px){
-
-.contProjects{
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    grid-auto-rows: 20vh;
-    gap: 20px;
-    width: 100%;
-    grid-auto-flow: dense;
-}
-
-}
-
 @media (min-width: 700px){
 
     .contProjects{
@@ -114,6 +103,19 @@ h2{
         width: 100%;
         grid-auto-flow: dense;
     }
+
+}
+
+@media (min-width: 920px){
+
+.contProjects{
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    grid-auto-rows: 20vh;
+    gap: 20px;
+    width: 100%;
+    grid-auto-flow: dense;
+}
 
 }
 

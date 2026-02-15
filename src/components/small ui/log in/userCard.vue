@@ -135,19 +135,19 @@ h3 {
     color: var(--rojo);
 }
 
-@media (min-width: 920px){
+@media (min-width: 700px){
 
 .user-card{
-  width: 15%;
+  width: 30%;
   height: 35vh;
 }
 
 }
 
-@media (min-width: 700px){
+@media (min-width: 920px){
 
 .user-card{
-  width: 30%;
+  width: 15%;
   height: 35vh;
 }
 
