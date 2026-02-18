@@ -10,20 +10,17 @@
   --anim-ease-soft: cubic-bezier(0.25, 0.1, 0.25, 1);
 }
 
-/* 1. Page Fade */
+/* 1. Page Fade 
 
-.page-fade-enter-active,
-.page-fade-leave-active {
-  transition:
-    opacity var(--anim-duration-base) var(--anim-ease-standard),
-    transform var(--anim-duration-base) var(--anim-ease-standard);
+.fade-enter-active,
+.fade-leave-active {
+  transition: opacity 0.25s ease;
 }
 
-.page-fade-enter-from,
-.page-fade-leave-to {
+.fade-enter-from,
+.fade-leave-to {
   opacity: 0;
-  transform: translateY(6px);
-}
+} */
 
 /* 2. Slide Left */
 
@@ -81,7 +78,7 @@
   clip-path: inset(0 0 0 0);
 }
 
-/* 5. Microinteractions */
+/* 5. Microinteractions 
 
 .interactive {
   transition:
@@ -93,4 +90,4 @@
 
 .interactive:hover {
   transform: translateY(-2px);
-}
+} */

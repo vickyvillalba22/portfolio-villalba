@@ -94,15 +94,16 @@ const goBack = () => {
     <p v-if="loading">Cargando usuarios...</p>
     <p v-if="error">{{ error }}</p>
 
-    <div v-if="!loading && !error" class="grid">
+    <transition-group tag="div" name="stagger-up" v-if="!loading && !error" class="grid" appear>
       <UserCard
-        v-for="user in filteredUsers"
+        v-for="(user, index) in filteredUsers"
         :key="user.id"
         :user="user"
         @edit="editUser"
         @delete="deleteUser"
+        :style="{ transitionDelay: `${index * 100}ms` }"
       />
-    </div>
+    </transition-group>
 
     <button class="reset flotante" @click="reset">
         <Icon icon="hugeicons:reload" class="i-mob"/>
@@ -137,6 +138,7 @@ const goBack = () => {
 
 .grid {
   display: flex;
+  width: 100%;
   gap: 16px;
   flex-wrap: wrap;
 }

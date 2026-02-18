@@ -95,9 +95,10 @@ function back(){
     </header>
 
     <!--projects-->
-    <div class="grid">
+    <transition-group tag="div" name="stagger-up" class="grid" appear>
 
-      <div v-for="project in filteredProjects" :key="project.id" class="card">
+      <div v-for="project in filteredProjects" :key="project.id" class="card" :style="{ transitionDelay: `${project.id * 100}ms` }">
+
         <img 
         :src="project.imagen || `/imgs-projects/${project.id}.png`" 
         :alt="project.titulo"
@@ -113,8 +114,10 @@ function back(){
             <Icon icon="hugeicons:delete-02" class="delete" />
           </button>
         </div>
+
       </div>
-    </div>
+
+    </transition-group>
 
     <!-- botón flotante -->
     <button class="add flotante" @click="addProject">
