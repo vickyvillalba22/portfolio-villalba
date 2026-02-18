@@ -69,11 +69,13 @@ onBeforeUnmount(() => {
     ]"
   >
 
-    <div
-      v-if="isMobileMenuOpen && !isHome"
-      class="backdrop"
-      @click="isMobileMenuOpen = false"
-    />
+    <transition name="fade">
+      <div
+        v-if="isMobileMenuOpen && !isHome"
+        class="backdrop"
+        @click="isMobileMenuOpen = false"
+      />
+    </transition>
 
     <!--boton hamburguesa-->
     <div class="contI" v-if="!isHome">
@@ -81,37 +83,45 @@ onBeforeUnmount(() => {
     </div>
 
     <!--nav-->
-    <nav ref="navRef" class="nav close" :class="[{ open: isMobileMenuOpen || isHome, 'nav-mobile': isMobileMenuOpen }]">
-
-      <div class="contI" v-if="!isHome">
-        <Icon icon="hugeicons:cancel-01" class="i-mob cerrar" @click.stop="isMobileMenuOpen = !isMobileMenuOpen" />
-      </div>
-
-      <transition-group
-        name="slide-left"
-        tag="div"
-        appear
-        class="header-items"
+    <transition name="mobile-menu">
+      <nav
+        v-show="isMobileMenuOpen || isHome"
+        ref="navRef"
+        class="nav"
+        :class="{ 'nav-mobile': isMobileMenuOpen }"
       >
 
-        <router-link 
-          v-for="(item, index) in visibleItems"
-          :key="item.path" 
-          :to="item.path"
-          class="item escondido"
-          :style="{ transitionDelay: `${index * 100}ms` }"
-          @click="isMobileMenuOpen = false"
-        > 
+        <div class="contI" v-if="!isHome">
+          <Icon icon="hugeicons:cancel-01" class="i-mob cerrar" @click.stop="isMobileMenuOpen = !isMobileMenuOpen" />
+        </div>
 
-          <Icon v-if="isHome" icon="hugeicons:arrow-right-02" class="i-mob" />
+        <transition-group
+          name="slide-left"
+          tag="div"
+          appear
+          class="header-items"
+        >
 
-          <p>{{ item.label }}</p>
+          <router-link 
+            v-for="(item, index) in visibleItems"
+            :key="item.path" 
+            :to="item.path"
+            class="item escondido"
+            :style="{ transitionDelay: `${index * 100}ms` }"
+            @click="isMobileMenuOpen = false"
+          > 
 
-        </router-link>
+            <Icon v-if="isHome" icon="hugeicons:arrow-right-02" class="i-mob" />
 
-      </transition-group>
+            <p>{{ item.label }}</p>
 
-    </nav>
+          </router-link>
+
+        </transition-group>
+
+      </nav>
+
+    </transition>
 
   </header>
 
@@ -157,13 +167,6 @@ onBeforeUnmount(() => {
 }
 
 /*menu hamburguesa*/
-.close{
-  display: none;
-}
-.open{
-  display: block;
-  position: fixed;
-}
 
 .header-mobile{
   display: flex;
@@ -181,6 +184,8 @@ onBeforeUnmount(() => {
 }
 
 .nav-mobile{
+  position: fixed;
+  right: 0;
   height: 100vh;
   width: 40%;
   top: 0;
@@ -237,7 +242,7 @@ onBeforeUnmount(() => {
 }
 
 .header-home .item::after {
-  width: 30%;
+  width: 70%;
 }
 
 .i-mob{
@@ -255,7 +260,7 @@ onBeforeUnmount(() => {
 }
 
 .header-mobile .nav {
-  display: flex;
+  display: flex !important;
   flex-direction: row;
   z-index: 3;
   height: auto;

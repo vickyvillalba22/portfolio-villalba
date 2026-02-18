@@ -1,15 +1,30 @@
 <script setup lang="ts">
 
+import { inject, type Ref, ref, onMounted, onBeforeUnmount } from 'vue'
+
 import ProjectCard from '../components/projectCard.vue';
 import LoaderFilters from '@/components/small ui/loaderFilters.vue';
 import LoaderProjects from '@/components/small ui/loaderProjects.vue';
-
-import { inject, type Ref } from 'vue'
-import { useProjectFilters } from '@/utils/useProjectFilters'
 import ProjectFilters from '@/components/small ui/projectFilters.vue'
-import type { Project } from '@/types/project'
 
+import type { Project } from '@/types/project'
+import { useProjectFilters } from '@/utils/useProjectFilters'
 import { useTypewriter } from '@/animations/composables';
+
+const isMobile = ref(false)
+
+const checkScreen = () => {
+  isMobile.value = window.innerWidth < 700
+}
+
+onMounted(() => {
+  checkScreen()
+  window.addEventListener("resize", checkScreen)
+})
+
+onBeforeUnmount(() => {
+  window.removeEventListener("resize", checkScreen)
+})
 
 const { displayed } = useTypewriter("Projects")
 
@@ -52,13 +67,13 @@ const isLoading = inject<Ref<boolean>>("isLoading");
         <!--loader-->
         <LoaderProjects v-if="isLoading" />
 
-        <transition-group name="stagger-up" tag="div" appear v-else class="contProjects">
+        <transition-group :name="isMobile ? 'slide-left' : 'stagger-up'" appear tag="div" v-else class="contProjects">
 
             <ProjectCard
-                v-for="proj in projectFilters.filteredProjects.value"
+                v-for="(proj, index) in projectFilters.filteredProjects.value"
                 :key="proj.id"
                 :projectId="proj.id"
-                :style="{ transitionDelay: `${proj.id * 80}ms` }"
+                :style="{ transitionDelay: `${index * 80}ms` }"
             />
 
         </transition-group>

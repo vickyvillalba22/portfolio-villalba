@@ -23,7 +23,7 @@ const likedProjects = computed(() =>
     <h3>Liked projects</h3>
 
     <p v-if="likedProjects.length === 0">
-      Todavía no diste like a ningún proyecto :(. 
+      You still hasn't liked any project :(. 
     </p>
 
     <transition-group

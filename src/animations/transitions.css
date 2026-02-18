@@ -10,17 +10,19 @@
   --anim-ease-soft: cubic-bezier(0.25, 0.1, 0.25, 1);
 }
 
-/* 1. Page Fade 
+/* 1. Page Fade */
 
 .fade-enter-active,
 .fade-leave-active {
-  transition: opacity 0.25s ease;
+  transition:
+    opacity var(--anim-duration-base) var(--anim-ease-standard),
+    backdrop-filter var(--anim-duration-base) var(--anim-ease-standard);
 }
 
 .fade-enter-from,
 .fade-leave-to {
   opacity: 0;
-} */
+}
 
 /* 2. Slide Left */
 
@@ -34,7 +36,7 @@
 .slide-left-enter-from,
 .slide-left-appear-from {
   opacity: 0;
-  transform: translateX(-16px);
+  transform: translateX(-20px);
 }
 
 /* 3. Stagger Up (cards) */
@@ -50,6 +52,10 @@
 .stagger-up-appear-from {
   opacity: 0;
   transform: translateY(20px);
+}
+
+.stagger-up-move {
+  transition: transform var(--anim-duration-base) var(--anim-ease-standard);
 }
 
 /* 4. Image Reveal */
@@ -91,3 +97,20 @@
 .interactive:hover {
   transform: translateY(-2px);
 } */
+
+/* 6. Header */
+
+/* Mobile menu animation */
+.mobile-menu-enter-active,
+.mobile-menu-leave-active {
+  transition:
+    transform var(--anim-duration-base) var(--anim-ease-standard),
+    opacity var(--anim-duration-base) var(--anim-ease-standard);
+}
+
+.mobile-menu-enter-from,
+.mobile-menu-leave-to {
+  transform: translateX(100%);
+  opacity: 0;
+}
+
