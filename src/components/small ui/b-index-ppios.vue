@@ -20,6 +20,7 @@ const emit = defineEmits<{
 
     <button
         :class="{ active: isActive }"
+        class="fill"
         @click="emit('select')"
     >
         {{ principle.label }}
@@ -43,5 +44,11 @@ button.active{
     font-family: var(--font-bold);
     border: none;
 }
+
+.fill::after{
+    background-color: var(--verde);
+}
+
+
 
 </style>

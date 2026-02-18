@@ -68,9 +68,9 @@ function unmountCard() {
         </div>
 
             <div class="contButtons">
-            <button @click="mountCard">Mount</button>
-            <button @click="updateCard">Update</button>
-            <button @click="unmountCard">Unmount</button>
+                <button @click="mountCard" class="fill">Mount</button>
+                <button @click="updateCard" class="fill">Update</button>
+                <button @click="unmountCard" class="fill">Unmount</button>
             </div>
 
         </div>
@@ -112,13 +112,15 @@ h3{
     justify-content: space-between;
 }
 
-button{
+.contButtons button{
     padding: 2px 18px;
-    border: 1px solid var(--verde);
     border-radius: 16px;
-    width: fit-content;
     font-family: var(--font-princ);
-    font-size: .8em;
+    font-size: 0.8em;
+}
+
+.fill:hover{
+    background-color: var(--verde);
 }
 
 .cardWrapper {

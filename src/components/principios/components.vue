@@ -47,10 +47,10 @@ function resetDemo() {
         </p>
 
         <div class="contButtons">
-            <button @click="hideCard">Hide</button>
-            <button @click="showCard">Show</button>
-            <button @click="duplicateCard">Duplicate</button>
-            <button @click="resetDemo">Reset</button>
+            <button @click="hideCard" class="fill">Hide</button>
+            <button @click="showCard" class="fill">Show</button>
+            <button @click="duplicateCard" class="fill">Duplicate</button>
+            <button @click="resetDemo" class="fill">Reset</button>
         </div>
 
     </article>
@@ -73,7 +73,6 @@ h3{
 .card{
     width: 40%;
     height: 30vh;
-    background-color: gray;
     border-radius: 16px;
 }
 
@@ -86,10 +85,13 @@ h3{
 
 .contButtons button{
     padding: 2px 18px;
-    border: 1px solid var(--verde);
     border-radius: 16px;
     font-family: var(--font-princ);
     font-size: 0.8em;
+}
+
+.fill::after{
+    background-color: var(--verde);
 }
 
 

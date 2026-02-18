@@ -39,9 +39,11 @@
             readonly
         />
 
-        <p v-if="price" class="answer">
-            You will pay {{ finalPrice }}$ with taxes included.
-        </p>
+        <Transition name="fade-slide">
+            <p v-if="price" class="answer">
+                You will pay {{ finalPrice }}$ with taxes included.
+            </p>
+        </Transition>
 
     </article>
 

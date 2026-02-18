@@ -40,20 +40,22 @@ function saludar() {
 
         <CodeBox :code="vIfExample" />
 
-        <button @click="toggleParrafo">
-        Toggle paragraph
+        <button @click="toggleParrafo" class="fill">
+          Toggle paragraph
         </button>
 
-        <p v-if="mostrar">
-        Este párrafo se muestra o no
-        </p>
+        <Transition name="fade-slide">
+          <p v-if="mostrar">
+            Este párrafo se muestra o no
+          </p>
+        </Transition>
 
         <h4>@click</h4>
 
         <CodeBox :code="clickExample" />
 
-        <button @click="saludar">
-        Saludar
+        <button @click="saludar" class="fill">
+          Saludar
         </button>
 
         <!-- Panda animado -->
@@ -93,6 +95,10 @@ button{
     width: fit-content;
     font-family: var(--font-princ);
     font-size: .8em;
+}
+
+.fill::after{
+    background-color: var(--verde);
 }
 
 .panda {

@@ -65,3 +65,49 @@ export function useRevealOnScroll(
   })
 }
 
+/*counter*/
+
+export function useCounterOnVisible(
+  target: number,
+  duration = 2000
+) {
+  const count = ref(0)
+  const isVisible = ref(false)
+
+  let frame: number
+  let startTime: number | null = null
+
+  const animate = (timestamp: number) => {
+    if (!startTime) startTime = timestamp
+
+    const progress = timestamp - startTime
+    const percentage = progress / duration
+
+    if (percentage < 1) {
+      count.value = Math.floor(target * easeOutCubic(percentage))
+      frame = requestAnimationFrame(animate)
+    } else {
+      count.value = target
+    }
+  }
+
+  const start = () => {
+    startTime = null
+    count.value = 0
+    frame = requestAnimationFrame(animate)
+  }
+
+  const stop = () => {
+    cancelAnimationFrame(frame)
+  }
+
+  onBeforeUnmount(() => {
+    cancelAnimationFrame(frame)
+  })
+
+  return { count, isVisible, start, stop }
+}
+
+function easeOutCubic(t: number) {
+  return 1 - Math.pow(1 - t, 3)
+}

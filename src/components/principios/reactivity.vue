@@ -27,12 +27,12 @@ function toggleVisibility() {
         />
 
         <!-- actualización en tiempo real -->
-        <p v-if="message.length === 0 && isVisible">
-          Nothing written yet...
-        </p>
-        <p v-if="isVisible">
-          {{ message }}
-        </p>
+        <Transition name="fade-slide">
+          <p v-if="isVisible" :key="message.length === 0 ? 'empty' : 'text'">
+            {{ message.length === 0 ? 'Nothing written yet...' : message }}
+          </p>
+        </Transition>
+        
 
         <p>{{ message.length }} characters</p>
 

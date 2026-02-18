@@ -1,6 +1,6 @@
 <script setup lang="ts">
 
-import { ref, onMounted } from 'vue'
+import { ref, onMounted, onBeforeUnmount } from 'vue'
 import type { Component } from 'vue'
 import { Icon } from '@iconify/vue'
 import Circle from '@/components/circle.vue'
@@ -13,7 +13,7 @@ import Directives from '@/components/principios/directives.vue'
 import Computed from '@/components/principios/computed.vue'
 import Lifecycle from '@/components/principios/lifecycle.vue'
 
-import { useTypewriter, useRevealOnScroll } from '@/animations/composables';
+import { useTypewriter, useRevealOnScroll, useCounterOnVisible } from '@/animations/composables';
 
 const { displayed } = useTypewriter("Research")
 
@@ -24,6 +24,36 @@ onMounted(() => {
   requestAnimationFrame(() => {
     titleActive.value = true
   })
+})
+
+const heroRef = ref<HTMLElement | null>(null)
+const { count, start, stop } = useCounterOnVisible(1000, 6500)
+
+let observer: IntersectionObserver
+
+onMounted(() => {
+  observer = new IntersectionObserver(
+    (entries) => {
+      const entry = entries[0]
+
+      if (entry.isIntersecting) {
+        start()
+      } else {
+        stop()
+      }
+    },
+    {
+      threshold: 0.6 // solo cuando la mayor parte es visible
+    }
+  )
+
+  if (heroRef.value) {
+    observer.observe(heroRef.value)
+  }
+})
+
+onBeforeUnmount(() => {
+  if (heroRef.value) observer.unobserve(heroRef.value)
 })
 
 const principlesRef = ref<HTMLElement | null>(null)
@@ -131,7 +161,7 @@ const reasons: ReasonItem[] = [
 
         <h2 class="mayus">{{ displayed }}</h2>
 
-        <section id="heroR">
+        <section ref="heroRef" id="heroR">
 
           <Transition name="hero-title" appear>
 
@@ -164,7 +194,9 @@ const reasons: ReasonItem[] = [
                 <p>Vue.js allows building scalable dynamic web applications by combining simplicity, reactivity, and reusable components.</p>
               </div>
 
-              <p class="frase">Adopted by <span>1000</span> projects</p>
+              <p class="frase">
+                Adopted by <span class="counter">{{ count }}</span> projects
+              </p>
 
             </div>
 
@@ -295,13 +327,12 @@ h4{
     object-fit: contain;
 }
 .frase{
-    font-size: 20px;
+    font-size: 1.5em;
     width: fit-content;
 }
 .frase span{
     color: var(--verde);
 }
-
 .eleccion{
     gap: 20px;
 }
