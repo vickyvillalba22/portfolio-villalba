@@ -4,6 +4,7 @@ import App from './App.vue'
 import router from './router'
 
 import "@/animations/transitions.css"
+import "@/animations/research.css"
 
 import 'vuetify/styles'
 import { createVuetify } from 'vuetify'

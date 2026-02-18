@@ -1,4 +1,4 @@
-import { ref, onMounted } from "vue"
+import { ref, onMounted, onBeforeUnmount, type Ref } from "vue"
 
 /* Typewriter */
 
@@ -27,3 +27,41 @@ export function useStaggerDelay(index: number, delay = 80) {
     transitionDelay: `${index * delay}ms`
   }
 }
+
+/* Reveal On Scroll */
+
+export function useRevealOnScroll(
+  element: Ref<HTMLElement | null>
+) {
+  let observer: IntersectionObserver | null = null
+
+  onMounted(() => {
+    if (!element.value) return
+
+    observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          const ratio = entry.intersectionRatio
+
+          if (ratio > 0.25) {
+            entry.target.classList.add("is-visible")
+          }
+
+          if (ratio < 0.1) {
+            entry.target.classList.remove("is-visible")
+          }
+        })
+      },
+      {
+        threshold: [0, 0.1, 0.25, 0.5, 1]
+      }
+    )
+
+    observer.observe(element.value)
+  })
+
+  onBeforeUnmount(() => {
+    observer?.disconnect()
+  })
+}
+

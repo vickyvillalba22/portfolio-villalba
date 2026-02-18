@@ -1,6 +1,6 @@
 <script setup lang="ts">
 
-import { ref } from 'vue'
+import { ref, onMounted } from 'vue'
 import type { Component } from 'vue'
 import { Icon } from '@iconify/vue'
 import Circle from '@/components/circle.vue'
@@ -13,9 +13,27 @@ import Directives from '@/components/principios/directives.vue'
 import Computed from '@/components/principios/computed.vue'
 import Lifecycle from '@/components/principios/lifecycle.vue'
 
-import { useTypewriter } from '@/animations/composables';
+import { useTypewriter, useRevealOnScroll } from '@/animations/composables';
 
 const { displayed } = useTypewriter("Research")
+
+const titleActive = ref(false)
+const vueTitle = "Vue.js".split("")
+
+onMounted(() => {
+  requestAnimationFrame(() => {
+    titleActive.value = true
+  })
+})
+
+const principlesRef = ref<HTMLElement | null>(null)
+useRevealOnScroll(principlesRef)
+
+const whyRef = ref<HTMLElement | null>(null)
+useRevealOnScroll(whyRef)
+
+const quoteRef = ref<HTMLElement | null>(null)
+useRevealOnScroll(quoteRef)
 
 //PRINCIPIOS CLAVE
 interface VuePrinciple {
@@ -115,10 +133,28 @@ const reasons: ReasonItem[] = [
 
         <section id="heroR">
 
+          <Transition name="hero-title" appear>
+
             <div class="title">
-                <h2>Vue.js</h2>
-                <h3 class="thin">Progressive framework for interactive interfaces</h3>
+
+              <h2 class="split-title" :class="{ active: titleActive }">
+                <span
+                  v-for="(letter, index) in vueTitle"
+                  :key="index"
+                  class="letter"
+                  :style="{ transitionDelay: `${index * 80}ms` }"
+                >
+                  {{ letter }}
+                </span>
+              </h2>
+
+              <h3 class="thin">Progressive framework for interactive interfaces</h3>
             </div>
+
+          </Transition>
+
+
+          <Transition name="hero-intro" appear>
 
             <div class="intro">
 
@@ -132,11 +168,17 @@ const reasons: ReasonItem[] = [
 
             </div>
 
+          </Transition>
+
+
         </section>
 
-        <section class="principios">
+        <section ref="principlesRef" class="principios reveal">
 
-            <h4>Key principles</h4>
+            <div class="principles-title">
+              <span class="line"></span>
+              <h4 class="mask-title">Key principles</h4>
+            </div>
 
             <div class="contGraficoPrinc">
               <Circle
@@ -148,6 +190,7 @@ const reasons: ReasonItem[] = [
               <Transition name="fade-slide" mode="out-in">
                 <component :is="activePrinciple.component" />
               </Transition>
+
             </div>
 
         </section>
@@ -156,9 +199,11 @@ const reasons: ReasonItem[] = [
 
         <div class="finalSection">
 
-          <section class="eleccion">
+          <section ref="whyRef" class="reveal eleccion">
 
-              <h4>Why did I choose Vue.js?</h4>
+              <h4 class="why-title">
+                <span class="highlight">Why did I choose Vue.js?</span>
+              </h4>
 
               <p>I chose Vue.js as my research topic because of its balance between simplicity and power, and its suitability for academic and professional projects.</p>
 
@@ -181,10 +226,12 @@ const reasons: ReasonItem[] = [
 
           </section>
 
-          <div class="contQuote">
+          <section ref="quoteRef" class="reveal contQuote">
+
             <img src="/src/assets/imgs/vue1-ill.png" alt="">
             <p class="quote">Vue.js positions itself as a modern and efficient tool for developing <span>dynamic interfaces</span>, aligned with current <span>best practices</span> in web development.</p>
-          </div>
+
+          </section>
 
         </div>
 
@@ -202,7 +249,7 @@ const reasons: ReasonItem[] = [
 
     width: 90%;
     min-height: 100vh;
-    gap: 50px;
+    gap: 1em;
 
     color: var(--color-texto-principal);
 }
@@ -211,6 +258,7 @@ section{
     width: 100%;
     display: flex;
     flex-direction: column;
+    margin-bottom: 10em;
 }
 
 h2{
@@ -326,9 +374,17 @@ h4{
   display: flex;
   flex-direction: column;
   gap: 40px;
+  margin-bottom: 10em;
+}
+.contQuote{
+  display: flex;
+  flex-direction: column;
+  gap: 4em;
 }
 .contQuote img{
-  display: none;
+  width: 100%;
+  height: 40vh;
+  object-fit: contain;
 }
 .quote{
     font-size: 24px;

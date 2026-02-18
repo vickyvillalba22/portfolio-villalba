@@ -7,6 +7,11 @@ import Complexity from './graphics/complexity.vue'
 import LearningCurve from './graphics/learningCurve.vue'
 import Scalability from './graphics/scalability.vue'
 
+import { useRevealOnScroll } from '@/animations/composables'
+
+const comparisonRef = ref<HTMLElement | null>(null)
+useRevealOnScroll(comparisonRef)
+
 const items: ComparisonItem[] = [
   {
     id: 'complexity',
@@ -71,7 +76,7 @@ const growthData = computed(() => {
 
 <template>
 
-    <section class="comparison">
+    <section ref="comparisonRef" class="reveal comparison">
 
         <h4>Vue vs JS Vainilla</h4>
 
