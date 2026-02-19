@@ -240,7 +240,7 @@ provide('carousel-items', toolsItems)
 
     <!--CIERRE-->
     <section class="cierre">
-      <p class="thin">I’m looking to continue developing my skills through <span class="thin">real-world projects</span> real-world projects that combine front-end development, UX/UI design, and meaningful user experiences.</p>
+      <p class="thin">I’m looking to continue developing my skills through <span class="thin">real-world projects</span> that combine front-end development, UX/UI design, and meaningful user experiences.</p>
       <img 
         src="/imgs/def project.jpg"
         alt="Project"
