@@ -465,6 +465,7 @@ h4{
 .intro .frase{
   font-size: 2em;
   display: block;
+  width: 40%;
 }
 .principios{
   justify-content: center;
