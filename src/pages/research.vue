@@ -111,45 +111,41 @@ const activePrinciple = ref<VuePrinciple>(vuePrinciples[0])
 //ELECCION
 interface ReasonItem {
   id: string
-  text: string
-  animation: {
-    type: 'fade' | 'slide' | 'scale'
-    delay?: number
-  }
+  parts: {
+    text: string
+    highlight?: boolean
+  }[]
 }
 
 const reasons: ReasonItem[] = [
   {
     id: 'learning-curve',
-    text: 'Accesible learning curve',
-    animation: {
-      type: 'slide',
-      delay: 0,
-    },
+    parts: [
+      { text: 'Accesible ', highlight: true },
+      { text: ' learning curve' }
+    ]
   },
   {
     id: 'architecture',
-    text: 'Clear architecture',
-    animation: {
-      type: 'slide',
-      delay: 100,
-    },
+    parts: [
+      { text: 'Clear ', highlight: true },
+      { text: ' architecture' }
+    ]
   },
   {
     id: 'typescript',
-    text: 'Typescript integration',
-    animation: {
-      type: 'slide',
-      delay: 200,
-    },
+    parts: [
+      { text: 'Typescript ', highlight: true },
+      { text: ' integration' }
+    ]
   },
   {
     id: 'interactive-projects',
-    text: 'Ideal for highly interactive projects',
-    animation: {
-      type: 'slide',
-      delay: 300,
-    },
+    parts: [
+      { text: 'Ideal for ' },
+      { text: ' highly interactive ', highlight: true },
+      { text: ' projects' }
+    ]
   },
 ]
 
@@ -246,12 +242,19 @@ const reasons: ReasonItem[] = [
                   class="contReasons"
                 >
 
-                  <div 
-                    class="reason" 
-                    v-for="(reason, index) in reasons"               key="reason" 
-                    :style="{ transitionDelay: `${index * 150}ms` }">
+                  <div class="reason" v-for="(reason, index) in reasons" key="reason" :style="{ transitionDelay: `${index * 150}ms` }">
+
                       <Icon icon="hugeicons:arrow-right-02" class="i-mob" />
-                      <p>{{ reason.text }}</p>
+                      <p>
+                        <span
+                          v-for="(part, i) in reason.parts"
+                          :key="i"
+                          :class="{ marker: part.highlight }"
+                        >
+                          {{ part.text }}
+                        </span>
+                      </p>
+
                   </div>
 
                 </transition-group>
@@ -260,8 +263,13 @@ const reasons: ReasonItem[] = [
 
           <section ref="quoteRef" class="reveal contQuote">
 
-            <img src="/src/assets/imgs/vue1-ill.png" alt="">
-            <p class="quote">Vue.js positions itself as a modern and efficient tool for developing <span>dynamic interfaces</span>, aligned with current <span>best practices</span> in web development.</p>
+            <img
+              src="/src/assets/imgs/vue1-ill.png"
+              alt=""
+              class="image-reveal-base"
+            />
+            
+            <p class="quote">Vue.js positions itself as a modern and efficient tool for developing <span class="marker">dynamic interfaces,</span> aligned with current <span class="marker">best practices</span> in web development.</p>
 
           </section>
 
@@ -368,23 +376,10 @@ h4{
     width: fit-content;
 }
 
-/*ANIMACION PRINCIPIOS*/
-.fade-slide-enter-active,
-.fade-slide-leave-active {
-  transition: opacity 0.25s ease, transform 0.25s ease;
-}
-
-.fade-slide-enter-from {
-  opacity: 0;
-  transform: translateY(10px);
-}
-
-.fade-slide-leave-to {
-  opacity: 0;
-  transform: translateY(-10px);
-}
-
 /*ELECCION*/
+.eleccion p{
+    font-size: 1.1em;
+}
 .contReasons{
     display: flex;
     flex-direction: column;
@@ -398,6 +393,9 @@ h4{
 .i-mob{
     width: 24px;
     color: var(--verde);
+}
+.why-title span{
+  font-family: var(--font-thin);
 }
 
 /*CIERRE*/
@@ -423,6 +421,12 @@ h4{
 }
 .quote span{
     color: var(--verde);
+}
+.reveal.is-visible .quote .marker::after {
+  transition-delay: 800ms;
+}
+.reveal.is-visible .quote .marker {
+  transition-delay: 800ms;
 }
 
 @media (min-width: 920px){

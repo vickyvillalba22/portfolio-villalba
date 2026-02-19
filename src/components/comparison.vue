@@ -162,6 +162,17 @@ nav, .tabs, .content{
   border: none;
   cursor: pointer;
   opacity: 0.8;
+  transform-origin: bottom center;
+  transition:
+    transform 300ms cubic-bezier(0.22, 1, 0.36, 1),
+    box-shadow 300ms ease,
+    opacity 200ms ease;
+}
+
+.tabs button:hover{
+  transform: scaleY(1.15);
+  box-shadow: 0 6px 16px rgba(0, 0, 0, 0.08);
+  opacity: 1;
 }
 
 .complexity{

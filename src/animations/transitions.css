@@ -88,19 +88,10 @@
   clip-path: inset(0 0 0 0);
 }
 
-/* 5. Microinteractions 
-
-.interactive {
-  transition:
-    background-color var(--anim-duration-fast) var(--anim-ease-standard),
-    color var(--anim-duration-fast) var(--anim-ease-standard),
-    transform var(--anim-duration-fast) var(--anim-ease-standard),
-    box-shadow var(--anim-duration-fast) var(--anim-ease-standard);
+.reveal.is-visible .image-reveal-base {
+  opacity: 1;
+  clip-path: inset(0 0 0 0);
 }
-
-.interactive:hover {
-  transform: translateY(-2px);
-} */
 
 /* 6. Header */
 
