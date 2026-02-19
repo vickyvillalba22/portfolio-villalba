@@ -48,6 +48,8 @@ const adminActions = [
   { label: 'Manage users', icon: 'hugeicons:user-edit-01', action: 'users' },
   { label: 'Subscribed users', icon: 'hugeicons:user-check-01', action: 'subscribed' },
   { label: 'Manage projects', icon: 'hugeicons:pencil-edit-02', action: 'content' },
+  { label: 'Simulate Error', icon: 'hugeicons:alert-02', action: 'simulate-error' },
+  { label: 'Simulate Unauthorized', icon: 'hugeicons:shield-02', action: 'simulate-unauthorized' },
   { label: 'Log out', icon: 'hugeicons:logout-04', action: 'logout' }
 ]
 
@@ -272,6 +274,10 @@ const resetProfile = async () => {
 
 .profile-card.admin svg {
   color: var(--rosa);
+}
+
+.profile-card.admin .actions{
+  flex-wrap: wrap;
 }
 
 /*reset*/

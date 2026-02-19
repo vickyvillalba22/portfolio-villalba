@@ -8,6 +8,9 @@ import ProfileCard from '@/components/small ui/log in/profileCard.vue'
 import LikedPosts from '@/components/small ui/log in/likedPosts.vue'
 import SubscribedUsers from '@/components/small ui/log in/subscribedUsers.vue'
 
+import AppError from '@/components/feedback/error.vue'
+import Unauthorized from '@/components/feedback/unauthorized.vue'
+
 const router = useRouter()
 
 const user = currentUser
@@ -37,6 +40,18 @@ const handleAction = (action: string | null) => {
     />
 
     <SubscribedUsers v-if="user && activeSection === 'subscribed'" />
+
+    <AppError
+      v-if="activeSection === 'simulate-error'"
+      title="Network Error"
+      message="The data could not be loaded. Please try again."
+      :code="500"
+      :showRetry="true"
+    />
+
+    <Unauthorized
+      v-if="activeSection === 'simulate-unauthorized'"
+    />
 
   </section>
 
