@@ -1,4 +1,3 @@
-// src/utils/useProjectFilters.ts
 import { ref, computed, type Ref } from 'vue'
 import { Project } from '@/types/project'
 

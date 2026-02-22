@@ -26,7 +26,7 @@ export function useProjects() {
   return { projects, isLoading }
 }
 
-/* ===== ADMIN ACTIONS (borrables después) ===== */
+/* ADMIN ACTIONS (borrables después) */
 
 export function addProject(project: Project) {
   projects.value.push(project)

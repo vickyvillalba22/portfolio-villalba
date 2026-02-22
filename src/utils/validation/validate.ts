@@ -1,5 +1,6 @@
 import type { Rule } from './rules'
 
+//declara los schemas dinamicamente
 export type Schema<T> = {
   [K in keyof T]?: Rule<T[K]>[]
 }
@@ -11,6 +12,7 @@ export function validate<T>(
   const errors: Partial<Record<keyof T, string>> = {}
 
   for (const key in schema) {
+
     const rules = schema[key]
     if (!rules) continue
 
@@ -21,6 +23,7 @@ export function validate<T>(
         break
       }
     }
+    
   }
 
   return {

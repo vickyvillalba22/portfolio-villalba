@@ -91,8 +91,8 @@ const router = createRouter({
 });
 
 //guard global
-//AGREGARLE PAGINA UNAUTHORIZED
 router.beforeEach((to, from, next) => {
+  
   const session = localStorage.getItem('session')
   const user = session ? JSON.parse(session) : null
 

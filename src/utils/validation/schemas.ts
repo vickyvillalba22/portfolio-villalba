@@ -1,7 +1,7 @@
 import { required, minLength, isEmail, matchField, noFutureDate } from './rules'
 import type { Schema } from './validate'
 
-/* ---------- USER ---------- */
+/*USER*/
 
 //Sí, uso any acá a propósito. Porque los forms no son exactamente User ni Project, son drafts. Esto es buena práctica en forms.
 
@@ -19,7 +19,7 @@ export const userEditSchema: Schema<any> = {
   registerDate: [required(), noFutureDate]
 }
 
-/* ---------- PROJECT ---------- */
+/*PROJECT*/
 
 export const projectStep1Schema: Schema<any> = {
   titulo: [required()],
