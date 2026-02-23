@@ -28,7 +28,7 @@ onMounted(async () => {
     await initUsers()
     users.value = getUsers()
   } catch (err) {
-    error.value = 'No se pudieron cargar los usuarios'
+    error.value = 'Error at loading users'
     console.error(err)
   } finally {
     loading.value = false
