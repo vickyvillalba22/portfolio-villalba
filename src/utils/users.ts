@@ -22,7 +22,7 @@ export async function initUsers() {
   const exists = localStorage.getItem(KEY)
   if (exists) return
 
-  const res = await fetch('/public/data/users.json')
+  const res = await fetch('/data/users.json')
   if (!res.ok) {
     throw new Error('Error loading users.json')
   }
