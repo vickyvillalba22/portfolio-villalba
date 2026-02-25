@@ -366,6 +366,9 @@ i{
 .extra-content {
   height: 70%;
 }
+.card-simple.expanded .like-btn{
+  top: 85%;
+}
 
 }
 
